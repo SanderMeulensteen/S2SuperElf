@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Logic_SuperElf/1.0.0": {
+        "runtime": {
+          "Logic_SuperElf.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Logic_SuperElf/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

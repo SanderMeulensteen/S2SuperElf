@@ -1,0 +1,9 @@
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\bin\Debug\netcoreapp3.1\Logic_SuperElf.deps.json
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\bin\Debug\netcoreapp3.1\Logic_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\bin\Debug\netcoreapp3.1\Logic_SuperElf.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\obj\Debug\netcoreapp3.1\Logic_SuperElf.csproj.AssemblyReference.cache
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\obj\Debug\netcoreapp3.1\Logic_SuperElf.AssemblyInfoInputs.cache
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\obj\Debug\netcoreapp3.1\Logic_SuperElf.AssemblyInfo.cs
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\obj\Debug\netcoreapp3.1\Logic_SuperElf.csproj.CoreCompileInputs.cache
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\obj\Debug\netcoreapp3.1\Logic_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\obj\Debug\netcoreapp3.1\Logic_SuperElf.pdb
