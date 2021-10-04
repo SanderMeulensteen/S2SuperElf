@@ -15,8 +15,8 @@ namespace Logic_SuperElf
     {
         Goalkeeper, Defender, Midfielder, Striker
     }
-    public enum Club
+    public enum Competition
     {
-        Ajax, AZ, FCGroningen, FCTwente, FCUtrecht, Feyenoord, FortunaSittard, GoAheadEagles, HeraclesAlmelo, NEC, PECZwolle, PSV, RKCWaalwijk, SCCambuurLeeuwarden, SCHeerenveen, SpartaRotterdam, Vitesse, WillemII
+        Eredivisie, PremierLeague, Bundesliga, PrimeraDivision, SerieA
     }
 }
