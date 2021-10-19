@@ -1,0 +1,216 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Players</h1>
+
+<div class="container">
+    <br />
+
+    <table id="player_table" class="table">
+        <thead class="table-borderless table-dark" style="background-color: rgb(0,142,68)">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Club
+            </th>
+            <th>
+                Position
+            </th>
+        </tr>
+        </thead>
+        <tbody class="table table-bordered">
+            <tr>
+                <td>
+                    Joel Drommel
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Goalkeeper
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Phillip Mwene
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Defender
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    André Ramalho
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Defender
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Armando Obispo
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Defender
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Olivier Boscagli
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Defender
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Philip Max
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Defender
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Ibrahim Sangaré
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Midfielder
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Marco van Ginkel
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Midfielder
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Davy Pröpper
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Midfielder
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Mario Götze
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Midfielder
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Ryan Thomas
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Midfielder
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Eran Zahavi
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Attacker
+                </td>
+            </tr>
+        <tr>
+            <td>
+                Cody Gakpo
+            </td>
+            <td>
+                PSV
+            </td>
+            <td>
+                Attacker
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Noni Madueke
+            </td>
+            <td>
+                PSV
+            </td>
+            <td>
+                Attacker
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bruma
+            </td>
+            <td>
+                PSV
+            </td>
+            <td>
+                Attacker
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Yorbe Vertessen
+            </td>
+            <td>
+                PSV
+            </td>
+            <td>
+                Attacker
+            </td>
+        </tr>
+
+
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("#player_table").DataTable({
+            "processing": true,
+            "filter": true,
+            "orderMulti": false,
+        });
+    });
+</script>
