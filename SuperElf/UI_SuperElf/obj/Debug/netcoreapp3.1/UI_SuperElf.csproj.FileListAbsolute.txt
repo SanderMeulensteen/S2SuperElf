@@ -109,3 +109,13 @@ C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\De
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\Player\Index.cshtml.g.cs
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\DAL_Factories_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\DAL_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\Logic_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\SharedFiles.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\Logic_SuperElf.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\SharedFiles.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\DAL_Factories_SuperElf.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\DAL_SuperElf.pdb

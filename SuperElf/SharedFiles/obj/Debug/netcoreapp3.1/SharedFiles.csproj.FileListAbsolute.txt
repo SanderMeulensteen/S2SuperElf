@@ -1,0 +1,9 @@
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\SharedFiles\bin\Debug\netcoreapp3.1\SharedFiles.deps.json
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\SharedFiles\bin\Debug\netcoreapp3.1\SharedFiles.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\SharedFiles\bin\Debug\netcoreapp3.1\SharedFiles.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\SharedFiles\obj\Debug\netcoreapp3.1\SharedFiles.csproj.AssemblyReference.cache
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\SharedFiles\obj\Debug\netcoreapp3.1\SharedFiles.AssemblyInfoInputs.cache
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\SharedFiles\obj\Debug\netcoreapp3.1\SharedFiles.AssemblyInfo.cs
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\SharedFiles\obj\Debug\netcoreapp3.1\SharedFiles.csproj.CoreCompileInputs.cache
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\SharedFiles\obj\Debug\netcoreapp3.1\SharedFiles.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\SharedFiles\obj\Debug\netcoreapp3.1\SharedFiles.pdb

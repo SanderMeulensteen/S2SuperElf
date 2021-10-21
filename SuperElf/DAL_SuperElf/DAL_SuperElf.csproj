@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DAL_Interfaces_SuperElf\DAL_Interfaces_SuperElf.csproj" />
+    <ProjectReference Include="..\SharedFiles\SharedFiles.csproj" />
   </ItemGroup>
 
 </Project>

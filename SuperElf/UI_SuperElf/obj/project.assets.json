@@ -1803,7 +1803,8 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "DAL_Interfaces_SuperElf": "1.0.0",
-          "DAL_SuperElf": "1.0.0"
+          "DAL_SuperElf": "1.0.0",
+          "SharedFiles": "1.0.0"
         },
         "compile": {
           "bin/placeholder/DAL_Factories_SuperElf.dll": {}
@@ -1815,6 +1816,9 @@
       "DAL_Interfaces_SuperElf/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "SharedFiles": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/DAL_Interfaces_SuperElf.dll": {}
         },
@@ -1826,7 +1830,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "DAL_Interfaces_SuperElf": "1.0.0"
+          "DAL_Interfaces_SuperElf": "1.0.0",
+          "SharedFiles": "1.0.0"
         },
         "compile": {
           "bin/placeholder/DAL_SuperElf.dll": {}
@@ -1840,13 +1845,24 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "DAL_Factories_SuperElf": "1.0.0",
-          "DAL_Interfaces_SuperElf": "1.0.0"
+          "DAL_Interfaces_SuperElf": "1.0.0",
+          "SharedFiles": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Logic_SuperElf.dll": {}
         },
         "runtime": {
           "bin/placeholder/Logic_SuperElf.dll": {}
+        }
+      },
+      "SharedFiles/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/SharedFiles.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SharedFiles.dll": {}
         }
       }
     }
@@ -6132,12 +6148,18 @@
       "type": "project",
       "path": "../Logic_SuperElf/Logic_SuperElf.csproj",
       "msbuildProject": "../Logic_SuperElf/Logic_SuperElf.csproj"
+    },
+    "SharedFiles/1.0.0": {
+      "type": "project",
+      "path": "../SharedFiles/SharedFiles.csproj",
+      "msbuildProject": "../SharedFiles/SharedFiles.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Logic_SuperElf >= 1.0.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.5"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.5",
+      "SharedFiles >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -6174,6 +6196,9 @@
           "projectReferences": {
             "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\Logic_SuperElf\\Logic_SuperElf.csproj": {
               "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\Logic_SuperElf\\Logic_SuperElf.csproj"
+            },
+            "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\SharedFiles\\SharedFiles.csproj": {
+              "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\SharedFiles\\SharedFiles.csproj"
             }
           }
         }

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Logic_SuperElf\Logic_SuperElf.csproj" />
+    <ProjectReference Include="..\SharedFiles\SharedFiles.csproj" />
   </ItemGroup>
 
 </Project>

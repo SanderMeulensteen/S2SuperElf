@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "SharedFiles/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/SharedFiles.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SharedFiles.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "SharedFiles/1.0.0": {
+      "type": "project",
+      "path": "../SharedFiles/SharedFiles.csproj",
+      "msbuildProject": "../SharedFiles/SharedFiles.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "SharedFiles >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\sande\\.nuget\\packages\\": {},
@@ -38,7 +57,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\SharedFiles\\SharedFiles.csproj": {
+              "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\SharedFiles\\SharedFiles.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

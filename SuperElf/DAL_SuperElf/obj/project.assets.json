@@ -5,11 +5,24 @@
       "DAL_Interfaces_SuperElf/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "SharedFiles": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/DAL_Interfaces_SuperElf.dll": {}
         },
         "runtime": {
           "bin/placeholder/DAL_Interfaces_SuperElf.dll": {}
+        }
+      },
+      "SharedFiles/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/SharedFiles.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SharedFiles.dll": {}
         }
       }
     }
@@ -19,11 +32,17 @@
       "type": "project",
       "path": "../DAL_Interfaces_SuperElf/DAL_Interfaces_SuperElf.csproj",
       "msbuildProject": "../DAL_Interfaces_SuperElf/DAL_Interfaces_SuperElf.csproj"
+    },
+    "SharedFiles/1.0.0": {
+      "type": "project",
+      "path": "../SharedFiles/SharedFiles.csproj",
+      "msbuildProject": "../SharedFiles/SharedFiles.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "DAL_Interfaces_SuperElf >= 1.0.0"
+      "DAL_Interfaces_SuperElf >= 1.0.0",
+      "SharedFiles >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -60,6 +79,9 @@
           "projectReferences": {
             "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\DAL_Interfaces_SuperElf\\DAL_Interfaces_SuperElf.csproj": {
               "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\DAL_Interfaces_SuperElf\\DAL_Interfaces_SuperElf.csproj"
+            },
+            "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\SharedFiles\\SharedFiles.csproj": {
+              "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\SharedFiles\\SharedFiles.csproj"
             }
           }
         }

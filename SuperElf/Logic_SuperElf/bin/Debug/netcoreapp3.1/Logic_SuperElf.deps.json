@@ -7,14 +7,71 @@
   "targets": {
     ".NETCoreApp,Version=v3.1": {
       "Logic_SuperElf/1.0.0": {
+        "dependencies": {
+          "DAL_Factories_SuperElf": "1.0.0",
+          "DAL_Interfaces_SuperElf": "1.0.0",
+          "SharedFiles": "1.0.0"
+        },
         "runtime": {
           "Logic_SuperElf.dll": {}
+        }
+      },
+      "DAL_Factories_SuperElf/1.0.0": {
+        "dependencies": {
+          "DAL_Interfaces_SuperElf": "1.0.0",
+          "DAL_SuperElf": "1.0.0",
+          "SharedFiles": "1.0.0"
+        },
+        "runtime": {
+          "DAL_Factories_SuperElf.dll": {}
+        }
+      },
+      "DAL_Interfaces_SuperElf/1.0.0": {
+        "dependencies": {
+          "SharedFiles": "1.0.0"
+        },
+        "runtime": {
+          "DAL_Interfaces_SuperElf.dll": {}
+        }
+      },
+      "DAL_SuperElf/1.0.0": {
+        "dependencies": {
+          "DAL_Interfaces_SuperElf": "1.0.0",
+          "SharedFiles": "1.0.0"
+        },
+        "runtime": {
+          "DAL_SuperElf.dll": {}
+        }
+      },
+      "SharedFiles/1.0.0": {
+        "runtime": {
+          "SharedFiles.dll": {}
         }
       }
     }
   },
   "libraries": {
     "Logic_SuperElf/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DAL_Factories_SuperElf/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DAL_Interfaces_SuperElf/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DAL_SuperElf/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SharedFiles/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -7,3 +7,12 @@ C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\obj
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\obj\Debug\netcoreapp3.1\Logic_SuperElf.csproj.CoreCompileInputs.cache
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\obj\Debug\netcoreapp3.1\Logic_SuperElf.dll
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\obj\Debug\netcoreapp3.1\Logic_SuperElf.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\bin\Debug\netcoreapp3.1\DAL_Factories_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\bin\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\bin\Debug\netcoreapp3.1\DAL_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\bin\Debug\netcoreapp3.1\SharedFiles.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\bin\Debug\netcoreapp3.1\DAL_Factories_SuperElf.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\bin\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\bin\Debug\netcoreapp3.1\SharedFiles.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\bin\Debug\netcoreapp3.1\DAL_SuperElf.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_SuperElf\obj\Debug\netcoreapp3.1\Logic_SuperElf.csproj.CopyComplete

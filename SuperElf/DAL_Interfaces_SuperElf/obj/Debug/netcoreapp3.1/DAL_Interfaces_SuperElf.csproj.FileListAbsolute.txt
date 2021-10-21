@@ -1,0 +1,12 @@
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\bin\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.deps.json
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\bin\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\bin\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\bin\Debug\netcoreapp3.1\SharedFiles.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\bin\Debug\netcoreapp3.1\SharedFiles.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.csproj.AssemblyReference.cache
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.AssemblyInfoInputs.cache
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.AssemblyInfo.cs
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.csproj.CoreCompileInputs.cache
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.csproj.CopyComplete
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.pdb

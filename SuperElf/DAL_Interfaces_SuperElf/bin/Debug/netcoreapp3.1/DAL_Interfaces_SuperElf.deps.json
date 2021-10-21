@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "DAL_Interfaces_SuperElf/1.0.0": {
+        "dependencies": {
+          "SharedFiles": "1.0.0"
+        },
+        "runtime": {
+          "DAL_Interfaces_SuperElf.dll": {}
+        }
+      },
+      "SharedFiles/1.0.0": {
+        "runtime": {
+          "SharedFiles.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DAL_Interfaces_SuperElf/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SharedFiles/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
