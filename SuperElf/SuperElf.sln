@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_SuperElf", "DAL_SuperEl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic_SuperElf", "Logic_SuperElf\Logic_SuperElf.csproj", "{8B57F13E-0EFE-4027-B992-06DD58E086C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_Factories_SuperElf", "DAL_Factories_SuperElf\DAL_Factories_SuperElf.csproj", "{C4E34CB9-B168-471A-83EF-C2FF971F4D06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_Factories_SuperElf", "DAL_Factories_SuperElf\DAL_Factories_SuperElf.csproj", "{C4E34CB9-B168-471A-83EF-C2FF971F4D06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_Interfaces_SuperElf", "DAL_Interfaces_SuperElf\DAL_Interfaces_SuperElf.csproj", "{663BC436-38CD-4EA9-8125-F6875BD8C228}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_Interfaces_SuperElf", "DAL_Interfaces_SuperElf\DAL_Interfaces_SuperElf.csproj", "{663BC436-38CD-4EA9-8125-F6875BD8C228}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

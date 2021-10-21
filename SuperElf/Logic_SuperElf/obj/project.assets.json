@@ -1,11 +1,46 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "DAL_Factories_SuperElf/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/DAL_Factories_SuperElf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAL_Factories_SuperElf.dll": {}
+        }
+      },
+      "DAL_Interfaces_SuperElf/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/DAL_Interfaces_SuperElf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAL_Interfaces_SuperElf.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "DAL_Factories_SuperElf/1.0.0": {
+      "type": "project",
+      "path": "../DAL_Factories_SuperElf/DAL_Factories_SuperElf.csproj",
+      "msbuildProject": "../DAL_Factories_SuperElf/DAL_Factories_SuperElf.csproj"
+    },
+    "DAL_Interfaces_SuperElf/1.0.0": {
+      "type": "project",
+      "path": "../DAL_Interfaces_SuperElf/DAL_Interfaces_SuperElf.csproj",
+      "msbuildProject": "../DAL_Interfaces_SuperElf/DAL_Interfaces_SuperElf.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "DAL_Factories_SuperElf >= 1.0.0",
+      "DAL_Interfaces_SuperElf >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\sande\\.nuget\\packages\\": {},
@@ -38,7 +73,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\DAL_Factories_SuperElf\\DAL_Factories_SuperElf.csproj": {
+              "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\DAL_Factories_SuperElf\\DAL_Factories_SuperElf.csproj"
+            },
+            "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\DAL_Interfaces_SuperElf\\DAL_Interfaces_SuperElf.csproj": {
+              "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\DAL_Interfaces_SuperElf\\DAL_Interfaces_SuperElf.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
