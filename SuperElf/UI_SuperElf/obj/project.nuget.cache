@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "vG9rGEiRQJ8qD6LJxVaxIvUB9xhHPFoleHJO9nT6lr+PTKrexn+r1zPIlTHLCGb3ndj6Z4xl2evu26rUMgSVUg==",
+  "dgSpecHash": "4vcDzdFiFmwCKVVW4RdZWxlKaduiZb2OgFExdpNbrV9oE5ndluhM9zSUyhrwxMuYHEQjZHwUXxNLZ4JSWS0Eyw==",
   "success": true,
   "projectFilePath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\UI_SuperElf\\UI_SuperElf.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\sande\\.nuget\\packages\\jquery\\1.7.0\\jquery.1.7.0.nupkg.sha512",
+    "C:\\Users\\sande\\.nuget\\packages\\jquery.datatables\\1.10.15\\jquery.datatables.1.10.15.nupkg.sha512",
     "C:\\Users\\sande\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\sande\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\sande\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",

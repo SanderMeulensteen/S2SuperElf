@@ -2,25 +2,36 @@
 @{
     ViewData["Title"] = "Index";
 }
+@section Scripts {
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#player_table').DataTable({
+            });
+        });
+    </script>
+}
 
 <h1>Players</h1>
 
 <div class="container">
     <br />
 
-    <table id="player_table" class="table">
+    <table id="player_table" class="display" cellspacing="0" width="100%">
         <thead class="table-borderless table-dark" style="background-color: rgb(0,142,68)">
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Club
-            </th>
-            <th>
-                Position
-            </th>
-        </tr>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Club
+                </th>
+                <th>
+                    Position
+                </th>
+            </tr>
         </thead>
         <tbody class="table table-bordered">
             <tr>
@@ -155,60 +166,52 @@
                     Attacker
                 </td>
             </tr>
-        <tr>
-            <td>
-                Cody Gakpo
-            </td>
-            <td>
-                PSV
-            </td>
-            <td>
-                Attacker
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Noni Madueke
-            </td>
-            <td>
-                PSV
-            </td>
-            <td>
-                Attacker
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Bruma
-            </td>
-            <td>
-                PSV
-            </td>
-            <td>
-                Attacker
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Yorbe Vertessen
-            </td>
-            <td>
-                PSV
-            </td>
-            <td>
-                Attacker
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    Cody Gakpo
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Attacker
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Noni Madueke
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Attacker
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Bruma
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Attacker
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Yorbe Vertessen
+                </td>
+                <td>
+                    PSV
+                </td>
+                <td>
+                    Attacker
+                </td>
+            </tr>
 
 
         </tbody>
     </table>
 </div>
-
-<script>
-    $(document).ready(function() {
-        $('#player_table').DataTable({
-            
-        });
-    });
-</script>
