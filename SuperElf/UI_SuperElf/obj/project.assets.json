@@ -1797,6 +1797,57 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "DAL_Factories_SuperElf/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "DAL_Interfaces_SuperElf": "1.0.0",
+          "DAL_SuperElf": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DAL_Factories_SuperElf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAL_Factories_SuperElf.dll": {}
+        }
+      },
+      "DAL_Interfaces_SuperElf/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/DAL_Interfaces_SuperElf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAL_Interfaces_SuperElf.dll": {}
+        }
+      },
+      "DAL_SuperElf/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "DAL_Interfaces_SuperElf": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DAL_SuperElf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAL_SuperElf.dll": {}
+        }
+      },
+      "Logic_SuperElf/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "DAL_Factories_SuperElf": "1.0.0",
+          "DAL_Interfaces_SuperElf": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Logic_SuperElf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Logic_SuperElf.dll": {}
+        }
       }
     }
   },
@@ -6061,10 +6112,31 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "DAL_Factories_SuperElf/1.0.0": {
+      "type": "project",
+      "path": "../DAL_Factories_SuperElf/DAL_Factories_SuperElf.csproj",
+      "msbuildProject": "../DAL_Factories_SuperElf/DAL_Factories_SuperElf.csproj"
+    },
+    "DAL_Interfaces_SuperElf/1.0.0": {
+      "type": "project",
+      "path": "../DAL_Interfaces_SuperElf/DAL_Interfaces_SuperElf.csproj",
+      "msbuildProject": "../DAL_Interfaces_SuperElf/DAL_Interfaces_SuperElf.csproj"
+    },
+    "DAL_SuperElf/1.0.0": {
+      "type": "project",
+      "path": "../DAL_SuperElf/DAL_SuperElf.csproj",
+      "msbuildProject": "../DAL_SuperElf/DAL_SuperElf.csproj"
+    },
+    "Logic_SuperElf/1.0.0": {
+      "type": "project",
+      "path": "../Logic_SuperElf/Logic_SuperElf.csproj",
+      "msbuildProject": "../Logic_SuperElf/Logic_SuperElf.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Logic_SuperElf >= 1.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.5"
     ]
   },
@@ -6099,7 +6171,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\Logic_SuperElf\\Logic_SuperElf.csproj": {
+              "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\Logic_SuperElf\\Logic_SuperElf.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

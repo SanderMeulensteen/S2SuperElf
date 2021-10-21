@@ -5,6 +5,10 @@
       "DAL_Factories_SuperElf/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "DAL_Interfaces_SuperElf": "1.0.0",
+          "DAL_SuperElf": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/DAL_Factories_SuperElf.dll": {}
         },
@@ -21,6 +25,19 @@
         "runtime": {
           "bin/placeholder/DAL_Interfaces_SuperElf.dll": {}
         }
+      },
+      "DAL_SuperElf/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "DAL_Interfaces_SuperElf": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DAL_SuperElf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAL_SuperElf.dll": {}
+        }
       }
     }
   },
@@ -34,6 +51,11 @@
       "type": "project",
       "path": "../DAL_Interfaces_SuperElf/DAL_Interfaces_SuperElf.csproj",
       "msbuildProject": "../DAL_Interfaces_SuperElf/DAL_Interfaces_SuperElf.csproj"
+    },
+    "DAL_SuperElf/1.0.0": {
+      "type": "project",
+      "path": "../DAL_SuperElf/DAL_SuperElf.csproj",
+      "msbuildProject": "../DAL_SuperElf/DAL_SuperElf.csproj"
     }
   },
   "projectFileDependencyGroups": {
