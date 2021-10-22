@@ -1,4 +1,0 @@
-C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Factories_SuperElf\obj\Debug\netcoreapp3.1\Logic_Factories_SuperElf.csproj.AssemblyReference.cache
-C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Factories_SuperElf\obj\Debug\netcoreapp3.1\Logic_Factories_SuperElf.AssemblyInfoInputs.cache
-C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Factories_SuperElf\obj\Debug\netcoreapp3.1\Logic_Factories_SuperElf.AssemblyInfo.cs
-C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Factories_SuperElf\obj\Debug\netcoreapp3.1\Logic_Factories_SuperElf.csproj.CoreCompileInputs.cache
