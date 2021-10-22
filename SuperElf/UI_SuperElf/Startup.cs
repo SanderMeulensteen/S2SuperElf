@@ -28,7 +28,7 @@ namespace UI_SuperElf
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IPlayerDAL, PlayerDAL>();
-            // services.AddScoped<PlayerController, Player>();
+            // services.AddScoped<IPlayer, Player>();
             services.AddControllersWithViews();
         }
 

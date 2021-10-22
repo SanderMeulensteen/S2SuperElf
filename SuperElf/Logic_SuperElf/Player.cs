@@ -5,10 +5,11 @@ using System.Text;
 using DAL_Factories_SuperElf;
 using DAL_Interfaces_SuperElf;
 using SharedFiles;
+// using Logic_Interfaces_SuperElf;
 
 namespace Logic_SuperElf
 {
-    public class Player
+    public class Player // : IPlayer
     {
         private IPlayerDAL playerDAL = PlayerDAL_Factory.CreatePlayerDal();
         private List<PlayerDto> playersDtos = new List<PlayerDto>();

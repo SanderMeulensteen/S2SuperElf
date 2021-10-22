@@ -8,7 +8,23 @@
     <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#player_table').DataTable({
+            var dt = $('#player_table').DataTable({
+                "paging": false
+            });
+            $('#all').click(function() {
+                dt.column(1).search('').draw();
+            });
+            $('#goalkeeper').click(function () {
+                dt.column(1).search('Goalkeeper').draw();
+            });
+            $('#defender').click(function () {
+                dt.column(1).search('Defender').draw();
+            });
+            $('#midfielder').click(function () {
+                dt.column(1).search('Midfielder').draw();
+            });
+            $('#forward').click(function () {
+                dt.column(1).search('Forward').draw();
             });
         });
     </script>
@@ -18,8 +34,19 @@
 
 <div class="container">
     <br />
+    <button id="all" style="background-color: white; border-color: rgb(0, 142, 68)">Show all</button>
+    <button id="goalkeeper" style="background-color: white; border-color: rgb(0,142,68)">Goalkeepers</button>
+    <button id="defender" style="background-color: white; border-color: rgb(0,142,68)">Defenders</button>
+    <button id="midfielder" style="background-color: white; border-color: rgb(0,142,68)">Midfielders</button>
+    <button id="forward" style="background-color: white; border-color: rgb(0,142,68)">Forwards</button>
+    <br />
+    <br />
+    <button id="psv" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/psv.jpg" style="width: 50px" , height="50px" /></button>
+    <button id="ajax" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/ajax.jpg" style="width: 50px", height="50px"/></button>
+    <button id="feyenoord" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/feyenoord.jpg" style="width: 50px", height="50px"/></button>
+    <button id="az" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/az.jpg" style="width: 50px", height="50px"/></button>
 
-    <table id="player_table" class="display" cellspacing="0" width="100%">
+    <table id="player_table" class="display">
         <thead class="table-borderless table-dark" style="background-color: rgb(0,142,68)">
             <tr>
                 <th>
@@ -33,14 +60,14 @@
         <tbody class="table table-bordered">
             @foreach (var player in Model.Players)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => player.playerName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => player.position)
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => player.playerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => player.position)
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
