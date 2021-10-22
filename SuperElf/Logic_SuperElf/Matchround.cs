@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Logic_SuperElf
 {
-    class Matchround
+    public class Matchround
     {
         public int season { get; private set; }
         public int week { get; private set; }

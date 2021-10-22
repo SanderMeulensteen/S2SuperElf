@@ -5,7 +5,7 @@ using SharedFiles;
 
 namespace Logic_SuperElf
 {
-    class Team
+    public class Team
     {
         public int teamPoint { get; private set; }
         public Formation teamFormation { get; private set; }

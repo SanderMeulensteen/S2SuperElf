@@ -5,7 +5,7 @@ using SharedFiles;
 
 namespace Logic_SuperElf
 {
-    class Club
+    public class Club
     {
         public string clubName { get; private set; }
         public Competition clubCompetition { get; private set; }

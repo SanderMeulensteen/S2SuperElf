@@ -1,4 +1,4 @@
-﻿
+﻿@model PlayersPipeline
 @{
     ViewData["Title"] = "Index";
 }
@@ -26,192 +26,22 @@
                     Name
                 </th>
                 <th>
-                    Club
-                </th>
-                <th>
                     Position
                 </th>
             </tr>
         </thead>
         <tbody class="table table-bordered">
+            @foreach (var player in Model.Players)
+            {
             <tr>
                 <td>
-                    Joel Drommel
+                    @Html.DisplayFor(modelItem => player.playerName)
                 </td>
                 <td>
-                    PSV
-                </td>
-                <td>
-                    Goalkeeper
+                    @Html.DisplayFor(modelItem => player.position)
                 </td>
             </tr>
-            <tr>
-                <td>
-                    Phillip Mwene
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Defender
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    André Ramalho
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Defender
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Armando Obispo
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Defender
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Olivier Boscagli
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Defender
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Philip Max
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Defender
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Ibrahim Sangaré
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Midfielder
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Marco van Ginkel
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Midfielder
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Davy Pröpper
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Midfielder
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Mario Götze
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Midfielder
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Ryan Thomas
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Midfielder
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Eran Zahavi
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Attacker
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Cody Gakpo
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Attacker
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Noni Madueke
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Attacker
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Bruma
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Attacker
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Yorbe Vertessen
-                </td>
-                <td>
-                    PSV
-                </td>
-                <td>
-                    Attacker
-                </td>
-            </tr>
-
-
+            }
         </tbody>
     </table>
 </div>

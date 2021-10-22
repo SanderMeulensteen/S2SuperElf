@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Logic_SuperElf
 {
-    class User
+    public class User
     {
         public string userName { get; private set; }
         public string password { get; private set; }

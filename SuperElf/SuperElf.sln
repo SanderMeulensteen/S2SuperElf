@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_Factories_SuperElf", "D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_Interfaces_SuperElf", "DAL_Interfaces_SuperElf\DAL_Interfaces_SuperElf.csproj", "{663BC436-38CD-4EA9-8125-F6875BD8C228}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedFiles", "SharedFiles\SharedFiles.csproj", "{01E99355-19D1-4CE1-B16B-338E6FA385A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedFiles", "SharedFiles\SharedFiles.csproj", "{01E99355-19D1-4CE1-B16B-338E6FA385A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

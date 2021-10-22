@@ -12,7 +12,7 @@ namespace SharedFiles
     }
     public enum Position
     {
-        Goalkeeper, Defender, Midfielder, Striker
+        Goalkeeper, Defender, Midfielder, Forward
     }
     public enum Competition
     {

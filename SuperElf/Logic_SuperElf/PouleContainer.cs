@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Logic_SuperElf
 {
-    class PouleContainer
+    public class PouleContainer
     {
+
     }
 }

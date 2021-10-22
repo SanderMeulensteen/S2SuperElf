@@ -8,6 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DAL_Interfaces_SuperElf;
+using DAL_SuperElf;
+using Logic_SuperElf;
+using UI_SuperElf.Controllers;
 
 namespace UI_SuperElf
 {
@@ -23,6 +27,8 @@ namespace UI_SuperElf
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IPlayerDAL, PlayerDAL>();
+            // services.AddScoped<PlayerController, Player>();
             services.AddControllersWithViews();
         }
 

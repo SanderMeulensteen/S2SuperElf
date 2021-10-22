@@ -4,15 +4,33 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Logic_SuperElf;
+using UI_SuperElf.Models;
 
 namespace UI_SuperElf.Controllers
 {
     public class PlayerController : Controller
     {
+        private readonly Player _player = new Player("",0);
+        //public PlayerController(Player player)
+        //{
+        //    _player = player;
+        //}
+        
         // GET: PlayerController
         public ActionResult Index()
         {
-            return View();
+            PlayersPipeline playersPipeline = new PlayersPipeline();
+            List<Player> players = _player.GetAllPlayers();
+
+            foreach (Player player in players)
+            {
+                PlayerViewModel playerViewModel = new PlayerViewModel();
+                playerViewModel.playerName = player.playerName;
+                playerViewModel.position = player.position;
+                playersPipeline.Players.Add(playerViewModel);
+            }
+            return View(playersPipeline);
         }
 
         // GET: PlayerController/Details/5

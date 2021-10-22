@@ -4,7 +4,8 @@ using System.Text;
 
 namespace DAL_Factories_SuperElf
 {
-    class UserFactory
+    public class TeamDAL_Factory
     {
+
     }
 }

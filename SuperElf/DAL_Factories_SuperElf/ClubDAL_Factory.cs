@@ -2,7 +2,8 @@
 
 namespace DAL_Factories_SuperElf
 {
-    public class ClubFactory
+    public class ClubDAL_Factory
     {
+
     }
 }
