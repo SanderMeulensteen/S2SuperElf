@@ -12,7 +12,7 @@ namespace UI_SuperElf.Controllers
 {
     public class PlayerController : Controller
     {
-        private readonly Player _player = new Player("", 0);
+        private readonly Player _player = new Player("", 0, "");
         //public PlayerController(IPlayer player)
         //{
         //    _player = player;
@@ -29,6 +29,7 @@ namespace UI_SuperElf.Controllers
                 PlayerViewModel playerViewModel = new PlayerViewModel();
                 playerViewModel.playerName = player.playerName;
                 playerViewModel.position = player.position;
+                playerViewModel.club = player.club;
                 playersPipeline.Players.Add(playerViewModel);
             }
             return View(playersPipeline);

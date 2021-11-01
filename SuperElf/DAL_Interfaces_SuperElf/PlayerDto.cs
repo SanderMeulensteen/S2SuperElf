@@ -9,11 +9,13 @@ namespace DAL_Interfaces_SuperElf
     {
         public string playerName { get; }
         public Position position { get; }
+        public string club { get; }
 
-        public PlayerDto(string playerName, Position position)
+        public PlayerDto(string playerName, Position position, string club)
         {
             this.playerName = playerName;
-            this.position = position;   
+            this.position = position;
+            this.club = club;
         }
     }
 }

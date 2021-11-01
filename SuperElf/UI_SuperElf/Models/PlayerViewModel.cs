@@ -15,5 +15,7 @@ namespace UI_SuperElf.Models
         public string playerName { get; set; }
         [DisplayName("Position")]
         public Position position { get; set; }
+        [DisplayName("Club")]
+        public string club { get; set; }
     }
 }

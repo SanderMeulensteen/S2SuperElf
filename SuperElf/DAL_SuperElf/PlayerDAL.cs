@@ -11,32 +11,22 @@ namespace DAL_SuperElf
         public List<PlayerDto> GetAllPlayers()
         {
             List<PlayerDto> players = new List<PlayerDto>();
-            players.Add(new PlayerDto("Joel Drommel", Position.Goalkeeper));
-            players.Add(new PlayerDto("Yvon Mvogo", Position.Goalkeeper));
-            players.Add(new PlayerDto("Vincent Müller", Position.Goalkeeper));
-            players.Add(new PlayerDto("Maxime Delanghe", Position.Goalkeeper));
-            players.Add(new PlayerDto("Jordan Teze", Position.Defender));
-            players.Add(new PlayerDto("Armando Obispo", Position.Defender));
-            players.Add(new PlayerDto("André Ramalho", Position.Defender));
-            players.Add(new PlayerDto("Olivier Boscagli", Position.Defender));
-            players.Add(new PlayerDto("Phillip Mwene", Position.Defender));
-            players.Add(new PlayerDto("Philipp Max", Position.Defender));
-            players.Add(new PlayerDto("Ibrahim Sangaré", Position.Midfielder));
-            players.Add(new PlayerDto("Marco van Ginkel", Position.Midfielder));
-            players.Add(new PlayerDto("Davy Pröpper", Position.Midfielder));
-            players.Add(new PlayerDto("Érick Gutiérrez", Position.Midfielder));
-            players.Add(new PlayerDto("Mauro Júniro", Position.Midfielder));
-            players.Add(new PlayerDto("Mario Götze", Position.Midfielder));
-            players.Add(new PlayerDto("Ryan Thomas", Position.Midfielder));
-            players.Add(new PlayerDto("Richard Ledezma", Position.Midfielder));
-            players.Add(new PlayerDto("Eran Zahavi", Position.Forward));
-            players.Add(new PlayerDto("Carlos Vinícius", Position.Forward));
-            players.Add(new PlayerDto("Noni Madueke", Position.Forward));
-            players.Add(new PlayerDto("Cody Gakpo", Position.Forward));
-            players.Add(new PlayerDto("Bruma", Position.Forward));
-            players.Add(new PlayerDto("Maxi Romero", Position.Forward));
-            players.Add(new PlayerDto("Ritsu Doan", Position.Forward));
-            players.Add(new PlayerDto("Yorbe Vertessen", Position.Forward));
+            players.Add(new PlayerDto("Joel Drommel", Position.Goalkeeper, "PSV"));
+            players.Add(new PlayerDto("Philipp Max", Position.Defender, "PSV"));
+            players.Add(new PlayerDto("Mario Götze", Position.Midfielder, "PSV"));
+            players.Add(new PlayerDto("Cody Gakpo", Position.Forward, "PSV"));
+            players.Add(new PlayerDto("Maarten Stekelenburg",Position.Goalkeeper,"Ajax"));
+            players.Add(new PlayerDto("Jurien Timber", Position.Defender, "Ajax"));
+            players.Add(new PlayerDto("Steven Berghuis", Position.Midfielder, "Ajax"));
+            players.Add(new PlayerDto("Antony", Position.Forward, "Ajax"));
+            players.Add(new PlayerDto("Peter Jensen", Position.Goalkeeper, "AZ"));
+            players.Add(new PlayerDto("Owen Wijndal", Position.Defender, "AZ"));
+            players.Add(new PlayerDto("Fredrik Midtsjø", Position.Midfielder, "AZ"));
+            players.Add(new PlayerDto("Albert Gudmundsson", Position.Forward, "AZ"));
+            players.Add(new PlayerDto("Justin Bijlow", Position.Goalkeeper, "Feyenoord"));
+            players.Add(new PlayerDto("Marcos Senesi", Position.Defender, "Feyenoord"));
+            players.Add(new PlayerDto("Guus Til", Position.Midfielder, "Feyenoord"));
+            players.Add(new PlayerDto("Bryan Linssen", Position.Forward, "Feyenoord"));
             return players;
         }
 

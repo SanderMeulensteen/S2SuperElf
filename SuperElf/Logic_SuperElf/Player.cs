@@ -15,11 +15,14 @@ namespace Logic_SuperElf
         private List<PlayerDto> playersDtos = new List<PlayerDto>();
         public string playerName { get; private set; }
         public Position position { get; private set; }
+        public string club { get; private set; }
+        
 
-        public Player(string playerName, Position position)
+        public Player(string playerName, Position position, string club)
         {
             this.playerName = playerName;
             this.position = position;
+            this.club = club;
         }
         public List<Player> GetAllPlayers()
         {
@@ -27,7 +30,7 @@ namespace Logic_SuperElf
             List<PlayerDto> playerDtos = playerDAL.GetAllPlayers();
             foreach (PlayerDto playerDto in playerDtos)
             {
-                players.Add(new Player(playerDto.playerName, playerDto.position));
+                players.Add(new Player(playerDto.playerName, playerDto.position, playerDto.club));
             }
             return players;
         }

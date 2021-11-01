@@ -9,11 +9,13 @@ namespace Logic_Interfaces_SuperElf
     {
         public string playerName { get; }
         public Position position { get; }
+        public string club { get; } 
 
-        public dtoPlayer(string playerName, Position position)
+        public dtoPlayer(string playerName, Position position, string club)
         {
             this.playerName = playerName;
             this.position = position;
+            this.club = club;
         }
     }
 }

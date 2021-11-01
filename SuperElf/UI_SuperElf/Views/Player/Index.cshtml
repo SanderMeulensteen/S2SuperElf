@@ -13,6 +13,7 @@
             });
             $('#all').click(function() {
                 dt.column(1).search('').draw();
+                dt.column(2).search('').draw();
             });
             $('#goalkeeper').click(function () {
                 dt.column(1).search('Goalkeeper').draw();
@@ -26,6 +27,61 @@
             $('#forward').click(function () {
                 dt.column(1).search('Forward').draw();
             });
+            $('#ajax').click(function () {
+                dt.column(2).search('ajax').draw();
+            });
+            $('#az').click(function () {
+                dt.column(2).search('az').draw();
+            });
+            $('#cambuur').click(function () {
+                dt.column(2).search('cambuur').draw();
+            });
+            $('#feyenoord').click(function () {
+                dt.column(2).search('feyenoord').draw();
+            });
+            $('#fortuna').click(function () {
+                dt.column(2).search('fortuna').draw();
+            });
+            $('#eagles').click(function () {
+                dt.column(2).search('eagles').draw();
+            });
+            $('#groningen').click(function () {
+                dt.column(2).search('groningen').draw();
+            });
+            $('#heerenveen').click(function () {
+                dt.column(2).search('heerenveen').draw();
+            });
+            $('#heracles').click(function () {
+                dt.column(2).search('heracles').draw();
+            });
+            $('#nec').click(function () {
+                dt.column(2).search('nec').draw();
+            });
+            $('#pec').click(function () {
+                dt.column(2).search('pec').draw();
+            });
+            $('#psv').click(function () {
+                dt.column(2).search('psv').draw();
+            });
+            $('#rkc').click(function () {
+                dt.column(2).search('rkc').draw();
+            });
+            $('#sparta').click(function () {
+                dt.column(2).search('sparta').draw();
+            });
+            $('#twente').click(function () {
+                dt.column(2).search('twente').draw();
+            });
+            $('#utrecht').click(function () {
+                dt.column(2).search('utrecht').draw();
+            });
+            $('#vitesse').click(function () {
+                dt.column(2).search('vitesse').draw();
+            });
+            $('#willem').click(function () {
+                dt.column(2).search('willem').draw();
+            });
+
         });
     </script>
 }
@@ -41,10 +97,24 @@
     <button id="forward" style="background-color: white; border-color: rgb(0,142,68)">Forwards</button>
     <br />
     <br />
-    <button id="psv" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/psv.jpg" style="width: 50px" , height="50px" /></button>
-    <button id="ajax" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/ajax.jpg" style="width: 50px", height="50px"/></button>
-    <button id="feyenoord" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/feyenoord.jpg" style="width: 50px", height="50px"/></button>
-    <button id="az" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/az.jpg" style="width: 50px", height="50px"/></button>
+    <button id="ajax" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/ajax.png" style="width: 25px" /></button>
+    <button id="az" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/az.png" style="width: 25px" /></button>
+    <button id="cambuur" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/cambuur.png" style="width: 25px" /></button>
+    <button id="feyenoord" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/feyenoord.png" style="width: 25px" /></button>
+    <button id="fortuna" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/fortuna.png" style="width: 25px" /></button>
+    <button id="eagles" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eagles.png" style="width: 25px" /></button>
+    <button id="groningen" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/groningen.png" style="width: 25px" /></button>
+    <button id="heerenveen" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/heerenveen.png" style="width: 25px" /></button>
+    <button id="heracles" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/heracles.png" style="width: 25px" /></button>
+    <button id="nec" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/nec.png" style="width: 25px" /></button>
+    <button id="pec" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/pec.png" style="width: 25px" /></button>
+    <button id="psv" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/psv.png" style="width: 25px" /></button>
+    <button id="rkc" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/rkc.png" style="width: 25px" /></button>
+    <button id="sparta" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/sparta.png" style="width: 25px" /></button>
+    <button id="twente" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/twente.png" style="width: 25px" /></button>
+    <button id="utrecht" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/utrecht.png" style="width: 25px" /></button>
+    <button id="vitesse" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/vitesse.png" style="width: 25px" /></button>
+    <button id="willem" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/willem.png" style="width: 25px" /></button>
 
     <table id="player_table" class="display">
         <thead class="table-borderless table-dark" style="background-color: rgb(0,142,68)">
@@ -54,6 +124,9 @@
                 </th>
                 <th>
                     Position
+                </th>
+                <th>
+                    Club
                 </th>
             </tr>
         </thead>
@@ -66,6 +139,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => player.position)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => player.club)
                     </td>
                 </tr>
             }
