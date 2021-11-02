@@ -10,3 +10,7 @@ C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_Sup
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.csproj.CopyComplete
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.dll
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\bin\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.runtimeconfig.json
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\bin\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.runtimeconfig.dev.json
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\DAL_Interfaces_SuperElf.genruntimeconfig.cache
