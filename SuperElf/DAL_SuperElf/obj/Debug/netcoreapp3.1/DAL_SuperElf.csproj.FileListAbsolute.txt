@@ -9,10 +9,11 @@ C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_SuperElf\obj\D
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_SuperElf\obj\Debug\netcoreapp3.1\DAL_SuperElf.AssemblyInfoInputs.cache
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_SuperElf\obj\Debug\netcoreapp3.1\DAL_SuperElf.AssemblyInfo.cs
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_SuperElf\obj\Debug\netcoreapp3.1\DAL_SuperElf.csproj.CoreCompileInputs.cache
-C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_SuperElf\obj\Debug\netcoreapp3.1\DAL_SuperElf.csproj.CopyComplete
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_SuperElf\obj\Debug\netcoreapp3.1\DAL_SuperElf.dll
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_SuperElf\obj\Debug\netcoreapp3.1\DAL_SuperElf.pdb
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_SuperElf\bin\Debug\netcoreapp3.1\DAL_SuperElf.runtimeconfig.json
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_SuperElf\bin\Debug\netcoreapp3.1\DAL_SuperElf.runtimeconfig.dev.json
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_SuperElf\obj\Debug\netcoreapp3.1\DAL_SuperElf.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_SuperElf\obj\Debug\netcoreapp3.1\DAL_SuperElf.genruntimeconfig.cache
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_SuperElf\bin\Debug\netcoreapp3.1\DAL_SuperElf.dll.config
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_SuperElf\obj\Debug\netcoreapp3.1\DAL_SuperElf.dll.config
