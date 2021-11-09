@@ -16,6 +16,6 @@ namespace SharedFiles
     }
     public enum Competition
     {
-        Eredivisie, PremierLeague, Bundesliga, PrimeraDivision, SerieA
+        GeenCompetitie, Eredivisie, PremierLeague, Bundesliga, PrimeraDivision, SerieA
     }
 }

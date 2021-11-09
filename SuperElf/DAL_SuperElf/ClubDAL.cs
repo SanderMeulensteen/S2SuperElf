@@ -10,7 +10,7 @@ namespace DAL_SuperElf
     {
         private string connectionString =
             "Data Source=mssql.fhict.local;Persist Security Info=True;User ID = dbi449009_superelf; Password=!t5AC13791K";
-        public List<ClubDto> GetAllClubs()
+        public List<ClubDto> GetAllClubDtos()
         {
             List<ClubDto> clubs = new List<ClubDto>();
             using (SqlConnection conn = new SqlConnection(connectionString))

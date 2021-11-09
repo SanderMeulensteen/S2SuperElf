@@ -13,6 +13,9 @@ namespace UI_SuperElf.Controllers
     public class PlayerController : Controller
     {
         private readonly Player _player = new Player("", 0, "");
+        private readonly Team _team = new Team(0, 0, 0);
+        private readonly ClubContainer _clubContainer = new ClubContainer();
+        
         //public PlayerController(IPlayer player)
         //{
         //    _player = player;
@@ -44,22 +47,23 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.clubNames = _clubContainer.GetAllClubNames();
+            PlayerViewModel player = new PlayerViewModel();
+            return View(player);
         }
 
         // POST: PlayerController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(PlayerViewModel playerViewModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                Player player = new Player(playerViewModel.playerName, playerViewModel.position, playerViewModel.club);
+                _team.AddPlayer(player);
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: PlayerController/Edit/5

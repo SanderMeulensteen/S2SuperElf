@@ -13,7 +13,7 @@ namespace Logic_SuperElf
     public class Player // : IPlayer
     {
         private IPlayerDAL playerDAL = PlayerDAL_Factory.CreatePlayerDal();
-        private IClubDAL clubDAL = ClubDAL_Factory.CreateClubDal();
+        private ClubContainer clubContainer = new ClubContainer();
         private List<PlayerDto> playersDtos = new List<PlayerDto>();
         public string playerName { get; private set; }
         public Position position { get; private set; }
@@ -26,28 +26,33 @@ namespace Logic_SuperElf
             this.position = position;
             this.club = club;
         }
+
+        // Get list of all players in db
         public List<Player> GetAllPlayers()
         {
             List<Player> players = new List<Player>();
             List<PlayerDto> playerDtos = playerDAL.GetAllPlayers();
-            List<ClubDto> clubDtos = clubDAL.GetAllClubs();
-            
+
             foreach (PlayerDto playerDto in playerDtos)
             {
-                string clubName = null;
-                foreach (ClubDto clubDto in clubDtos)
-                {
-                    if (clubDto.clubId == playerDto.club)
-                    {
-                        clubName = clubDto.clubName;
-                    }
-                }
-                if (clubName != null)
-                {
-                    players.Add(new Player(playerDto.playerName, playerDto.position, clubName));
-                }
+                players.Add(ConvertFromDto(playerDto));
             }
             return players;
+        }
+
+        // Convert playerDto to player
+        public Player ConvertFromDto(PlayerDto playerDto)
+        {
+            Player player = new Player(playerDto.playerName, playerDto.position, "");
+            List<ClubDto> clubDtos = clubContainer.GetAllClubDtos();
+            foreach (ClubDto clubDto in clubDtos)
+            {
+                if (clubDto.clubId == playerDto.club)
+                {
+                    player.club = clubDto.clubName;
+                }
+            }
+            return player;
         }
     }
 }

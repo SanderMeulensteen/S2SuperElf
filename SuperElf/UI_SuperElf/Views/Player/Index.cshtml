@@ -136,6 +136,9 @@
                 <th>
                     Club
                 </th>
+                <th style="width: 20%">
+                    <a class="btn-sm btn-danger" asp-action="Create">Add player</a>
+                </th>
             </tr>
         </thead>
         <tbody class="table table-bordered">
@@ -150,6 +153,11 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => player.club)
+                    </td>
+                    <td>
+                        <a class="btn-sm btn-success" asp-action="Details">Details</a>
+                        <a class="btn-sm btn-danger" asp-action="Delete">Delete</a>
+                        <a class="btn-sm btn-success" asp-action="Edit">Edit</a>
                     </td>
                 </tr>
             }

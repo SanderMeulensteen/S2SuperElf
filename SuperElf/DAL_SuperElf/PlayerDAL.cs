@@ -11,6 +11,8 @@ namespace DAL_SuperElf
     {
         private string connectionString =
             "Data Source=mssql.fhict.local;Persist Security Info=True;User ID = dbi449009_superelf; Password=!t5AC13791K";
+        
+        // Get list of all players from db
         public List<PlayerDto> GetAllPlayers()
         {
             List<PlayerDto> players = new List<PlayerDto>();
@@ -33,6 +35,24 @@ namespace DAL_SuperElf
                 }
             }
             return players;
+        }
+
+        // Add player to db
+        public void AddPlayer(PlayerDto player)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query =
+                    "INSERT INTO [dbo].[playerTable]([ClubId],[PlayerName],[Position]) VALUES(@clubId,@playerName,@position)";
+                using (SqlCommand sqlCommand = new SqlCommand(query, conn))
+                {
+                    sqlCommand.Parameters.AddWithValue("@clubId", player.club);
+                    sqlCommand.Parameters.AddWithValue("@playerName", player.playerName);
+                    sqlCommand.Parameters.AddWithValue("@position", player.position);
+                    sqlCommand.ExecuteNonQuery();
+                }
+            }
         }
 
     }
