@@ -6,7 +6,7 @@ using SharedFiles;
 
 namespace DAL_SuperElf
 {
-    public class ClubDAL : IClubDAL
+    public class ClubDAL : IClubDAL, IClubContainerDAL
     {
         private string connectionString =
             "Data Source=mssql.fhict.local;Persist Security Info=True;User ID = dbi449009_superelf; Password=!t5AC13791K";

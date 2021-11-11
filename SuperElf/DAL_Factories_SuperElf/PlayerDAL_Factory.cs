@@ -12,5 +12,9 @@ namespace DAL_Factories_SuperElf
         {
             return new PlayerDAL();
         }
+        public static IPlayerContainerDAL CreatePlayerContainerDal()
+        {
+            return new PlayerDAL();
+        }
     }
 }

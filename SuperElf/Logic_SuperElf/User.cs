@@ -16,5 +16,6 @@ namespace Logic_SuperElf
             this.password = password;
             this.email = email;
         }
+        // Update users and manage teams
     }
 }

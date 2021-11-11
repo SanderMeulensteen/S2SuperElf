@@ -10,41 +10,32 @@ using SharedFiles;
 
 namespace Logic_SuperElf
 {
-    public class Player // : IPlayer
+    public class Player
     {
         private IPlayerDAL playerDAL = PlayerDAL_Factory.CreatePlayerDal();
-        private ClubContainer clubContainer = new ClubContainer();
-        private List<PlayerDto> playersDtos = new List<PlayerDto>();
+        public int playerId { get; private set; }
         public string playerName { get; private set; }
         public Position position { get; private set; }
         public int club { get; private set; }
         
 
-        public Player(string playerName, Position position, int club)
+        public Player(int playerId, string playerName, Position position, int club)
         {
+            this.playerId = playerId;
             this.playerName = playerName;
             this.position = position;
             this.club = club;
         }
+        // Update players and manage matchrounds
 
-        // Get list of all players in db
-        public List<Player> GetAllPlayers()
+        // Convert player to playerDto
+        public PlayerDto ConvertPlayerToDto(Player player)
         {
-            List<Player> players = new List<Player>();
-            List<PlayerDto> playerDtos = playerDAL.GetAllPlayers();
-
-            foreach (PlayerDto playerDto in playerDtos)
-            {
-                players.Add(ConvertFromDto(playerDto));
-            }
-            return players;
-        }
-
-        // Convert playerDto to player
-        public Player ConvertFromDto(PlayerDto playerDto)
-        {
-            Player player = new Player(playerDto.playerName, playerDto.position, playerDto.club);
-            return player;
+            PlayerDto playerDto = new PlayerDto();
+            playerDto.playerName = player.playerName;
+            playerDto.position = player.position;
+            playerDto.club = player.club;
+            return playerDto;
         }
     }
 }

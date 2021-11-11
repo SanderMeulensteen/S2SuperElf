@@ -15,5 +15,6 @@ namespace Logic_SuperElf
             this.pouleName = pouleName;
             this.pouleCompetion = pouleCompetion;
         }
+        // Update poules
     }
 }

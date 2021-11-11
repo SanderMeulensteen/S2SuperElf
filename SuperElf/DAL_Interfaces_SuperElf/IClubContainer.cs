@@ -4,7 +4,8 @@ using System.Text;
 
 namespace DAL_Interfaces_SuperElf
 {
-    public interface IPouleDAL
+    public interface IClubContainerDAL
     {
+        List<ClubDto> GetAllClubDtos();
     }
 }

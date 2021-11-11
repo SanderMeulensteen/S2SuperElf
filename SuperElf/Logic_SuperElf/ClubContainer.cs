@@ -10,7 +10,8 @@ namespace Logic_SuperElf
 {
     public class ClubContainer
     {
-        private IClubDAL clubDAL = ClubDAL_Factory.CreateClubDal();
+        private IClubContainerDAL clubDAL = ClubDAL_Factory.CreateClubContainerDal();
+        // Manage clubs
         public List<ClubDto> GetAllClubDtos()
         {
             List<ClubDto> clubDtos = clubDAL.GetAllClubDtos();

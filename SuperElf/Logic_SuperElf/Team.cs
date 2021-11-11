@@ -9,7 +9,6 @@ namespace Logic_SuperElf
 {
     public class Team
     {
-        private IPlayerDAL playerDAL = PlayerDAL_Factory.CreatePlayerDal();
         private ClubContainer clubContainer = new ClubContainer();
         public int teamPoint { get; private set; }
         public Formation teamFormation { get; private set; }
@@ -21,21 +20,10 @@ namespace Logic_SuperElf
             this.teamFormation = teamFormation;
             this.teamCompetition = teamCompetition;
         }
-        
-        // Add player to db
-        public void AddPlayer(Player player)
-        {
-            PlayerDto playerDto = ConvertPlayerToDto(player);
-            playerDAL.AddPlayer(playerDto);
-        }
-        // Convert player to playerDto
-        public PlayerDto ConvertPlayerToDto(Player player)
-        {
-            PlayerDto playerDto = new PlayerDto();
-            playerDto.playerName = player.playerName;
-            playerDto.position = player.position;
-            playerDto.club = player.club;
-            return playerDto;
-        }
+        // Update team
+
+        //-----Team
+
+
     }
 }

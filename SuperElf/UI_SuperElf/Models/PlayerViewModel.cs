@@ -11,6 +11,7 @@ namespace UI_SuperElf.Models
 {
     public class PlayerViewModel
     {
+        public int playerId { get; set; }
         [DisplayName("Player")]
         public string playerName { get; set; }
         [DisplayName("Position")]

@@ -12,8 +12,8 @@ namespace UI_SuperElf.Controllers
 {
     public class PlayerController : Controller
     {
-        private readonly Player _player = new Player("", 0, 0);
-        private readonly Team _team = new Team(0, 0, 0);
+        private readonly Player _player = new Player(0,"", 0, 0);
+        private readonly Club _club = new Club(0, "", 0);
         private readonly ClubContainer _clubContainer = new ClubContainer();
         
         //public PlayerController(IPlayer player)
@@ -25,11 +25,12 @@ namespace UI_SuperElf.Controllers
         public ActionResult Index()
         {
             PlayersPipeline playersPipeline = new PlayersPipeline();
-            List<Player> players = _player.GetAllPlayers();
+            List<Player> players = _club.GetAllPlayers();
 
             foreach (Player player in players)
             {
                 PlayerViewModel playerViewModel = new PlayerViewModel();
+                playerViewModel.playerId = player.playerId;
                 playerViewModel.playerName = player.playerName;
                 playerViewModel.position = player.position;
                 playerViewModel.club = player.club;
@@ -42,7 +43,13 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Player playerById = _club.GetPlayerById(id);
+            PlayerCreateViewModel player = new PlayerCreateViewModel();
+            player.playerName = playerById.playerName;
+            player.position = playerById.position;
+            player.club = playerById.club;
+            player.allClubs = _clubContainer.GetAllClubs();
+            return View(player);
         }
 
         // GET: PlayerController/Create
@@ -60,8 +67,8 @@ namespace UI_SuperElf.Controllers
         {
             if (ModelState.IsValid)
             {
-                Player player = new Player(playerViewModel.playerName, playerViewModel.position, playerViewModel.club);
-                _team.AddPlayer(player);
+                Player player = new Player(0, playerViewModel.playerName, playerViewModel.position, playerViewModel.club);
+                _club.AddPlayer(player);
                 return RedirectToAction("Index");
             }
             return View();

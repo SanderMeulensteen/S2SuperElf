@@ -7,6 +7,7 @@ namespace DAL_Interfaces_SuperElf
 {
     public class PlayerDto
     {
+        public int playerId { get; set; }
         public string playerName { get; set; }
         public Position position { get; set; }
         public int club { get; set; }

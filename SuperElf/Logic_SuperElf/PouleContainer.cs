@@ -7,5 +7,6 @@ namespace Logic_SuperElf
     public class PouleContainer
     {
 
+        // Manage poules
     }
 }

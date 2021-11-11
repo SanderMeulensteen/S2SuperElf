@@ -7,5 +7,6 @@ namespace Logic_SuperElf
     public class UserContainer
     {
 
+        // Manage users
     }
 }

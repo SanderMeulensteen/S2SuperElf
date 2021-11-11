@@ -7,12 +7,12 @@ using SharedFiles;
 
 namespace DAL_SuperElf
 {
-    public class PlayerDAL : IPlayerDAL
+    public class PlayerDAL : IPlayerDAL, IPlayerContainerDAL
     {
         private string connectionString =
             "Data Source=mssql.fhict.local;Persist Security Info=True;User ID = dbi449009_superelf; Password=!t5AC13791K";
         
-        // Get list of all players from db
+        // Get list of all players from dbr
         public List<PlayerDto> GetAllPlayers()
         {
             List<PlayerDto> players = new List<PlayerDto>();
@@ -27,6 +27,7 @@ namespace DAL_SuperElf
                     while (reader.Read())
                     {
                         PlayerDto player = new PlayerDto();
+                        player.playerId = reader.GetInt32(0);
                         player.playerName = reader.GetString(2);
                         player.position = (Position)reader.GetInt32(3);
                         player.club = reader.GetInt32(1);
@@ -54,7 +55,30 @@ namespace DAL_SuperElf
                 }
             }
         }
+        // Get player details from id
+        public PlayerDto GetPlayerDtoById(int id)
+        {
+            PlayerDto playerDto = new PlayerDto();
+            
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand query = new SqlCommand("select * from playerTable where PlayerId = @Id", conn))
+                {
+                    query.Parameters.AddWithValue("@Id", id);
 
+                    var reader = query.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        playerDto.playerId = reader.GetInt32(0);
+                        playerDto.playerName = reader.GetString(2);
+                        playerDto.position = (Position)reader.GetInt32(3);
+                        playerDto.club = reader.GetInt32(1);
+                    }
+                }
+            }
+            return playerDto;
+        }
     }
 }
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DAL_Interfaces_SuperElf
 {
-    class IUserDAL
+    public interface IUserDAL
     {
     }
 }

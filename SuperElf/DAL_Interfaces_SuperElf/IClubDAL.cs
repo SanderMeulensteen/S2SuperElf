@@ -5,6 +5,6 @@ namespace DAL_SuperElf
 {
     public interface IClubDAL
     {
-        List<ClubDto> GetAllClubDtos();
+        
     }
 }
