@@ -47,6 +47,12 @@ namespace Logic_SuperElf
             return players;
         }
 
+        // Delete player from db
+        public void DeletePlayer(int playerId)
+        {
+            playerDAL.DeletePlayer(playerId);
+        }
+
         public Player GetPlayerById(int id)
         {
             PlayerDto playerDto = playerDAL.GetPlayerDtoById(id);

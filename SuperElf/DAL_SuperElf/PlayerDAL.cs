@@ -12,7 +12,7 @@ namespace DAL_SuperElf
         private string connectionString =
             "Data Source=mssql.fhict.local;Persist Security Info=True;User ID = dbi449009_superelf; Password=!t5AC13791K";
         
-        // Get list of all players from dbr
+        // Get list of all players from db
         public List<PlayerDto> GetAllPlayers()
         {
             List<PlayerDto> players = new List<PlayerDto>();
@@ -79,7 +79,7 @@ namespace DAL_SuperElf
             }
             return playerDto;
         }
-
+        // Update player in db
         public void UpdatePlayer(PlayerDto playerDto)
         {
             
@@ -95,7 +95,19 @@ namespace DAL_SuperElf
                     query.ExecuteNonQuery();
                 }
             }
-
+        }
+        // Delete player from db
+        public void DeletePlayer(int playerId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand query = new SqlCommand("DELETE FROM [dbo].[playerTable] WHERE playerId = @playerId", conn))
+                {
+                    query.Parameters.AddWithValue("@playerId", playerId);
+                    query.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

@@ -29,6 +29,7 @@ namespace Logic_SuperElf
         // Update players and manage matchrounds
         
         //-----Player
+        // Update player in the db
         public void UpdatePlayer(Player player)
         {
             playerDAL.UpdatePlayer(ConvertPlayerToDto(player));

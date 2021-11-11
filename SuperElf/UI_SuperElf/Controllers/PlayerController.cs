@@ -115,21 +115,29 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Player playerById = _club.GetPlayerById(id);
+            PlayerCreateViewModel player = new PlayerCreateViewModel();
+            player.playerId = playerById.playerId;
+            player.playerName = playerById.playerName;
+            player.position = playerById.position;
+            player.club = playerById.club;
+            player.allClubs = _clubContainer.GetAllClubs();
+            return View(player);
         }
 
         // POST: PlayerController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, PlayerCreateViewModel player)
         {
-            try
+            if (id == 0)
             {
-                return RedirectToAction(nameof(Index));
+                return View(player);
             }
-            catch
+            else
             {
-                return View();
+                _club.DeletePlayer(id);
+                return RedirectToAction("Index");
             }
         }
     }

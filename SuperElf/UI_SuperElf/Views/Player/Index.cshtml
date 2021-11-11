@@ -167,9 +167,11 @@
                         }
                     </td>
                     <td>
-                        <a class="btn-sm btn-success" asp-action="Details" asp-route-id="@player.playerId">Details</a>
-                        <a class="btn-sm btn-danger" asp-action="Delete" asp-route-id="@player.playerId">Delete</a>
-                        <a class="btn-sm btn-success" asp-action="Edit" asp-route-id="@player.playerId">Edit</a>
+                        <div>
+                            <a class="btn-sm" style="background-color: rgb(0, 142, 68); color: white" asp-action="Details" asp-route-id="@player.playerId">Details</a> | 
+                            <a class="btn-sm btn-primary" asp-action="Edit" asp-route-id="@player.playerId">Edit</a> | 
+                            <a class="btn-sm btn-danger" asp-action="Delete" asp-route-id="@player.playerId">Delete</a>
+                        </div>
                     </td>
                 </tr>
             }
