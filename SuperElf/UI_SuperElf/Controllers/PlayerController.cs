@@ -12,7 +12,7 @@ namespace UI_SuperElf.Controllers
 {
     public class PlayerController : Controller
     {
-        private readonly Player _player = new Player("", 0, "");
+        private readonly Player _player = new Player("", 0, 0);
         private readonly Team _team = new Team(0, 0, 0);
         private readonly ClubContainer _clubContainer = new ClubContainer();
         
@@ -35,6 +35,7 @@ namespace UI_SuperElf.Controllers
                 playerViewModel.club = player.club;
                 playersPipeline.Players.Add(playerViewModel);
             }
+            playersPipeline.Clubs = _clubContainer.GetAllClubs();
             return View(playersPipeline);
         }
 
@@ -47,8 +48,8 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/Create
         public ActionResult Create()
         {
-            ViewBag.clubNames = _clubContainer.GetAllClubNames();
-            PlayerViewModel player = new PlayerViewModel();
+            PlayerCreateViewModel player = new PlayerCreateViewModel();
+            player.allClubs = _clubContainer.GetAllClubs();
             return View(player);
         }
 

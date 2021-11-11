@@ -10,7 +10,7 @@ namespace UI_SuperElf.Controllers
 {
     public class ClubController : Controller
     {
-        private readonly Club _club = new Club("", 0);
+        private readonly Club _club = new Club(0,"", 0);
         // GET: ClubController
         public ActionResult Index()
         {

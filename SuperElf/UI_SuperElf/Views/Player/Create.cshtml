@@ -1,6 +1,6 @@
 ﻿@using SharedFiles
 @using Logic_SuperElf
-@model UI_SuperElf.Models.PlayerViewModel
+@model UI_SuperElf.Models.PlayerCreateViewModel
 
 
 @{
@@ -28,9 +28,9 @@
                 <label asp-for="club" class="control-label"></label>
                 <select asp-for="club" class="form-control">
                     <option>Select club</option>
-                    @foreach (string clubName in ViewBag.clubNames)
+                    @foreach (Club club in @Model.allClubs)
                     {
-                        <option value="clubName"> @clubName </option>
+                        <option value="@club.clubId"> @club.clubName </option>
                     }
                 </select>
                 <span asp-validation-for="club" class="text-danger"></span>

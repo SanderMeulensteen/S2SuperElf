@@ -1,4 +1,5 @@
-﻿@model PlayersPipeline
+﻿@using Logic_SuperElf
+@model PlayersPipeline
 @{
     ViewData["Title"] = "Players";
 }
@@ -104,6 +105,10 @@
     <br />
     <br />
     <button id="all_clubs" style="background-color: white; border-color: rgb(0, 142, 68)"><img src="/logo/eredivisie/eredivisie.png" style="width: 25px" /></button>
+    @*@foreach (var club in Model.Clubs)
+    {
+        <button id="@club.clubName" style="background-color: white; border-color: rgb(0,142,68)"><img src="@club.clubLogo" style="width: 25px" /></button>
+    }*@
     <button id="ajax" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/ajax.png" style="width: 25px" /></button>
     <button id="az" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/az.png" style="width: 25px" /></button>
     <button id="cambuur" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/cambuur.png" style="width: 25px" /></button>
@@ -152,7 +157,14 @@
                         @Html.DisplayFor(modelItem => player.position)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => player.club)
+                        @foreach (var club in Model.Clubs)
+                        {
+                            if (player.club == club.clubId)
+                            {
+                                @Html.DisplayFor(modelItem => club.clubName)
+                                break;
+                            }
+                        }
                     </td>
                     <td>
                         <a class="btn-sm btn-success" asp-action="Details">Details</a>

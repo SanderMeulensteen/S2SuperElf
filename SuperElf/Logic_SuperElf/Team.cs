@@ -31,17 +31,10 @@ namespace Logic_SuperElf
         // Convert player to playerDto
         public PlayerDto ConvertPlayerToDto(Player player)
         {
-            List<ClubDto> clubDtos = clubContainer.GetAllClubDtos();
             PlayerDto playerDto = new PlayerDto();
             playerDto.playerName = player.playerName;
             playerDto.position = player.position;
-            foreach (ClubDto clubDto in clubDtos)
-            {
-                if (clubDto.clubName == player.club)
-                {
-                    playerDto.club = clubDto.clubId;
-                }
-            }
+            playerDto.club = player.club;
             return playerDto;
         }
     }

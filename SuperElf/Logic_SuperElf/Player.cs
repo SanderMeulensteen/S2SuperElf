@@ -17,10 +17,10 @@ namespace Logic_SuperElf
         private List<PlayerDto> playersDtos = new List<PlayerDto>();
         public string playerName { get; private set; }
         public Position position { get; private set; }
-        public string club { get; private set; }
+        public int club { get; private set; }
         
 
-        public Player(string playerName, Position position, string club)
+        public Player(string playerName, Position position, int club)
         {
             this.playerName = playerName;
             this.position = position;
@@ -43,15 +43,7 @@ namespace Logic_SuperElf
         // Convert playerDto to player
         public Player ConvertFromDto(PlayerDto playerDto)
         {
-            Player player = new Player(playerDto.playerName, playerDto.position, "");
-            List<ClubDto> clubDtos = clubContainer.GetAllClubDtos();
-            foreach (ClubDto clubDto in clubDtos)
-            {
-                if (clubDto.clubId == playerDto.club)
-                {
-                    player.club = clubDto.clubName;
-                }
-            }
+            Player player = new Player(playerDto.playerName, playerDto.position, playerDto.club);
             return player;
         }
     }
