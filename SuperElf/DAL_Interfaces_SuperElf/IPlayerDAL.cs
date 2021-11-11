@@ -6,6 +6,6 @@ namespace DAL_Interfaces_SuperElf
 {
     public interface IPlayerDAL
     {
-        
+        void UpdatePlayer(PlayerDto playerDto);
     }
 }

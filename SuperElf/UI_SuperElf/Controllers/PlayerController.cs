@@ -45,6 +45,7 @@ namespace UI_SuperElf.Controllers
         {
             Player playerById = _club.GetPlayerById(id);
             PlayerCreateViewModel player = new PlayerCreateViewModel();
+            player.playerId = playerById.playerId;
             player.playerName = playerById.playerName;
             player.position = playerById.position;
             player.club = playerById.club;
@@ -67,31 +68,47 @@ namespace UI_SuperElf.Controllers
         {
             if (ModelState.IsValid)
             {
-                Player player = new Player(0, playerViewModel.playerName, playerViewModel.position, playerViewModel.club);
+                Player player = new Player(playerViewModel.playerId, playerViewModel.playerName, playerViewModel.position, playerViewModel.club);
                 _club.AddPlayer(player);
                 return RedirectToAction("Index");
             }
-            return View();
+            else
+            {
+                PlayerCreateViewModel player = new PlayerCreateViewModel();
+                player.allClubs = _clubContainer.GetAllClubs();
+                return View(player);
+            }
         }
 
         // GET: PlayerController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Player playerById = _club.GetPlayerById(id);
+            PlayerCreateViewModel player = new PlayerCreateViewModel();
+            player.playerId = playerById.playerId;
+            player.playerName = playerById.playerName;
+            player.position = playerById.position;
+            player.club = playerById.club;
+            player.allClubs = _clubContainer.GetAllClubs();
+            return View(player);
         }
 
         // POST: PlayerController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, PlayerViewModel playerViewModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                Player player = new Player(playerViewModel.playerId, playerViewModel.playerName, playerViewModel.position, playerViewModel.club);
+                _player.UpdatePlayer(player);
+                return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+                PlayerCreateViewModel player = new PlayerCreateViewModel();
+                player.allClubs = _clubContainer.GetAllClubs();
+                return View(player);
             }
         }
 

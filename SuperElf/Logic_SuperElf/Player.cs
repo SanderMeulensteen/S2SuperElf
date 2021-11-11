@@ -27,11 +27,17 @@ namespace Logic_SuperElf
             this.club = club;
         }
         // Update players and manage matchrounds
-
+        
+        //-----Player
+        public void UpdatePlayer(Player player)
+        {
+            playerDAL.UpdatePlayer(ConvertPlayerToDto(player));
+        }
         // Convert player to playerDto
         public PlayerDto ConvertPlayerToDto(Player player)
         {
             PlayerDto playerDto = new PlayerDto();
+            playerDto.playerId = player.playerId;
             playerDto.playerName = player.playerName;
             playerDto.position = player.position;
             playerDto.club = player.club;

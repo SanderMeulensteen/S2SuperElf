@@ -79,6 +79,24 @@ namespace DAL_SuperElf
             }
             return playerDto;
         }
+
+        public void UpdatePlayer(PlayerDto playerDto)
+        {
+            
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand query = new SqlCommand("UPDATE[dbo].[playerTable] SET[ClubId] = @clubId, [PlayerName] = @playerName, [Position] = @position WHERE playerId = @playerId", conn))
+                {
+                    query.Parameters.AddWithValue("@playerId", playerDto.playerId);
+                    query.Parameters.AddWithValue("@clubId", playerDto.club);
+                    query.Parameters.AddWithValue("@playerName", playerDto.playerName);
+                    query.Parameters.AddWithValue("@position", playerDto.position);
+                    query.ExecuteNonQuery();
+                }
+            }
+
+        }
     }
 }
 

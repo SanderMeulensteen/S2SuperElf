@@ -168,8 +168,8 @@
                     </td>
                     <td>
                         <a class="btn-sm btn-success" asp-action="Details" asp-route-id="@player.playerId">Details</a>
-                        <a class="btn-sm btn-danger" asp-action="Delete">Delete</a>
-                        <a class="btn-sm btn-success" asp-action="Edit">Edit</a>
+                        <a class="btn-sm btn-danger" asp-action="Delete" asp-route-id="@player.playerId">Delete</a>
+                        <a class="btn-sm btn-success" asp-action="Edit" asp-route-id="@player.playerId">Edit</a>
                     </td>
                 </tr>
             }
