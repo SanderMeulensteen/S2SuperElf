@@ -2666,28 +2666,12 @@
           "bin/placeholder/DAL_SuperElf.dll": {}
         }
       },
-      "Logic_Interfaces_SuperElf/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "5.0.11",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
-          "SharedFiles": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Logic_Interfaces_SuperElf.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Logic_Interfaces_SuperElf.dll": {}
-        }
-      },
       "Logic_SuperElf/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "DAL_Factories_SuperElf": "1.0.0",
           "DAL_Interfaces_SuperElf": "1.0.0",
-          "Logic_Interfaces_SuperElf": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
           "SharedFiles": "1.0.0"
@@ -8973,11 +8957,6 @@
       "type": "project",
       "path": "../DAL_SuperElf/DAL_SuperElf.csproj",
       "msbuildProject": "../DAL_SuperElf/DAL_SuperElf.csproj"
-    },
-    "Logic_Interfaces_SuperElf/1.0.0": {
-      "type": "project",
-      "path": "../Logic_Interfaces_SuperElf/Logic_Interfaces_SuperElf.csproj",
-      "msbuildProject": "../Logic_Interfaces_SuperElf/Logic_Interfaces_SuperElf.csproj"
     },
     "Logic_SuperElf/1.0.0": {
       "type": "project",

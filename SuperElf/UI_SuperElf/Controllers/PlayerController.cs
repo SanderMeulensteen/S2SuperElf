@@ -103,7 +103,7 @@ namespace UI_SuperElf.Controllers
             {
                 string newPlayerName = updatedPlayer.playerName;
                 _player.UpdatePlayerName(playerId, newPlayerName);
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = playerId });
             }
             else
             {
@@ -134,7 +134,7 @@ namespace UI_SuperElf.Controllers
             {
                 int newPlayerPosition = (int) updatedPlayer.position;
                 _player.UpdatePlayerPosition(playerId, newPlayerPosition);
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = playerId });
             }
             else
             {
@@ -166,7 +166,7 @@ namespace UI_SuperElf.Controllers
             {
                 int newClub = updatedPlayer.club;
                 _player.UpdatePlayerClub(playerId, newClub);
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = playerId });
             }
             else
             {
