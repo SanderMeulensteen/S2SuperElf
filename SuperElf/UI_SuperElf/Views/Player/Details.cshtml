@@ -15,17 +15,20 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.playerName)
+            | <a class="btn-sm btn-primary" asp-action="EditName" asp-route-id="@Model.playerId">Edit</a>
+
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.position)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.position)
+            | <a class="btn-sm btn-primary" asp-action="EditPosition" asp-route-id="@Model.playerId">Edit</a>
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.club)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @foreach (Club club in Model.allClubs)
             {
                 if (Model.club == club.clubId)
@@ -34,10 +37,10 @@
                     break;
                 }
             }
+            | <a class="btn-sm btn-primary" asp-action="EditClub" asp-route-id="@Model.playerId">Edit</a>
         </dd>
     </dl>
 </div>
 <div>
-    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.playerId">Edit player</a> |
-    <a class="btn btn-danger" asp-action="Index">Back to Players</a>
+    <a class="btn btn-danger" asp-action="Index">Back to players</a>
 </div>

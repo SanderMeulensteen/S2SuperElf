@@ -55,6 +55,7 @@ namespace DAL_SuperElf
                 }
             }
         }
+
         // Get player details from id
         public PlayerDto GetPlayerDtoById(int id)
         {
@@ -79,23 +80,7 @@ namespace DAL_SuperElf
             }
             return playerDto;
         }
-        // Update player in db
-        public void UpdatePlayer(PlayerDto playerDto)
-        {
-            
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-                using (SqlCommand query = new SqlCommand("UPDATE[dbo].[playerTable] SET[ClubId] = @clubId, [PlayerName] = @playerName, [Position] = @position WHERE playerId = @playerId", conn))
-                {
-                    query.Parameters.AddWithValue("@playerId", playerDto.playerId);
-                    query.Parameters.AddWithValue("@clubId", playerDto.club);
-                    query.Parameters.AddWithValue("@playerName", playerDto.playerName);
-                    query.Parameters.AddWithValue("@position", playerDto.position);
-                    query.ExecuteNonQuery();
-                }
-            }
-        }
+
         // Delete player from db
         public void DeletePlayer(int playerId)
         {
@@ -105,6 +90,51 @@ namespace DAL_SuperElf
                 using (SqlCommand query = new SqlCommand("DELETE FROM [dbo].[playerTable] WHERE playerId = @playerId", conn))
                 {
                     query.Parameters.AddWithValue("@playerId", playerId);
+                    query.ExecuteNonQuery();
+                }
+            }
+        }
+        // Update playername in db
+        public void UpdatePlayerName(int playerId, string newPlayerName)
+        {
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand query = new SqlCommand("UPDATE[dbo].[playerTable] SET[PlayerName] = @playerName WHERE playerId = @playerId", conn))
+                {
+                    query.Parameters.AddWithValue("@playerId", playerId);
+                    query.Parameters.AddWithValue("@playerName", newPlayerName);
+                    query.ExecuteNonQuery();
+                }
+            }
+        }
+        // Update players position in db
+        public void UpdatePlayerPosition(int playerId, int newPosition)
+        {
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand query = new SqlCommand("UPDATE[dbo].[playerTable] SET[Position] = @position WHERE playerId = @playerId", conn))
+                {
+                    query.Parameters.AddWithValue("@playerId", playerId);
+                    query.Parameters.AddWithValue("@position", newPosition);
+                    query.ExecuteNonQuery();
+                }
+            }
+        }
+        // Update players club in db
+        public void UpdatePlayerClub(int playerId, int newClub)
+        {
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand query = new SqlCommand("UPDATE[dbo].[playerTable] SET[ClubId] = @clubId WHERE playerId = @playerId", conn))
+                {
+                    query.Parameters.AddWithValue("@playerId", playerId);
+                    query.Parameters.AddWithValue("@clubId", newClub);
                     query.ExecuteNonQuery();
                 }
             }

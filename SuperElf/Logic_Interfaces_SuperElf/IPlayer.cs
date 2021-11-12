@@ -1,10 +1,15 @@
-﻿using System.Collections.Generic;
-using Logic_Interfaces_SuperElf;
+﻿using SharedFiles;
 
-namespace Logic_SuperElf
+namespace Logic_Interfaces_SuperElf
 {
     public interface IPlayer
     {
-        public List<dtoPlayer> GetAllPlayers();
+        int playerId { get; }
+        string playerName { get; }
+        Position position { get; }
+        int club { get; }
+        void UpdatePlayerName(int playerId, string newPlayerName);
+        void UpdatePlayerPosition(int playerId, int newPosition);
+        void UpdatePlayerClub(int playerId, int newClub);
     }
 }

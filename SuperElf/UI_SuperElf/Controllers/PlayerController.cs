@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 // using Logic_Interfaces_SuperElf;
 using Logic_SuperElf;
+using SharedFiles;
 using UI_SuperElf.Models;
 
 namespace UI_SuperElf.Controllers
@@ -80,8 +81,8 @@ namespace UI_SuperElf.Controllers
             }
         }
 
-        // GET: PlayerController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: PlayerController/EditName/5
+        public ActionResult EditName(int id)
         {
             Player playerById = _club.GetPlayerById(id);
             PlayerCreateViewModel player = new PlayerCreateViewModel();
@@ -93,15 +94,78 @@ namespace UI_SuperElf.Controllers
             return View(player);
         }
 
-        // POST: PlayerController/Edit/5
+        // POST: PlayerController/EditName/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, PlayerViewModel playerViewModel)
+        public ActionResult EditName(int playerId, PlayerViewModel updatedPlayer)
         {
             if (ModelState.IsValid)
             {
-                Player player = new Player(playerViewModel.playerId, playerViewModel.playerName, playerViewModel.position, playerViewModel.club);
-                _player.UpdatePlayer(player);
+                string newPlayerName = updatedPlayer.playerName;
+                _player.UpdatePlayerName(playerId, newPlayerName);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                PlayerCreateViewModel player = new PlayerCreateViewModel();
+                player.allClubs = _clubContainer.GetAllClubs();
+                return View(player);
+            }
+        }
+        // GET: PlayerController/EditPosition/5
+        public ActionResult EditPosition(int id)
+        {
+            Player playerById = _club.GetPlayerById(id);
+            PlayerCreateViewModel player = new PlayerCreateViewModel();
+            player.playerId = playerById.playerId;
+            player.playerName = playerById.playerName;
+            player.position = playerById.position;
+            player.club = playerById.club;
+            player.allClubs = _clubContainer.GetAllClubs();
+            return View(player);
+        }
+
+        // POST: PlayerController/EditPosition/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPosition(int playerId, PlayerViewModel updatedPlayer)
+        {
+            if (ModelState.IsValid)
+            {
+                int newPlayerPosition = (int) updatedPlayer.position;
+                _player.UpdatePlayerPosition(playerId, newPlayerPosition);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                PlayerCreateViewModel player = new PlayerCreateViewModel();
+                player.allClubs = _clubContainer.GetAllClubs();
+                return View(player);
+            }
+        }
+
+        // GET: PlayerController/EditClub/5
+        public ActionResult EditClub(int id)
+        {
+            Player playerById = _club.GetPlayerById(id);
+            PlayerCreateViewModel player = new PlayerCreateViewModel();
+            player.playerId = playerById.playerId;
+            player.playerName = playerById.playerName;
+            player.position = playerById.position;
+            player.club = playerById.club;
+            player.allClubs = _clubContainer.GetAllClubs();
+            return View(player);
+        }
+
+        // POST: PlayerController/EditClub/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditClub(int playerId, PlayerViewModel updatedPlayer)
+        {
+            if (ModelState.IsValid)
+            {
+                int newClub = updatedPlayer.club;
+                _player.UpdatePlayerClub(playerId, newClub);
                 return RedirectToAction("Index");
             }
             else

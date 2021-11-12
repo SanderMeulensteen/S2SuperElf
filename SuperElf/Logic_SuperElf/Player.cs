@@ -5,12 +5,13 @@ using System.Text;
 using DAL_Factories_SuperElf;
 using DAL_Interfaces_SuperElf;
 using DAL_SuperElf;
+using Logic_Interfaces_SuperElf;
 using SharedFiles;
 // using Logic_Interfaces_SuperElf;
 
 namespace Logic_SuperElf
 {
-    public class Player
+    public class Player : IPlayer
     {
         private IPlayerDAL playerDAL = PlayerDAL_Factory.CreatePlayerDal();
         public int playerId { get; private set; }
@@ -27,22 +28,23 @@ namespace Logic_SuperElf
             this.club = club;
         }
         // Update players and manage matchrounds
-        
         //-----Player
-        // Update player in the db
-        public void UpdatePlayer(Player player)
+        // Update playername in db
+        public void UpdatePlayerName(int playerId, string newPlayerName)
         {
-            playerDAL.UpdatePlayer(ConvertPlayerToDto(player));
+            playerDAL.UpdatePlayerName(playerId, newPlayerName);
         }
-        // Convert player to playerDto
-        public PlayerDto ConvertPlayerToDto(Player player)
+
+        // Update players position in db
+        public void UpdatePlayerPosition(int playerId, int newPosition)
         {
-            PlayerDto playerDto = new PlayerDto();
-            playerDto.playerId = player.playerId;
-            playerDto.playerName = player.playerName;
-            playerDto.position = player.position;
-            playerDto.club = player.club;
-            return playerDto;
+            playerDAL.UpdatePlayerPosition(playerId, newPosition);
+        }
+
+        // Update players club in db
+        public void UpdatePlayerClub(int playerId, int newClub)
+        {
+            playerDAL.UpdatePlayerClub(playerId, newClub);
         }
     }
 }

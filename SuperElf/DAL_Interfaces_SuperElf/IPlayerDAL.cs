@@ -6,6 +6,8 @@ namespace DAL_Interfaces_SuperElf
 {
     public interface IPlayerDAL
     {
-        void UpdatePlayer(PlayerDto playerDto);
+        void UpdatePlayerName(int playerId, string newPlayerName);
+        void UpdatePlayerPosition(int playerId, int newPosition);
+        void UpdatePlayerClub(int playerId, int newClub);
     }
 }
