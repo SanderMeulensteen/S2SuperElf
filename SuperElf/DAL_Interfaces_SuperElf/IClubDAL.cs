@@ -5,6 +5,7 @@ namespace DAL_SuperElf
 {
     public interface IClubDAL
     {
-        
+        void UpdateClubName(int clubId, string newClubName);
+        void UpdateCompetition(int clubId, int newCompetition);
     }
 }

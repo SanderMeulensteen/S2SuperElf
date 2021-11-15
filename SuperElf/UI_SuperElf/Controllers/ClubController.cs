@@ -75,42 +75,62 @@ namespace UI_SuperElf.Controllers
         // GET: ClubController/EditName/5
         public ActionResult EditName(int id)
         {
-            return View();
+            Club clubById = _competition.GetClubById(id);
+            ClubCreateViewModel club = new ClubCreateViewModel();
+            club.clubId = clubById.clubId;
+            club.competitionId = clubById.competitionId;
+            club.clubName = clubById.clubName;
+            club.allCompetitions = _competitionContainer.GetAllCompetitions();
+            return View(club);
         }
 
         // POST: ClubController/EditName/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditName(int id, IFormCollection collection)
+        public ActionResult EditName(int id, ClubViewModel updatedClub)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                string newClubName = updatedClub.clubName;
+                _club.UpdateClubName(id, newClubName);
+                return RedirectToAction("Details", new { id = id });
             }
-            catch
+            else
             {
-                return View();
+                ClubCreateViewModel club = new ClubCreateViewModel();
+                club.allCompetitions = _competitionContainer.GetAllCompetitions();
+                return View(club);
             }
         }
 
         // GET: ClubController/EditCompetition/5
         public ActionResult EditCompetition(int id)
         {
-            return View();
+            Club clubById = _competition.GetClubById(id);
+            ClubCreateViewModel club = new ClubCreateViewModel();
+            club.clubId = clubById.clubId;
+            club.competitionId = clubById.competitionId;
+            club.clubName = clubById.clubName;
+            club.allCompetitions = _competitionContainer.GetAllCompetitions();
+            return View(club);
         }
 
         // POST: ClubController/EditCompetition/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditCompetition(int id, IFormCollection collection)
+        public ActionResult EditCompetition(int id, ClubViewModel updatedClub)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                int newCompetition = updatedClub.competitionId;
+                _club.UpdateCompetition(id, newCompetition);
+                return RedirectToAction("Details", new { id = id });
             }
-            catch
+            else
             {
-                return View();
+                ClubCreateViewModel club = new ClubCreateViewModel();
+                club.allCompetitions = _competitionContainer.GetAllCompetitions();
+                return View(club);
             }
         }
         // GET: ClubController/Delete/5

@@ -1,0 +1,44 @@
+﻿@using Logic_SuperElf
+@model UI_SuperElf.Models.ClubCreateViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit clubname</h1>
+<h4>@Model.clubName</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditName">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="clubId" class="control-label" hidden></label>
+                <input asp-for="clubId" class="form-control" hidden/>
+                <span asp-validation-for="clubId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="clubName" class="control-label"></label>
+                <input asp-for="clubName" class="form-control" />
+                <span asp-validation-for="clubName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="competitionId" class="control-label" hidden></label>
+                <select asp-for="competitionId" class="form-control" hidden>
+                    @foreach (Competition competition in @Model.allCompetitions)
+                    {
+                        <option value="@competition.competitionId">
+                            @competition.competitionName
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="competitionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-success" /> |
+                <a class="btn btn-danger" asp-action="Details" asp-route-id="@Model.clubId">Back to club</a>
+            </div>
+        </form>
+    </div>
+</div>

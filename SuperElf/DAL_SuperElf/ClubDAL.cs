@@ -84,5 +84,33 @@ namespace DAL_SuperElf
                 }
             }
         }
+        // Update clubname in db
+        public void UpdateClubName(int clubId, string newClubName)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand query = new SqlCommand("UPDATE[dbo].[clubTable] SET[ClubName] = @clubName WHERE clubId = @clubId", conn))
+                {
+                    query.Parameters.AddWithValue("@clubId", clubId);
+                    query.Parameters.AddWithValue("@clubName", newClubName);
+                    query.ExecuteNonQuery();
+                }
+            }
+        }
+        // Update competition in db
+        public void UpdateCompetition(int clubId, int newCompetition)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand query = new SqlCommand("UPDATE[dbo].[clubTable] SET[CompetitionId] = @competition WHERE clubId = @clubId", conn))
+                {
+                    query.Parameters.AddWithValue("@clubId", clubId);
+                    query.Parameters.AddWithValue("@competition", newCompetition);
+                    query.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

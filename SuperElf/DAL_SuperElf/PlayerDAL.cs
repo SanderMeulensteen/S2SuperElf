@@ -96,7 +96,6 @@ namespace DAL_SuperElf
         // Update playername in db
         public void UpdatePlayerName(int playerId, string newPlayerName)
         {
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -111,7 +110,6 @@ namespace DAL_SuperElf
         // Update players position in db
         public void UpdatePlayerPosition(int playerId, int newPosition)
         {
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -126,7 +124,6 @@ namespace DAL_SuperElf
         // Update players club in db
         public void UpdatePlayerClub(int playerId, int newClub)
         {
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
