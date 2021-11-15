@@ -29,7 +29,6 @@ namespace UI_SuperElf.Controllers
                 clubViewModel.competitionId = club.competitionId;
                 clubPipeline.Clubs.Add(clubViewModel);
             }
-
             clubPipeline.Competitions = _competitionContainer.GetAllCompetitions();
             return View(clubPipeline);
         }
@@ -73,16 +72,16 @@ namespace UI_SuperElf.Controllers
             }
         }
 
-        // GET: ClubController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: ClubController/EditName/5
+        public ActionResult EditName(int id)
         {
             return View();
         }
 
-        // POST: ClubController/Edit/5
+        // POST: ClubController/EditName/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult EditName(int id, IFormCollection collection)
         {
             try
             {
@@ -94,24 +93,51 @@ namespace UI_SuperElf.Controllers
             }
         }
 
+        // GET: ClubController/EditCompetition/5
+        public ActionResult EditCompetition(int id)
+        {
+            return View();
+        }
+
+        // POST: ClubController/EditCompetition/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditCompetition(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
         // GET: ClubController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Club clubById = _competition.GetClubById(id);
+            ClubCreateViewModel club = new ClubCreateViewModel();
+            club.clubId = clubById.clubId;
+            club.competitionId = clubById.competitionId;
+            club.clubName = clubById.clubName;
+            club.allCompetitions = _competitionContainer.GetAllCompetitions();
+            return View(club);
         }
 
         // POST: ClubController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, ClubCreateViewModel club)
         {
-            try
+            if (id == 0)
             {
-                return RedirectToAction(nameof(Index));
+                return View(club);
             }
-            catch
+            else
             {
-                return View();
+                _competition.DeleteClub(id);
+                return RedirectToAction("Index");
             }
         }
     }

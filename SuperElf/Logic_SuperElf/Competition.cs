@@ -48,6 +48,11 @@ namespace Logic_SuperElf
             Club club = ConvertDtoToClub(clubDto);
             return club;
         }
+        // Delete club from db
+        public void DeleteClub(int clubId)
+        {
+            clubDAL.DeleteClub(clubId);
+        }
         // Convert club to dto
         public ClubDto ConvertClubToDto(Club club)
         {

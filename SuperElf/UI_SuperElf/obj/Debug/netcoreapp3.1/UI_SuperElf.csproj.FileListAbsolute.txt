@@ -172,3 +172,4 @@ C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\De
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\Club\Index.cshtml.g.cs
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\Club\Create.cshtml.g.cs
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\Club\Details.cshtml.g.cs
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\Club\Delete.cshtml.g.cs

@@ -71,5 +71,18 @@ namespace DAL_SuperElf
             }
             return clubDto;
         }
+        // Delete club from db
+        public void DeleteClub(int clubId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand query = new SqlCommand("DELETE FROM [dbo].[clubTable] WHERE clubId = @clubId", conn))
+                {
+                    query.Parameters.AddWithValue("@clubId", clubId);
+                    query.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

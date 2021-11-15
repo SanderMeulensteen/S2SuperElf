@@ -9,5 +9,6 @@ namespace DAL_Interfaces_SuperElf
         List<ClubDto> GetAllClubDtos();
         void AddClub(ClubDto clubDto);
         ClubDto GetClubById(int clubId);
+        void DeleteClub(int clubId);
     }
 }
