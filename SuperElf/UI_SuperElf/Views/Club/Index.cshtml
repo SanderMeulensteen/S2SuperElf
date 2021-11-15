@@ -2,48 +2,61 @@
 @model ClubPipeline
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Clubs";
+}
+@section Scripts {
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var dt = $('#club_table').DataTable({
+                "paging": false
+            });
+        });
+    </script>
 }
 
-<h1>Clubs</h1>
+    <h1>Clubs</h1>
 
-<table class="table">
-    <thead class="table-borderless table-dark" style="background-color: rgb(0,142,68)">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Competition
-        </th>
-        <th style="width: 20%">
-            <a class="btn-sm btn-danger" asp-action="Create">Add club</a>
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-@foreach (ClubViewModel club in Model.Clubs) {
+    <table id="club_table" class="table">
+        <thead class="table-borderless table-dark" style="background-color: rgb(0, 142, 68)">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => club.clubName)
-            </td>
-            <td>
-                @foreach (Competition competition in Model.Competitions)
-                {
-                    if (club.competition == competition.competitionId)
-                    {
-                        @Html.DisplayFor(modelItem => competition.competitionName)
-                        break;
-                    }
-                }
-            </td>
-            <td>
-                <div>
-                    <a class="btn-sm" style="background-color: rgb(0, 142, 68); color: white" asp-action="Details" asp-route-id="@club.clubId">Details</a> | 
-                    <a class="btn-sm btn-danger" asp-action="Delete" asp-route-id="@club.clubId">Delete</a>
-                </div>
-            </td>
+            <th>
+                Name
+            </th>
+            <th>
+                Competition
+            </th>
+            <th style="width: 20%">
+                <a class="btn-sm btn-danger" asp-action="Create">Add club</a>
+            </th>
         </tr>
-}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        @foreach (ClubViewModel club in Model.Clubs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => club.clubName)
+                </td>
+                <td>
+                    @foreach (Competition competition in Model.Competitions)
+                    {
+                        if (club.competitionId == competition.competitionId)
+                        {
+                            @Html.DisplayFor(modelItem => competition.competitionName)
+                            break;
+                        }
+                    }
+                </td>
+                <td>
+                    <div>
+                        <a class="btn-sm" style="background-color: rgb(0, 142, 68); color: white" asp-action="Details" asp-route-id="@club.clubId">Details</a> |
+                        <a class="btn-sm btn-danger" asp-action="Delete" asp-route-id="@club.clubId">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>

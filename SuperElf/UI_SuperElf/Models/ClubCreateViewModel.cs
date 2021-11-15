@@ -4,11 +4,11 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using SharedFiles;
+using Logic_SuperElf;
 
 namespace UI_SuperElf.Models
 {
-    public class ClubViewModel
+    public class ClubCreateViewModel
     {
         public int clubId { get; set; }
         [DisplayName("Clubname")]
@@ -17,5 +17,6 @@ namespace UI_SuperElf.Models
         [DisplayName("Competition")]
         [Required]
         public int competitionId { get; set; }
+        public List<Competition> allCompetitions { get; set; }
     }
 }

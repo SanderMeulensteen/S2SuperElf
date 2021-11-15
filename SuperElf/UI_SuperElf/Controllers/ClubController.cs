@@ -26,7 +26,7 @@ namespace UI_SuperElf.Controllers
                 ClubViewModel clubViewModel = new ClubViewModel();
                 clubViewModel.clubId = club.clubId;
                 clubViewModel.clubName = club.clubName;
-                clubViewModel.competition = club.competition;
+                clubViewModel.competitionId = club.competitionId;
                 clubPipeline.Clubs.Add(clubViewModel);
             }
 
@@ -37,27 +37,39 @@ namespace UI_SuperElf.Controllers
         // GET: ClubController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Club clubById = _competition.GetClubById(id);
+            ClubCreateViewModel club = new ClubCreateViewModel();
+            club.clubId = clubById.clubId;
+            club.competitionId = clubById.competitionId;
+            club.clubName = clubById.clubName;
+            club.allCompetitions = _competitionContainer.GetAllCompetitions();
+            return View(club);
         }
 
         // GET: ClubController/Create
         public ActionResult Create()
         {
-            return View();
+            ClubCreateViewModel club = new ClubCreateViewModel();
+            club.allCompetitions = _competitionContainer.GetAllCompetitions();
+            return View(club);
         }
 
         // POST: ClubController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ClubViewModel newClub)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                Club club = new Club(newClub.clubId, newClub.clubName, newClub.competitionId);
+                _competition.AddClub(club);
+                return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+                ClubCreateViewModel club = new ClubCreateViewModel();
+                club.allCompetitions = _competitionContainer.GetAllCompetitions();
+                return View(club);
             }
         }
 

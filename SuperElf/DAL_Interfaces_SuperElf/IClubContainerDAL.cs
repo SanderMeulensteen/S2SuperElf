@@ -7,5 +7,7 @@ namespace DAL_Interfaces_SuperElf
     public interface IClubContainerDAL
     {
         List<ClubDto> GetAllClubDtos();
+        void AddClub(ClubDto clubDto);
+        ClubDto GetClubById(int clubId);
     }
 }

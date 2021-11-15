@@ -57,16 +57,15 @@ namespace DAL_SuperElf
         }
 
         // Get player details from id
-        public PlayerDto GetPlayerDtoById(int id)
+        public PlayerDto GetPlayerDtoById(int playerId)
         {
             PlayerDto playerDto = new PlayerDto();
-            
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
                 using (SqlCommand query = new SqlCommand("select * from playerTable where PlayerId = @Id", conn))
                 {
-                    query.Parameters.AddWithValue("@Id", id);
+                    query.Parameters.AddWithValue("@Id", playerId);
 
                     var reader = query.ExecuteReader();
                     while (reader.Read())

@@ -12,13 +12,13 @@ namespace Logic_SuperElf
         private IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreatePlayerContainerDal();
         public int clubId { get; private set; }
         public string clubName { get; private set; }
-        public int competition { get; private set; }
+        public int competitionId { get; private set; }
 
         public Club(int clubId, string clubName, int competition)
         {
             this.clubId = clubId;
             this.clubName = clubName;
-            this.competition = competition;
+            this.competitionId = competition;
         }
         // Update clubs and manage players
 
@@ -30,7 +30,6 @@ namespace Logic_SuperElf
         public void AddPlayer(Player player)
         {
             PlayerDto playerDto = ConvertPlayerToDto(player);
-            
             playerDAL.AddPlayer(playerDto);
         }
 
@@ -53,9 +52,9 @@ namespace Logic_SuperElf
             playerDAL.DeletePlayer(playerId);
         }
 
-        public Player GetPlayerById(int id)
+        public Player GetPlayerById(int playerId)
         {
-            PlayerDto playerDto = playerDAL.GetPlayerDtoById(id);
+            PlayerDto playerDto = playerDAL.GetPlayerDtoById(playerId);
             Player player = ConvertDtoToPlayer(playerDto);
             return player;
         }
