@@ -4,17 +4,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DAL_Interfaces_SuperElf;
 using Logic_SuperElf;
+using UI_SuperElf.Models;
 
 namespace UI_SuperElf.Controllers
 {
     public class ClubController : Controller
     {
-        private readonly Club _club = new Club(0,"", 1);
+        private readonly Club _club = new Club(0,"", 0);
+        private readonly Competition _competition = new Competition(0, "");
+
+        private readonly CompetitionContainer _competitionContainer = new CompetitionContainer();
         // GET: ClubController
         public ActionResult Index()
         {
-            return View();
+            ClubPipeline clubPipeline = new ClubPipeline();
+            List<Club> clubs = _competition.GetAllClubs();
+            foreach (Club club in clubs)
+            {
+                ClubViewModel clubViewModel = new ClubViewModel();
+                clubViewModel.clubId = club.clubId;
+                clubViewModel.clubName = club.clubName;
+                clubViewModel.competition = club.competition;
+                clubPipeline.Clubs.Add(clubViewModel);
+            }
+
+            clubPipeline.Competitions = _competitionContainer.GetAllCompetitions();
+            return View(clubPipeline);
         }
 
         // GET: ClubController/Details/5

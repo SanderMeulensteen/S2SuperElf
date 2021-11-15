@@ -8,15 +8,21 @@ using DAL_SuperElf;
 
 namespace Logic_SuperElf
 {
-    public class ClubContainer
+    public class Competition
     {
         private IClubContainerDAL clubDAL = ClubDAL_Factory.CreateClubContainerDal();
-        // Manage clubs
-        public List<ClubDto> GetAllClubDtos()
+        private ICompetitionDAL competitionDal = CompetitionDAL_Factory.CreateCompetitionDal();
+        public int competitionId { get; private set; }
+        public string competitionName { get; private set; }
+        public Competition(int competitionId, string competitionName)
         {
-            List<ClubDto> clubDtos = clubDAL.GetAllClubDtos();
-            return clubDtos;
+            this.competitionId = competitionId;
+            this.competitionName = competitionName;
         }
+        // Update competition and manage clubs
+        //-----Competition
+
+        //-----Club
         public List<Club> GetAllClubs()
         {
             List<Club> clubs = new List<Club>();

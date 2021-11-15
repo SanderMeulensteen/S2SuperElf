@@ -147,7 +147,7 @@
             </tr>
         </thead>
         <tbody class="table table-bordered">
-            @foreach (var player in Model.Players)
+            @foreach (PlayerViewModel player in Model.Players)
             {
                 <tr>
                     <td>
@@ -157,7 +157,7 @@
                         @Html.DisplayFor(modelItem => player.position)
                     </td>
                     <td>
-                        @foreach (var club in Model.Clubs)
+                        @foreach (Club club in Model.Clubs)
                         {
                             if (player.club == club.clubId)
                             {

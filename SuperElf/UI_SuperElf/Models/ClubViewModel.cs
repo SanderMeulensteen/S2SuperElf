@@ -9,9 +9,10 @@ namespace UI_SuperElf.Models
 {
     public class ClubViewModel
     {
+        public int clubId { get; set; }
         [DisplayName("Clubname")]
-        public string clubName { get; private set; }
+        public string clubName { get; set; }
         [DisplayName("Competition")]
-        public int competition { get; private set; }
+        public int competition { get; set; }
     }
 }

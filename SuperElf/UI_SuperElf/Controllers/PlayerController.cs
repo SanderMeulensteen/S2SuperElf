@@ -15,7 +15,7 @@ namespace UI_SuperElf.Controllers
     {
         private readonly Player _player = new Player(0,"", 0, 0);
         private readonly Club _club = new Club(0, "", 0);
-        private readonly ClubContainer _clubContainer = new ClubContainer();
+        private readonly Competition _competition = new Competition(0,"");
         
         //public PlayerController(IPlayer player)
         //{
@@ -37,7 +37,7 @@ namespace UI_SuperElf.Controllers
                 playerViewModel.club = player.club;
                 playersPipeline.Players.Add(playerViewModel);
             }
-            playersPipeline.Clubs = _clubContainer.GetAllClubs();
+            playersPipeline.Clubs = _competition.GetAllClubs();
             return View(playersPipeline);
         }
 
@@ -50,7 +50,7 @@ namespace UI_SuperElf.Controllers
             player.playerName = playerById.playerName;
             player.position = playerById.position;
             player.club = playerById.club;
-            player.allClubs = _clubContainer.GetAllClubs();
+            player.allClubs = _competition.GetAllClubs();
             return View(player);
         }
 
@@ -58,7 +58,7 @@ namespace UI_SuperElf.Controllers
         public ActionResult Create()
         {
             PlayerCreateViewModel player = new PlayerCreateViewModel();
-            player.allClubs = _clubContainer.GetAllClubs();
+            player.allClubs = _competition.GetAllClubs();
             return View(player);
         }
 
@@ -76,7 +76,7 @@ namespace UI_SuperElf.Controllers
             else
             {
                 PlayerCreateViewModel player = new PlayerCreateViewModel();
-                player.allClubs = _clubContainer.GetAllClubs();
+                player.allClubs = _competition.GetAllClubs();
                 return View(player);
             }
         }
@@ -90,7 +90,7 @@ namespace UI_SuperElf.Controllers
             player.playerName = playerById.playerName;
             player.position = playerById.position;
             player.club = playerById.club;
-            player.allClubs = _clubContainer.GetAllClubs();
+            player.allClubs = _competition.GetAllClubs();
             return View(player);
         }
 
@@ -108,7 +108,7 @@ namespace UI_SuperElf.Controllers
             else
             {
                 PlayerCreateViewModel player = new PlayerCreateViewModel();
-                player.allClubs = _clubContainer.GetAllClubs();
+                player.allClubs = _competition.GetAllClubs();
                 return View(player);
             }
         }
@@ -121,7 +121,7 @@ namespace UI_SuperElf.Controllers
             player.playerName = playerById.playerName;
             player.position = playerById.position;
             player.club = playerById.club;
-            player.allClubs = _clubContainer.GetAllClubs();
+            player.allClubs = _competition.GetAllClubs();
             return View(player);
         }
 
@@ -139,7 +139,7 @@ namespace UI_SuperElf.Controllers
             else
             {
                 PlayerCreateViewModel player = new PlayerCreateViewModel();
-                player.allClubs = _clubContainer.GetAllClubs();
+                player.allClubs = _competition.GetAllClubs();
                 return View(player);
             }
         }
@@ -153,7 +153,7 @@ namespace UI_SuperElf.Controllers
             player.playerName = playerById.playerName;
             player.position = playerById.position;
             player.club = playerById.club;
-            player.allClubs = _clubContainer.GetAllClubs();
+            player.allClubs = _competition.GetAllClubs();
             return View(player);
         }
 
@@ -171,7 +171,7 @@ namespace UI_SuperElf.Controllers
             else
             {
                 PlayerCreateViewModel player = new PlayerCreateViewModel();
-                player.allClubs = _clubContainer.GetAllClubs();
+                player.allClubs = _competition.GetAllClubs();
                 return View(player);
             }
         }
@@ -185,7 +185,7 @@ namespace UI_SuperElf.Controllers
             player.playerName = playerById.playerName;
             player.position = playerById.position;
             player.club = playerById.club;
-            player.allClubs = _clubContainer.GetAllClubs();
+            player.allClubs = _competition.GetAllClubs();
             return View(player);
         }
 

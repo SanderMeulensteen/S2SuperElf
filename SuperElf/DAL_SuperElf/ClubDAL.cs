@@ -30,9 +30,6 @@ namespace DAL_SuperElf
                     }
                 }
             }
-
-
-
             return clubs;
         }
 

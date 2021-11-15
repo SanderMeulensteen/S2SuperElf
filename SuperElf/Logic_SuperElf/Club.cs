@@ -10,7 +10,7 @@ namespace Logic_SuperElf
     public class Club
     {
         private IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreatePlayerContainerDal();
-        public int clubId { get; set; }
+        public int clubId { get; private set; }
         public string clubName { get; private set; }
         public int competition { get; private set; }
 

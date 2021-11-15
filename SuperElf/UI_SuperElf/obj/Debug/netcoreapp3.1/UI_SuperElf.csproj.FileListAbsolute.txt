@@ -169,3 +169,4 @@ C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\De
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\Player\EditName.cshtml.g.cs
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\Player\EditPosition.cshtml.g.cs
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\Player\EditClub.cshtml.g.cs
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\Club\Index.cshtml.g.cs

@@ -9,16 +9,13 @@ namespace Logic_SuperElf
 {
     public class Team
     {
-        private ClubContainer clubContainer = new ClubContainer();
         public int teamPoint { get; private set; }
         public Formation teamFormation { get; private set; }
-        public int competition { get; private set; }
 
-        public Team(int teamPoint, Formation teamFormation, int competition)
+        public Team(int teamPoint, Formation teamFormation)
         {
             this.teamPoint = teamPoint;
             this.teamFormation = teamFormation;
-            this.competition = competition;
         }
         // Update team
 
