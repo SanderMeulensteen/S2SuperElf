@@ -9,6 +9,6 @@ namespace DAL_Interfaces_SuperElf
     {
         public int clubId { get; set; }
         public string clubName { get; set; }
-        public Competition clubCompetition { get; set; }
+        public int competition { get; set; }
     }
 }

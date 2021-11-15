@@ -12,6 +12,6 @@ namespace UI_SuperElf.Models
         [DisplayName("Clubname")]
         public string clubName { get; private set; }
         [DisplayName("Competition")]
-        public Competition clubCompetition { get; private set; }
+        public int competition { get; private set; }
     }
 }

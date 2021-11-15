@@ -8,12 +8,12 @@ namespace Logic_SuperElf
     public class Poule
     {
         public string pouleName { get; private set; }
-        public Competition pouleCompetion { get; private set; }
+        public int competition { get; private set; }
 
-        public Poule(string pouleName, Competition pouleCompetion)
+        public Poule(string pouleName, int competition)
         {
             this.pouleName = pouleName;
-            this.pouleCompetion = pouleCompetion;
+            this.competition = competition;
         }
         // Update poules
     }

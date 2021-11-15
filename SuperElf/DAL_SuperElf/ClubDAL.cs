@@ -24,7 +24,7 @@ namespace DAL_SuperElf
                     {
                         ClubDto club = new ClubDto();
                         club.clubId = reader.GetInt32(0);
-                        club.clubCompetition = (Competition) reader.GetInt32(1);
+                        club.competition = reader.GetInt32(1);
                         club.clubName = reader.GetString(2);
                         clubs.Add(club);
                     }

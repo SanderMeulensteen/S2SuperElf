@@ -14,8 +14,4 @@ namespace SharedFiles
     {
         Goalkeeper, Defender, Midfielder, Forward
     }
-    public enum Competition
-    {
-        GeenCompetitie, Eredivisie, PremierLeague, Bundesliga, PrimeraDivision, SerieA
-    }
 }

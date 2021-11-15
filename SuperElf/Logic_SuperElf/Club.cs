@@ -12,13 +12,13 @@ namespace Logic_SuperElf
         private IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreatePlayerContainerDal();
         public int clubId { get; set; }
         public string clubName { get; private set; }
-        public Competition clubCompetition { get; private set; }
+        public int competition { get; private set; }
 
-        public Club(int clubId, string clubName, Competition clubCompetition)
+        public Club(int clubId, string clubName, int competition)
         {
             this.clubId = clubId;
             this.clubName = clubName;
-            this.clubCompetition = clubCompetition;
+            this.competition = competition;
         }
         // Update clubs and manage players
 

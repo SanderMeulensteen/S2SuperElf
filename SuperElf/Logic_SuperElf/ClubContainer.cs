@@ -23,7 +23,7 @@ namespace Logic_SuperElf
             List<ClubDto> clubDtos = clubDAL.GetAllClubDtos();
             foreach (ClubDto clubDto in clubDtos)
             {
-                Club club = new Club(clubDto.clubId, clubDto.clubName, clubDto.clubCompetition);
+                Club club = new Club(clubDto.clubId, clubDto.clubName, clubDto.competition);
                 clubs.Add(club);
             }
             return clubs;
