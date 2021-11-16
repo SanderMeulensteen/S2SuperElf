@@ -1,4 +1,4 @@
-﻿@using Logic_SuperElf
+﻿@using Logic_Interfaces_SuperElf
 @model ClubPipeline
 
 @{
@@ -41,7 +41,7 @@
                     @Html.DisplayFor(modelItem => club.clubName)
                 </td>
                 <td>
-                    @foreach (Competition competition in Model.Competitions)
+                    @foreach (ICompetition competition in Model.Competitions)
                     {
                         if (club.competitionId == competition.competitionId)
                         {

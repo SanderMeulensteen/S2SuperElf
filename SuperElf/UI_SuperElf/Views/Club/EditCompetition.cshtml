@@ -1,4 +1,4 @@
-﻿@using Logic_SuperElf
+﻿@using Logic_Interfaces_SuperElf
 @model UI_SuperElf.Models.ClubCreateViewModel
 
 @{
@@ -26,7 +26,7 @@
             <div class="form-group">
                 <label asp-for="competitionId" class="control-label"></label>
                 <select asp-for="competitionId" class="form-control">
-                    @foreach (Competition competition in @Model.allCompetitions)
+                    @foreach (ICompetition competition in @Model.allCompetitions)
                     {
                         <option value="@competition.competitionId">
                             @competition.competitionName

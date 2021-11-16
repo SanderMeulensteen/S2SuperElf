@@ -10,7 +10,7 @@ namespace Logic_Factories_SuperElf
     {
         public static IUser CreateUser()
         {
-            return new User("", "", "");
+            return new User(0,"", "", "","","",true,true);
         }
     }
 }

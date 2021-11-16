@@ -1,4 +1,4 @@
-﻿@using Logic_SuperElf
+﻿@using Logic_Interfaces_SuperElf
 @model PlayersPipeline
 @{
     ViewData["Title"] = "Players";
@@ -157,7 +157,7 @@
                         @Html.DisplayFor(modelItem => player.position)
                     </td>
                     <td>
-                        @foreach (Club club in Model.Clubs)
+                        @foreach (IClub club in Model.Clubs)
                         {
                             if (player.club == club.clubId)
                             {

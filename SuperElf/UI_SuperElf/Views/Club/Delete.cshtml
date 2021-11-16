@@ -1,4 +1,4 @@
-﻿@using Logic_SuperElf
+﻿@using Logic_Interfaces_SuperElf
 @model UI_SuperElf.Models.ClubCreateViewModel
 
 @{
@@ -27,7 +27,7 @@
             @Html.DisplayNameFor(model => model.competitionId)
         </dt>
         <dd class="col-sm-10">
-            @foreach (Competition competition in Model.allCompetitions)
+            @foreach (ICompetition competition in Model.allCompetitions)
             {
                 if (Model.competitionId == competition.competitionId)
                 {

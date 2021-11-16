@@ -1,4 +1,4 @@
-﻿@using Logic_SuperElf
+﻿@using Logic_Interfaces_SuperElf
 @model UI_SuperElf.Models.PlayerCreateViewModel
 
 @{
@@ -33,7 +33,7 @@
             @Html.DisplayNameFor(model => model.club)
         </dt>
         <dd class="col-sm-10">
-            @foreach (Club club in Model.allClubs)
+            @foreach (IClub club in Model.allClubs)
             {
                 if (Model.club == club.clubId)
                 {

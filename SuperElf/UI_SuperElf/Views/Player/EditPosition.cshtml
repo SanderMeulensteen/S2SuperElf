@@ -1,4 +1,4 @@
-﻿@using Logic_SuperElf
+﻿@using Logic_Interfaces_SuperElf
 @model UI_SuperElf.Models.PlayerCreateViewModel
 
 @{
@@ -32,7 +32,7 @@
                 <label asp-for="club" class="control-label" hidden></label>
                 <select asp-for="club" class="form-control" hidden>
                     <option>Select club</option>
-                    @foreach (Club club in @Model.allClubs)
+                    @foreach (IClub club in @Model.allClubs)
                     {
                         <option value="@club.clubId"> @club.clubName </option>
                     }
