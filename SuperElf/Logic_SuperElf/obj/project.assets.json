@@ -1569,6 +1569,21 @@
           "bin/placeholder/DAL_SuperElf.dll": {}
         }
       },
+      "Logic_Interfaces_SuperElf/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.11",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
+          "SharedFiles": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Logic_Interfaces_SuperElf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Logic_Interfaces_SuperElf.dll": {}
+        }
+      },
       "SharedFiles/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -5866,6 +5881,11 @@
       "path": "../DAL_SuperElf/DAL_SuperElf.csproj",
       "msbuildProject": "../DAL_SuperElf/DAL_SuperElf.csproj"
     },
+    "Logic_Interfaces_SuperElf/1.0.0": {
+      "type": "project",
+      "path": "../Logic_Interfaces_SuperElf/Logic_Interfaces_SuperElf.csproj",
+      "msbuildProject": "../Logic_Interfaces_SuperElf/Logic_Interfaces_SuperElf.csproj"
+    },
     "SharedFiles/1.0.0": {
       "type": "project",
       "path": "../SharedFiles/SharedFiles.csproj",
@@ -5876,6 +5896,7 @@
     ".NETCoreApp,Version=v3.1": [
       "DAL_Factories_SuperElf >= 1.0.0",
       "DAL_Interfaces_SuperElf >= 1.0.0",
+      "Logic_Interfaces_SuperElf >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.11",
@@ -5919,6 +5940,9 @@
             },
             "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\DAL_Interfaces_SuperElf\\DAL_Interfaces_SuperElf.csproj": {
               "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\DAL_Interfaces_SuperElf\\DAL_Interfaces_SuperElf.csproj"
+            },
+            "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\Logic_Interfaces_SuperElf\\Logic_Interfaces_SuperElf.csproj": {
+              "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\Logic_Interfaces_SuperElf\\Logic_Interfaces_SuperElf.csproj"
             },
             "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\SharedFiles\\SharedFiles.csproj": {
               "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\SharedFiles\\SharedFiles.csproj"

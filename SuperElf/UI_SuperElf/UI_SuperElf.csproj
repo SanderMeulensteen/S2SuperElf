@@ -20,7 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Logic_SuperElf\Logic_SuperElf.csproj" />
+    <ProjectReference Include="..\Logic_Factories_SuperElf\Logic_Factories_SuperElf.csproj" />
+    <ProjectReference Include="..\Logic_Interfaces_SuperElf\Logic_Interfaces_SuperElf.csproj" />
     <ProjectReference Include="..\SharedFiles\SharedFiles.csproj" />
   </ItemGroup>
 

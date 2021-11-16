@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Logic_Interfaces_SuperElf;
 using Logic_SuperElf;
 
 namespace UI_SuperElf.Models
@@ -17,6 +18,6 @@ namespace UI_SuperElf.Models
         [DisplayName("Competition")]
         [Required]
         public int competitionId { get; set; }
-        public List<Competition> allCompetitions { get; set; }
+        public List<ICompetition> allCompetitions { get; set; }
     }
 }

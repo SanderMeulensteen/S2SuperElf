@@ -29,7 +29,7 @@ namespace DAL_SuperElf
                         PlayerDto player = new PlayerDto();
                         player.playerId = reader.GetInt32(0);
                         player.playerName = reader.GetString(2);
-                        player.position = (Position)reader.GetInt32(3);
+                        player.position = reader.GetInt32(3);
                         player.club = reader.GetInt32(1);
                         players.Add(player);
                     }
@@ -72,7 +72,7 @@ namespace DAL_SuperElf
                     {
                         playerDto.playerId = reader.GetInt32(0);
                         playerDto.playerName = reader.GetString(2);
-                        playerDto.position = (Position)reader.GetInt32(3);
+                        playerDto.position = reader.GetInt32(3);
                         playerDto.club = reader.GetInt32(1);
                     }
                 }

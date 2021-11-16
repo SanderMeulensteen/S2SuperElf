@@ -4,21 +4,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Logic_SuperElf;
+using Logic_Factories_SuperElf;
+using Logic_Interfaces_SuperElf;
 using UI_SuperElf.Models;
 
 namespace UI_SuperElf.Controllers
 {
     public class CompetitionController : Controller
     {
-        private readonly Competition _competition = new Competition(0, "");
-        private readonly CompetitionContainer _competitionContainer = new CompetitionContainer();
+        private readonly ICompetition _competition = Competition_Factory.CreateCompetition();
+        private readonly ICompetitionContainer _competitionContainer = CompetitionContainer_Factory.CreateCompetitionContainer();
         // GET: CompetitionController
         public ActionResult Index()
         {
             CompetitionPipeline competitionPipeline = new CompetitionPipeline();
-            List<Competition> competitions = _competitionContainer.GetAllCompetitions();
-            foreach (Competition competition in competitions)
+            List<ICompetition> competitions = _competitionContainer.GetAllCompetitions();
+            foreach (ICompetition competition in competitions)
             {
                 CompetitionViewModel competitionViewModel = new CompetitionViewModel();
                 competitionViewModel.competitionId = competition.competitionId;
@@ -31,13 +32,13 @@ namespace UI_SuperElf.Controllers
         // GET: CompetitionController/Details/5
         public ActionResult Details(int id)
         {
-            Competition competitionById = _competitionContainer.GetCompetitionById(id);
+            ICompetition competitionById = _competitionContainer.GetCompetitionById(id);
             CompetitionDetailsViewModel competition = new CompetitionDetailsViewModel();
             competition.competitionId = competitionById.competitionId;
             competition.competitionName = competitionById.competitionName;
-            competition.clubs = new List<Club>();
-            List<Club> allClubs = _competition.GetAllClubs();
-            foreach (Club club in allClubs)
+            competition.clubs = new List<IClub>();
+            List<IClub> allClubs = _competition.GetAllClubs();
+            foreach (IClub club in allClubs)
             {
                 if (club.competitionId == competition.competitionId)
                 {
@@ -61,8 +62,7 @@ namespace UI_SuperElf.Controllers
         {
             if (ModelState.IsValid)
             {
-                Competition competition = new Competition(newCompetition.competitionId, newCompetition.competitionName);
-                _competitionContainer.AddCompetition(competition);
+                _competitionContainer.AddCompetition(newCompetition.competitionId, newCompetition.competitionName);
                 return RedirectToAction("Index");
             }
             else
@@ -75,7 +75,7 @@ namespace UI_SuperElf.Controllers
         // GET: CompetitionController/Edit/5
         public ActionResult Edit(int id)
         {
-            Competition competitionById = _competitionContainer.GetCompetitionById(id);
+            ICompetition competitionById = _competitionContainer.GetCompetitionById(id);
             CompetitionViewModel competition = new CompetitionViewModel();
             competition.competitionId = competitionById.competitionId;
             competition.competitionName = competitionById.competitionName;
@@ -95,7 +95,7 @@ namespace UI_SuperElf.Controllers
             }
             else
             {
-                Competition competitionById = _competitionContainer.GetCompetitionById(id);
+                ICompetition competitionById = _competitionContainer.GetCompetitionById(id);
                 CompetitionViewModel competition = new CompetitionViewModel();
                 competition.competitionId = competitionById.competitionId;
                 competition.competitionName = competitionById.competitionName;
@@ -106,7 +106,7 @@ namespace UI_SuperElf.Controllers
         // GET: CompetitionController/Delete/5
         public ActionResult Delete(int id)
         {
-            Competition competitionById = _competitionContainer.GetCompetitionById(id);
+            ICompetition competitionById = _competitionContainer.GetCompetitionById(id);
             CompetitionViewModel competition = new CompetitionViewModel();
             competition.competitionId = competitionById.competitionId;
             competition.competitionName = competitionById.competitionName;

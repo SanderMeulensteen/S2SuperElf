@@ -31,7 +31,8 @@
     ".NETCoreApp,Version=v3.1": {
       "UI_SuperElf/1.0.0": {
         "dependencies": {
-          "Logic_SuperElf": "1.0.0",
+          "Logic_Factories_SuperElf": "1.0.0",
+          "Logic_Interfaces_SuperElf": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.11",
@@ -2250,10 +2251,36 @@
           "DAL_SuperElf.dll": {}
         }
       },
+      "Logic_Factories_SuperElf/1.0.0": {
+        "dependencies": {
+          "Logic_Interfaces_SuperElf": "1.0.0",
+          "Logic_SuperElf": "1.0.0"
+        },
+        "runtime": {
+          "Logic_Factories_SuperElf.dll": {}
+        },
+        "compile": {
+          "Logic_Factories_SuperElf.dll": {}
+        }
+      },
+      "Logic_Interfaces_SuperElf/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.11",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
+          "SharedFiles": "1.0.0"
+        },
+        "runtime": {
+          "Logic_Interfaces_SuperElf.dll": {}
+        },
+        "compile": {
+          "Logic_Interfaces_SuperElf.dll": {}
+        }
+      },
       "Logic_SuperElf/1.0.0": {
         "dependencies": {
           "DAL_Factories_SuperElf": "1.0.0",
           "DAL_Interfaces_SuperElf": "1.0.0",
+          "Logic_Interfaces_SuperElf": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
           "SharedFiles": "1.0.0"
@@ -5029,6 +5056,16 @@
       "sha512": ""
     },
     "DAL_SuperElf/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Logic_Factories_SuperElf/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Logic_Interfaces_SuperElf/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-// using Logic_Interfaces_SuperElf;
-using Logic_SuperElf;
+using Logic_Factories_SuperElf;
+using Logic_Interfaces_SuperElf;
 using SharedFiles;
 using UI_SuperElf.Models;
 
@@ -13,9 +13,9 @@ namespace UI_SuperElf.Controllers
 {
     public class PlayerController : Controller
     {
-        private readonly Player _player = new Player(0,"", 0, 0);
-        private readonly Club _club = new Club(0, "", 0);
-        private readonly Competition _competition = new Competition(0,"");
+        private readonly IPlayer _player = Player_Factory.CreatePlayer();
+        private readonly IClub _club = Club_Factory.CreateClub();
+        private readonly ICompetition _competition = Competition_Factory.CreateCompetition();
         
         //public PlayerController(IPlayer player)
         //{
@@ -26,9 +26,9 @@ namespace UI_SuperElf.Controllers
         public ActionResult Index()
         {
             PlayersPipeline playersPipeline = new PlayersPipeline();
-            List<Player> players = _club.GetAllPlayers();
+            List<IPlayer> players = _club.GetAllPlayers();
 
-            foreach (Player player in players)
+            foreach (IPlayer player in players)
             {
                 PlayerViewModel playerViewModel = new PlayerViewModel();
                 playerViewModel.playerId = player.playerId;
@@ -44,7 +44,7 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/Details/5
         public ActionResult Details(int id)
         {
-            Player playerById = _club.GetPlayerById(id);
+            IPlayer playerById = _club.GetPlayerById(id);
             PlayerCreateViewModel player = new PlayerCreateViewModel();
             player.playerId = playerById.playerId;
             player.playerName = playerById.playerName;
@@ -69,8 +69,7 @@ namespace UI_SuperElf.Controllers
         {
             if (ModelState.IsValid)
             {
-                Player player = new Player(playerViewModel.playerId, playerViewModel.playerName, playerViewModel.position, playerViewModel.club);
-                _club.AddPlayer(player);
+                _club.AddPlayer(playerViewModel.playerId, playerViewModel.playerName, (int) playerViewModel.position, playerViewModel.club);
                 return RedirectToAction("Index");
             }
             else
@@ -84,7 +83,7 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/EditName/5
         public ActionResult EditName(int id)
         {
-            Player playerById = _club.GetPlayerById(id);
+            IPlayer playerById = _club.GetPlayerById(id);
             PlayerCreateViewModel player = new PlayerCreateViewModel();
             player.playerId = playerById.playerId;
             player.playerName = playerById.playerName;
@@ -115,7 +114,7 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/EditPosition/5
         public ActionResult EditPosition(int id)
         {
-            Player playerById = _club.GetPlayerById(id);
+            IPlayer playerById = _club.GetPlayerById(id);
             PlayerCreateViewModel player = new PlayerCreateViewModel();
             player.playerId = playerById.playerId;
             player.playerName = playerById.playerName;
@@ -147,7 +146,7 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/EditClub/5
         public ActionResult EditClub(int id)
         {
-            Player playerById = _club.GetPlayerById(id);
+            IPlayer playerById = _club.GetPlayerById(id);
             PlayerCreateViewModel player = new PlayerCreateViewModel();
             player.playerId = playerById.playerId;
             player.playerName = playerById.playerName;
@@ -179,7 +178,7 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/Delete/5
         public ActionResult Delete(int id)
         {
-            Player playerById = _club.GetPlayerById(id);
+            IPlayer playerById = _club.GetPlayerById(id);
             PlayerCreateViewModel player = new PlayerCreateViewModel();
             player.playerId = playerById.playerId;
             player.playerName = playerById.playerName;

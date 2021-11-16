@@ -5,10 +5,11 @@ using System.Text;
 using DAL_Factories_SuperElf;
 using DAL_Interfaces_SuperElf;
 using DAL_SuperElf;
+using Logic_Interfaces_SuperElf;
 
 namespace Logic_SuperElf
 {
-    public class Competition
+    public class Competition : ICompetition
     {
         private IClubContainerDAL clubDAL = ClubDAL_Factory.CreateClubContainerDal();
         private ICompetitionDAL competitionDal = CompetitionDAL_Factory.CreateCompetitionDal();
@@ -28,9 +29,9 @@ namespace Logic_SuperElf
         }
         //-----Club
         // Get all clubs from db
-        public List<Club> GetAllClubs()
+        public List<IClub> GetAllClubs()
         {
-            List<Club> clubs = new List<Club>();
+            List<IClub> clubs = new List<IClub>();
             List<ClubDto> clubDtos = clubDAL.GetAllClubDtos();
             foreach (ClubDto clubDto in clubDtos)
             {
@@ -40,16 +41,18 @@ namespace Logic_SuperElf
             return clubs;
         }
         // Add club to db
-        public void AddClub(Club club)
+        public void AddClub(int clubId, int clubCompetitionId, string clubName)
         {
-            ClubDto clubDto = ConvertClubToDto(club);
+            ClubDto clubDto = new ClubDto();
+            clubDto.clubName = clubName;
+            clubDto.competitionId = clubCompetitionId;
             clubDAL.AddClub(clubDto);
         }
         // Get club from clubId
-        public Club GetClubById(int clubId)
+        public IClub GetClubById(int clubId)
         {
             ClubDto clubDto = clubDAL.GetClubById(clubId);
-            Club club = ConvertDtoToClub(clubDto);
+            IClub club = ConvertDtoToClub(clubDto.clubId, clubDto.clubName, clubDto.competitionId);
             return club;
         }
         // Delete club from db
@@ -57,18 +60,10 @@ namespace Logic_SuperElf
         {
             clubDAL.DeleteClub(clubId);
         }
-        // Convert club to dto
-        public ClubDto ConvertClubToDto(Club club)
-        {
-            ClubDto clubDto = new ClubDto();
-            clubDto.clubName = club.clubName;
-            clubDto.competitionId = club.competitionId;
-            return clubDto;
-        }
         // Convert dto to club
-        public Club ConvertDtoToClub(ClubDto clubDto)
+        public IClub ConvertDtoToClub(int clubId, string clubName, int clubCompetitionId)
         {
-            Club club = new Club(clubDto.clubId, clubDto.clubName, clubDto.competitionId);
+            Club club = new Club(clubId, clubName, clubCompetitionId);
             return club;
         }
     }

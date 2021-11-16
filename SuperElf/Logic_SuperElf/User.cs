@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Logic_Interfaces_SuperElf;
 
 namespace Logic_SuperElf
 {
-    public class User
+    public class User : IUser
     {
         public string userName { get; private set; }
         public string password { get; private set; }

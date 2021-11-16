@@ -5,22 +5,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DAL_Interfaces_SuperElf;
-using Logic_SuperElf;
+using Logic_Factories_SuperElf;
+using Logic_Interfaces_SuperElf;
 using UI_SuperElf.Models;
 
 namespace UI_SuperElf.Controllers
 {
     public class ClubController : Controller
     {
-        private readonly Club _club = new Club(0,"", 0);
-        private readonly Competition _competition = new Competition(0, "");
-        private readonly CompetitionContainer _competitionContainer = new CompetitionContainer();
+        private readonly IClub _club = Club_Factory.CreateClub();
+        private readonly ICompetition _competition = Competition_Factory.CreateCompetition();
+        private readonly ICompetitionContainer _competitionContainer =
+            CompetitionContainer_Factory.CreateCompetitionContainer();
         // GET: ClubController
         public ActionResult Index()
         {
             ClubPipeline clubPipeline = new ClubPipeline();
-            List<Club> clubs = _competition.GetAllClubs();
-            foreach (Club club in clubs)
+            List<IClub> clubs = _competition.GetAllClubs();
+            foreach (IClub club in clubs)
             {
                 ClubViewModel clubViewModel = new ClubViewModel();
                 clubViewModel.clubId = club.clubId;
@@ -35,7 +37,7 @@ namespace UI_SuperElf.Controllers
         // GET: ClubController/Details/5
         public ActionResult Details(int id)
         {
-            Club clubById = _competition.GetClubById(id);
+            IClub clubById = _competition.GetClubById(id);
             ClubCreateViewModel club = new ClubCreateViewModel();
             club.clubId = clubById.clubId;
             club.competitionId = clubById.competitionId;
@@ -59,8 +61,7 @@ namespace UI_SuperElf.Controllers
         {
             if (ModelState.IsValid)
             {
-                Club club = new Club(newClub.clubId, newClub.clubName, newClub.competitionId);
-                _competition.AddClub(club);
+                _competition.AddClub(newClub.clubId, newClub.competitionId, newClub.clubName);
                 return RedirectToAction("Index");
             }
             else
@@ -74,7 +75,7 @@ namespace UI_SuperElf.Controllers
         // GET: ClubController/EditName/5
         public ActionResult EditName(int id)
         {
-            Club clubById = _competition.GetClubById(id);
+            IClub clubById = _competition.GetClubById(id);
             ClubCreateViewModel club = new ClubCreateViewModel();
             club.clubId = clubById.clubId;
             club.competitionId = clubById.competitionId;
@@ -105,7 +106,7 @@ namespace UI_SuperElf.Controllers
         // GET: ClubController/EditCompetition/5
         public ActionResult EditCompetition(int id)
         {
-            Club clubById = _competition.GetClubById(id);
+            IClub clubById = _competition.GetClubById(id);
             ClubCreateViewModel club = new ClubCreateViewModel();
             club.clubId = clubById.clubId;
             club.competitionId = clubById.competitionId;
@@ -135,7 +136,7 @@ namespace UI_SuperElf.Controllers
         // GET: ClubController/Delete/5
         public ActionResult Delete(int id)
         {
-            Club clubById = _competition.GetClubById(id);
+            IClub clubById = _competition.GetClubById(id);
             ClubCreateViewModel club = new ClubCreateViewModel();
             club.clubId = clubById.clubId;
             club.competitionId = clubById.competitionId;

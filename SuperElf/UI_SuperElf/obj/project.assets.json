@@ -2666,12 +2666,42 @@
           "bin/placeholder/DAL_SuperElf.dll": {}
         }
       },
+      "Logic_Factories_SuperElf/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Logic_Interfaces_SuperElf": "1.0.0",
+          "Logic_SuperElf": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Logic_Factories_SuperElf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Logic_Factories_SuperElf.dll": {}
+        }
+      },
+      "Logic_Interfaces_SuperElf/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.11",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
+          "SharedFiles": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Logic_Interfaces_SuperElf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Logic_Interfaces_SuperElf.dll": {}
+        }
+      },
       "Logic_SuperElf/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "DAL_Factories_SuperElf": "1.0.0",
           "DAL_Interfaces_SuperElf": "1.0.0",
+          "Logic_Interfaces_SuperElf": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
           "SharedFiles": "1.0.0"
@@ -8958,6 +8988,16 @@
       "path": "../DAL_SuperElf/DAL_SuperElf.csproj",
       "msbuildProject": "../DAL_SuperElf/DAL_SuperElf.csproj"
     },
+    "Logic_Factories_SuperElf/1.0.0": {
+      "type": "project",
+      "path": "../Logic_Factories_SuperElf/Logic_Factories_SuperElf.csproj",
+      "msbuildProject": "../Logic_Factories_SuperElf/Logic_Factories_SuperElf.csproj"
+    },
+    "Logic_Interfaces_SuperElf/1.0.0": {
+      "type": "project",
+      "path": "../Logic_Interfaces_SuperElf/Logic_Interfaces_SuperElf.csproj",
+      "msbuildProject": "../Logic_Interfaces_SuperElf/Logic_Interfaces_SuperElf.csproj"
+    },
     "Logic_SuperElf/1.0.0": {
       "type": "project",
       "path": "../Logic_SuperElf/Logic_SuperElf.csproj",
@@ -8971,7 +9011,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Logic_SuperElf >= 1.0.0",
+      "Logic_Factories_SuperElf >= 1.0.0",
+      "Logic_Interfaces_SuperElf >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.11",
@@ -9012,8 +9053,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\Logic_SuperElf\\Logic_SuperElf.csproj": {
-              "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\Logic_SuperElf\\Logic_SuperElf.csproj"
+            "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\Logic_Factories_SuperElf\\Logic_Factories_SuperElf.csproj": {
+              "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\Logic_Factories_SuperElf\\Logic_Factories_SuperElf.csproj"
+            },
+            "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\Logic_Interfaces_SuperElf\\Logic_Interfaces_SuperElf.csproj": {
+              "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\Logic_Interfaces_SuperElf\\Logic_Interfaces_SuperElf.csproj"
             },
             "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\SharedFiles\\SharedFiles.csproj": {
               "projectPath": "C:\\Users\\sande\\OneDrive\\Documenten\\GitHub\\S2SuperElf\\SuperElf\\SharedFiles\\SharedFiles.csproj"

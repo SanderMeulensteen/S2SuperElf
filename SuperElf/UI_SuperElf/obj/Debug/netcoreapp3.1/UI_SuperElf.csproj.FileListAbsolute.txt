@@ -180,3 +180,7 @@ C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\De
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\Competition\Create.cshtml.g.cs
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\Competition\Edit.cshtml.g.cs
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\Competition\Delete.cshtml.g.cs
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\Logic_Factories_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\Logic_Interfaces_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\Logic_Factories_SuperElf.pdb
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\bin\Debug\netcoreapp3.1\Logic_Interfaces_SuperElf.pdb

@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DAL_Factories_SuperElf\DAL_Factories_SuperElf.csproj" />
     <ProjectReference Include="..\DAL_Interfaces_SuperElf\DAL_Interfaces_SuperElf.csproj" />
+    <ProjectReference Include="..\Logic_Interfaces_SuperElf\Logic_Interfaces_SuperElf.csproj" />
     <ProjectReference Include="..\SharedFiles\SharedFiles.csproj" />
   </ItemGroup>
 

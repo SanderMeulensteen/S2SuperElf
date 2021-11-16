@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Logic_Interfaces_SuperElf;
 using Logic_SuperElf;
 
 namespace UI_SuperElf.Models
@@ -14,6 +15,6 @@ namespace UI_SuperElf.Models
         [DisplayName("Competition name")]
         [Required]
         public string competitionName { get; set; }
-        public List<Club> clubs { get; set; }
+        public List<IClub> clubs { get; set; }
     }
 }

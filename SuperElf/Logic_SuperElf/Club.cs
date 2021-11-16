@@ -4,11 +4,12 @@ using System.Text;
 using DAL_Factories_SuperElf;
 using DAL_Interfaces_SuperElf;
 using DAL_SuperElf;
+using Logic_Interfaces_SuperElf;
 using SharedFiles;
 
 namespace Logic_SuperElf
 {
-    public class Club
+    public class Club : IClub
     {
         private IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreatePlayerContainerDal();
         private IClubDAL clubDAL = ClubDAL_Factory.CreateClubDal();
@@ -38,21 +39,24 @@ namespace Logic_SuperElf
 
         //-----Player
         // Add player to db
-        public void AddPlayer(Player player)
+        public void AddPlayer(int playerId, string playerName, int position, int club)
         {
-            PlayerDto playerDto = ConvertPlayerToDto(player);
+            PlayerDto playerDto = new PlayerDto();
+            playerDto.playerName = playerName;
+            playerDto.position = position;
+            playerDto.club = club;
             playerDAL.AddPlayer(playerDto);
         }
 
         // Get list of all players in db
-        public List<Player> GetAllPlayers()
+        public List<IPlayer> GetAllPlayers()
         {
-            List<Player> players = new List<Player>();
+            List<IPlayer> players = new List<IPlayer>();
             List<PlayerDto> playerDtos = playerDAL.GetAllPlayers();
 
             foreach (PlayerDto playerDto in playerDtos)
             {
-                players.Add(ConvertDtoToPlayer(playerDto));
+                players.Add(ConvertDtoToPlayer(playerDto.playerId, playerDto.playerName, playerDto.position, playerDto.club));
             }
             return players;
         }
@@ -62,26 +66,17 @@ namespace Logic_SuperElf
             playerDAL.DeletePlayer(playerId);
         }
         // Get playerdetails from db by id
-        public Player GetPlayerById(int playerId)
+        public IPlayer GetPlayerById(int playerId)
         {
             PlayerDto playerDto = playerDAL.GetPlayerDtoById(playerId);
-            Player player = ConvertDtoToPlayer(playerDto);
+            IPlayer player = ConvertDtoToPlayer(playerDto.playerId, playerDto.playerName, playerDto.position, playerDto.club);
             return player;
         }
         // Convert playerDto to player
-        public Player ConvertDtoToPlayer(PlayerDto playerDto)
+        public IPlayer ConvertDtoToPlayer(int playerId, string playerName, int position, int club)
         {
-            Player player = new Player(playerDto.playerId, playerDto.playerName, playerDto.position, playerDto.club);
+            Player player = new Player(playerId, playerName, (Position) position, club);
             return player;
-        }
-        // Convert player to playerDto
-        public PlayerDto ConvertPlayerToDto(Player player)
-        {
-            PlayerDto playerDto = new PlayerDto();
-            playerDto.playerName = player.playerName;
-            playerDto.position = player.position;
-            playerDto.club = player.club;
-            return playerDto;
         }
     }
 }

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using DAL_Factories_SuperElf;
 using DAL_Interfaces_SuperElf;
+using Logic_Interfaces_SuperElf;
 using SharedFiles;
 
 namespace Logic_SuperElf
 {
-    public class Team
+    public class Team : ITeam
     {
         public int teamPoint { get; private set; }
         public Formation teamFormation { get; private set; }
