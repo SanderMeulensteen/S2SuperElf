@@ -8,9 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DAL_Interfaces_SuperElf;
-using DAL_SuperElf;
-using Logic_SuperElf;
 using UI_SuperElf.Controllers;
 
 namespace UI_SuperElf
