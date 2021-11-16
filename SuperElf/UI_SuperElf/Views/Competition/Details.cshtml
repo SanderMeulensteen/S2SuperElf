@@ -1,0 +1,45 @@
+﻿@using System.Threading
+@using Logic_SuperElf
+@model UI_SuperElf.Models.CompetitionDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Competition info</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2" hidden>
+            @Html.DisplayNameFor(model => model.competitionId)
+        </dt>
+        <dd class = "col-sm-10" hidden>
+            @Html.DisplayFor(model => model.competitionId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.competitionName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.competitionName)
+            | <a class="btn-sm btn-primary" asp-action="Edit" asp-route-id="@Model.competitionId">Edit</a>
+        </dd>
+        <dt class="col-sm-2">
+            Clubs:
+        </dt>
+        @foreach (Club club in @Model.clubs)
+        {
+            <dt class="col-sm-2">
+
+            </dt>
+            <dd class="col-sm-10">
+                @club.clubName
+            </dd>
+        }
+
+        
+    </dl>
+</div>
+<div>
+    <a class="btn btn-danger" asp-action="Index">Back to competitions</a>
+</div>

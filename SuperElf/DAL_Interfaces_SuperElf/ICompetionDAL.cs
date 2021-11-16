@@ -6,6 +6,6 @@ namespace DAL_Interfaces_SuperElf
 {
     public interface ICompetitionDAL
     {
-        
+        void UpdateCompetitionName(int competitionId, string newCompetitionName);
     }
 }

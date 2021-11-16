@@ -14,7 +14,6 @@ namespace UI_SuperElf.Controllers
     {
         private readonly Club _club = new Club(0,"", 0);
         private readonly Competition _competition = new Competition(0, "");
-
         private readonly CompetitionContainer _competitionContainer = new CompetitionContainer();
         // GET: ClubController
         public ActionResult Index()

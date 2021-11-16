@@ -21,7 +21,11 @@ namespace Logic_SuperElf
         }
         // Update competition and manage clubs
         //-----Competition
-
+        // Update competition name in db
+        public void UpdateCompetitionName(int competitionId, string newCompetitionName)
+        {
+            competitionDal.UpdateCompetitionName(competitionId, newCompetitionName);
+        }
         //-----Club
         // Get all clubs from db
         public List<Club> GetAllClubs()
@@ -67,6 +71,5 @@ namespace Logic_SuperElf
             Club club = new Club(clubDto.clubId, clubDto.clubName, clubDto.competitionId);
             return club;
         }
-        
     }
 }

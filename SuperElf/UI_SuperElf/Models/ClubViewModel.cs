@@ -11,7 +11,7 @@ namespace UI_SuperElf.Models
     public class ClubViewModel
     {
         public int clubId { get; set; }
-        [DisplayName("Clubname")]
+        [DisplayName("Club name")]
         [Required]
         public string clubName { get; set; }
         [DisplayName("Competition")]

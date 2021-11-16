@@ -59,7 +59,6 @@ namespace DAL_SuperElf
                 using (SqlCommand query = new SqlCommand("select * from clubTable where ClubId = @Id", conn))
                 {
                     query.Parameters.AddWithValue("@Id", clubId);
-
                     var reader = query.ExecuteReader();
                     while (reader.Read())
                     {
@@ -77,7 +76,13 @@ namespace DAL_SuperElf
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                using (SqlCommand query = new SqlCommand("DELETE FROM [dbo].[clubTable] WHERE clubId = @clubId", conn))
+                using (SqlCommand query = new SqlCommand("UPDATE[dbo].[playerTable] SET[ClubId] = @newClubId WHERE ClubId = @clubId", conn))
+                {
+                    query.Parameters.AddWithValue("@newClubId", 1);
+                    query.Parameters.AddWithValue("@clubId", clubId);
+                    query.ExecuteNonQuery();
+                }
+                using (SqlCommand query = new SqlCommand("DELETE FROM [dbo].[clubTable] WHERE ClubId = @clubId", conn))
                 {
                     query.Parameters.AddWithValue("@clubId", clubId);
                     query.ExecuteNonQuery();
@@ -90,7 +95,7 @@ namespace DAL_SuperElf
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                using (SqlCommand query = new SqlCommand("UPDATE[dbo].[clubTable] SET[ClubName] = @clubName WHERE clubId = @clubId", conn))
+                using (SqlCommand query = new SqlCommand("UPDATE[dbo].[clubTable] SET[ClubName] = @clubName WHERE ClubId = @clubId", conn))
                 {
                     query.Parameters.AddWithValue("@clubId", clubId);
                     query.Parameters.AddWithValue("@clubName", newClubName);
@@ -104,7 +109,7 @@ namespace DAL_SuperElf
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                using (SqlCommand query = new SqlCommand("UPDATE[dbo].[clubTable] SET[CompetitionId] = @competition WHERE clubId = @clubId", conn))
+                using (SqlCommand query = new SqlCommand("UPDATE[dbo].[clubTable] SET[CompetitionId] = @competition WHERE ClubId = @clubId", conn))
                 {
                     query.Parameters.AddWithValue("@clubId", clubId);
                     query.Parameters.AddWithValue("@competition", newCompetition);

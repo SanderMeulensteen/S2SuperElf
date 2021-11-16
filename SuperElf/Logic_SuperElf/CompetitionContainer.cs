@@ -10,6 +10,7 @@ namespace Logic_SuperElf
     {
         private ICompetitionContainerDAL competitionDAL = CompetitionDAL_Factory.CreateCompetitionContainerDal();
         // Manage competitions
+        // Get all competitions from db
         public List<Competition> GetAllCompetitions()
         {
             List<Competition> competitions = new List<Competition>();
@@ -20,6 +21,37 @@ namespace Logic_SuperElf
                 competitions.Add(competition);
             }
             return competitions;
+        }
+        // Get competition from db by id
+        public Competition GetCompetitionById(int competitionId)
+        {
+            CompetitionDto competitionDto = competitionDAL.GetCompetitionById(competitionId);
+            Competition competition = ConvertDtoToCompetition(competitionDto);
+            return competition;
+        }
+        // Add new competition to db
+        public void AddCompetition(Competition competition)
+        {
+            CompetitionDto competitionDto = ConvertCompetitionToDto(competition);
+            competitionDAL.AddCompetition(competitionDto);
+        }
+        // Delete competition from db
+        public void DeleteCompetition(int competitionId)
+        {
+            competitionDAL.DeleteCompetition(competitionId);
+        }
+        // Convert competition to dto
+        public CompetitionDto ConvertCompetitionToDto(Competition competition)
+        {
+            CompetitionDto competitionDto = new CompetitionDto();
+            competitionDto.competitionName = competition.competitionName;
+            return competitionDto;
+        }
+        // Convert dto to competition
+        public Competition ConvertDtoToCompetition(CompetitionDto competitionDto)
+        {
+            Competition competition = new Competition(competitionDto.competitionId, competitionDto.competitionName);
+            return competition;
         }
     }
 }

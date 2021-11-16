@@ -12,7 +12,7 @@ namespace UI_SuperElf.Models
     public class PlayerCreateViewModel
     {
         public int playerId { get; set; }
-        [DisplayName("Player")]
+        [DisplayName("Player name")]
         [Required]
         public string playerName { get; set; }
         [DisplayName("Position")]

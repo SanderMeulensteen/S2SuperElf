@@ -1,0 +1,32 @@
+﻿@model UI_SuperElf.Models.CompetitionViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create competition</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="competitionId" class="control-label" hidden></label>
+                <input asp-for="competitionId" class="form-control" hidden/>
+                <span asp-validation-for="competitionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="competitionName" class="control-label"></label>
+                <input asp-for="competitionName" class="form-control" />
+                <span asp-validation-for="competitionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" /> |
+                <a class="btn btn-danger" asp-action="Index">Back to competitions</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
