@@ -10,7 +10,7 @@ namespace UI_SuperElf.Models
     public class UserEditViewModel
     {
         public int userId { get; set; }
-        [DisplayName("Email address")]
+        [DisplayName("Email")]
         [Required]
         public string emailaddress { get; set; }
         [DisplayName("Username")]

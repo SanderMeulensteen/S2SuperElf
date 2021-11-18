@@ -194,3 +194,4 @@ C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\De
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\User\EditPassword.cshtml.g.cs
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\User\EditPermissions.cshtml.g.cs
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\User\EditUserName.cshtml.g.cs
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UI_SuperElf\obj\Debug\netcoreapp3.1\Razor\Views\LoginLogout\Login.cshtml.g.cs

@@ -18,7 +18,7 @@ namespace UI_SuperElf.Models
         [DisplayName("Last Name")]
         [Required]
         public string lastName { get; set; }
-        [DisplayName("Email address")]
+        [DisplayName("Email")]
         [Required]
         public string emailaddress { get; set; }
         public bool isAdmin { get; set; }

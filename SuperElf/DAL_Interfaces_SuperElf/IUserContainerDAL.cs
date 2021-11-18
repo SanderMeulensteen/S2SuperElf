@@ -12,5 +12,6 @@ namespace DAL_Interfaces_SuperElf
         void DeleteUser(int userId);
         bool EmailCheck(string newEmail);
         bool UserNameCheck(string newUserName);
+        bool LoginCheck(string emailaddress, string password);
     }
 }

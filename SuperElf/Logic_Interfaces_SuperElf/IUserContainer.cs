@@ -10,5 +10,6 @@ namespace Logic_Interfaces_SuperElf
         void DeleteUser(int userId);
         bool EmailCheck(string emailaddress);
         bool UserNameCheck(string userName);
+        bool LoginCheck(string emailaddress, string password);
     }
 }

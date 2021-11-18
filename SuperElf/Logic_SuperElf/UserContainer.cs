@@ -9,13 +9,13 @@ namespace Logic_SuperElf
 {
     public class UserContainer : IUserContainer
     {
-        private readonly IUserContainerDAL userDAL = UserDAL_Factory.CreateUserContainerDal();
+        private readonly IUserContainerDAL _userDAL = UserDAL_Factory.CreateUserContainerDal();
         // Manage users
         // Get all users from db
         public List<IUser> GetAllUsers()
         {
             List<IUser> users = new List<IUser>();
-            List<UserDto> userDtos = userDAL.GetAllUsers();
+            List<UserDto> userDtos = _userDAL.GetAllUsers();
             foreach (UserDto userDto in userDtos)
             {
                 users.Add(ConvertDtoToUser(userDto.userId, userDto.userName, userDto.firstName, userDto.lastName, userDto.password, userDto.emailaddress, userDto.isAdmin, userDto.isModerator));
@@ -34,29 +34,34 @@ namespace Logic_SuperElf
             userDto.password = password;
             userDto.isAdmin = isAdmin;
             userDto.isModerator = isModerator;
-            userDAL.AddUser(userDto);
+            _userDAL.AddUser(userDto);
         }
         // Get user from db by id
         public IUser GetUserById(int userId)
         {
-            UserDto userDto = userDAL.GetUserById(userId);
+            UserDto userDto = _userDAL.GetUserById(userId);
             IUser user = ConvertDtoToUser(userDto.userId, userDto.userName, userDto.firstName, userDto.lastName, userDto.password, userDto.emailaddress, userDto.isAdmin, userDto.isModerator);
             return user;
         }
         // Delete user from db
         public void DeleteUser(int userId)
         {
-            userDAL.DeleteUser(userId);
+            _userDAL.DeleteUser(userId);
         }
         // Control if email is already in db
         public bool EmailCheck(string newEmail)
         {
-            return userDAL.EmailCheck(newEmail);
+            return _userDAL.EmailCheck(newEmail);
         }
         // Control if username is already in db
         public bool UserNameCheck(string newUserName)
         {
-            return userDAL.UserNameCheck(newUserName);
+            return _userDAL.UserNameCheck(newUserName);
+        }
+        // Control if email and password are correct
+        public bool LoginCheck(string emailaddress, string password)
+        {
+            return _userDAL.LoginCheck(emailaddress, password);
         }
         // Convert dto to user
         public IUser ConvertDtoToUser(int userId, string userName, string firstName, string lastName, string password, string emailaddress, bool isAdmin, bool isModerator)

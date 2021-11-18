@@ -220,5 +220,27 @@ namespace DAL_SuperElf
             }
             return false;
         }
+        public bool LoginCheck(string emailaddress, string password)
+        {
+            string dbPassword = null;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand query = new SqlCommand("select * from userTable where EmailAddress = @email", conn))
+                {
+                    query.Parameters.AddWithValue("@email", emailaddress);
+                    var reader = query.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dbPassword = reader.GetString(5);
+                    }
+                }
+            }
+            if (dbPassword == password)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
