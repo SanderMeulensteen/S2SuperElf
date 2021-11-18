@@ -53,7 +53,6 @@ namespace Logic_SuperElf
         {
             List<IPlayer> players = new List<IPlayer>();
             List<PlayerDto> playerDtos = playerDAL.GetAllPlayers();
-
             foreach (PlayerDto playerDto in playerDtos)
             {
                 players.Add(ConvertDtoToPlayer(playerDto.playerId, playerDto.playerName, playerDto.position, playerDto.club));

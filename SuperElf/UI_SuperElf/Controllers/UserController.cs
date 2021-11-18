@@ -27,7 +27,6 @@ namespace UI_SuperElf.Controllers
                 userViewModel.lastName = user.lastName;
                 userViewModel.userName = user.userName;
                 userViewModel.emailaddress = user.emailaddress;
-                userViewModel.password = user.password;
                 userViewModel.isAdmin = user.isAdmin;
                 userViewModel.isModerator = user.isModerator;
                 userPipeline.Users.Add(userViewModel);
@@ -38,70 +37,310 @@ namespace UI_SuperElf.Controllers
         // GET: UserController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            IUser userById = _userContainer.GetUserById(id);
+            UserViewModel user = new UserViewModel();
+            user.userId = userById.userId;
+            user.emailaddress = userById.emailaddress;
+            user.userName = userById.userName;
+            user.firstName = userById.firstName;
+            user.lastName = userById.lastName;
+            user.isAdmin = userById.isAdmin;
+            user.isModerator = userById.isModerator;
+            return View(user);
         }
 
+        // GET: UserController/Register
+        public ActionResult Register()
+        {
+            RegisterViewModel registerUser = new RegisterViewModel();
+            return View(registerUser);
+        }
+
+        // POST: UserController/Register
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(RegisterViewModel newUser)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_userContainer.EmailCheck(newUser.emailaddress))
+                {
+                    if (_userContainer.UserNameCheck(newUser.userName))
+                    {
+                        _userContainer.AddUser(newUser.emailaddress, newUser.userName, newUser.firstName, newUser.lastName,
+                            newUser.password, newUser.isAdmin, newUser.isModerator);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.error = "This username is already in use!";
+                        return View(newUser);
+                    }
+                }
+                else
+                {
+                    ViewBag.error = "This email address is already in use!";
+                    return View(newUser);
+                }
+            }
+            else
+            {
+                return View(newUser);
+            }
+        }
         // GET: UserController/Create
         public ActionResult Create()
         {
-            
-            return View();
+            RegisterViewModel registerUser = new RegisterViewModel();
+            return View(registerUser);
         }
 
         // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(RegisterViewModel newUser)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                if (_userContainer.EmailCheck(newUser.emailaddress))
+                {
+                    if(_userContainer.UserNameCheck(newUser.userName))
+                    {
+                        _userContainer.AddUser(newUser.emailaddress, newUser.userName, newUser.firstName, newUser.lastName, newUser.password, newUser.isAdmin, newUser.isModerator);
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ViewBag.error = "This username is already in use!";
+                        return View(newUser);
+                    }
+                }
+                else
+                {
+                    ViewBag.error = "This email address is already in use!";
+                    return View(newUser);
+                }
             }
-            catch
+            else
             {
-                return View();
+                return View(newUser);
             }
         }
 
-        // GET: UserController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: UserController/EditEmail/5
+        public ActionResult EditEmail(int id)
         {
-            return View();
+            IUser userById = _userContainer.GetUserById(id);
+            UserEditViewModel user = new UserEditViewModel();
+            user.userId = userById.userId;
+            user.emailaddress = userById.emailaddress;
+            user.userName = userById.userName;
+            user.firstName = userById.firstName;
+            user.lastName = userById.lastName;
+            user.isAdmin = userById.isAdmin;
+            user.isModerator = userById.isModerator;
+            user.password = "";
+            return View(user);
         }
 
-        // POST: UserController/Edit/5
+        // POST: UserController/EditEmail/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult EditEmail(int id, UserEditViewModel updatedUser)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                string newEmail = updatedUser.emailaddress;
+                if (_userContainer.EmailCheck(newEmail))
+                {
+                    _user.UpdateEmail(id, newEmail);
+                    return RedirectToAction("Details", new { id = id });
+                }
+                else
+                {
+                    ViewBag.error = "This email address is already in use!";
+                    updatedUser.userId = id;
+                    return View(updatedUser);
+                }
             }
-            catch
+            else
             {
-                return View();
+                updatedUser.userId = id;
+                return View(updatedUser);
+            }
+        }
+        // GET: UserController/EditName/5
+        public ActionResult EditName(int id)
+        {
+            IUser userById = _userContainer.GetUserById(id);
+            UserEditViewModel user = new UserEditViewModel();
+            user.userId = userById.userId;
+            user.emailaddress = userById.emailaddress;
+            user.userName = userById.userName;
+            user.firstName = userById.firstName;
+            user.lastName = userById.lastName;
+            user.isAdmin = userById.isAdmin;
+            user.isModerator = userById.isModerator;
+            user.password = "";
+            return View(user);
+        }
+
+        // POST: UserController/EditName/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditName(int id, UserEditViewModel updatedUser)
+        {
+            if (ModelState.IsValid)
+            {
+                string newFirstName = updatedUser.firstName;
+                string newLastName = updatedUser.lastName;
+                _user.UpdateName(id, newFirstName, newLastName);
+                return RedirectToAction("Details", new { id = id });
+            }
+            else
+            {
+                updatedUser.userId = id;
+                return View(updatedUser);
+            }
+        }
+        // GET: UserController/EditPermissions/5
+        public ActionResult EditPermissions(int id)
+        {
+            IUser userById = _userContainer.GetUserById(id);
+            UserEditViewModel user = new UserEditViewModel();
+            user.userId = userById.userId;
+            user.emailaddress = userById.emailaddress;
+            user.userName = userById.userName;
+            user.firstName = userById.firstName;
+            user.lastName = userById.lastName;
+            user.isAdmin = userById.isAdmin;
+            user.isModerator = userById.isModerator;
+            user.password = "";
+            return View(user);
+        }
+
+        // POST: UserController/EditPermissions/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPermissions(int id, UserEditViewModel updatedUser)
+        {
+            if (ModelState.IsValid)
+            {
+                bool isAdmin = updatedUser.isAdmin;
+                bool isModerator = updatedUser.isModerator;
+                _user.UpdatePermissions(id, isAdmin, isModerator);
+                return RedirectToAction("Details", new { id = id });
+            }
+            else
+            {
+                updatedUser.userId = id;
+                return View(updatedUser);
+            }
+        }
+        // GET: UserController/EditUserName/5
+        public ActionResult EditUserName(int id)
+        {
+            IUser userById = _userContainer.GetUserById(id);
+            UserEditViewModel user = new UserEditViewModel();
+            user.userId = userById.userId;
+            user.emailaddress = userById.emailaddress;
+            user.userName = userById.userName;
+            user.firstName = userById.firstName;
+            user.lastName = userById.lastName;
+            user.isAdmin = userById.isAdmin;
+            user.isModerator = userById.isModerator;
+            user.password = "";
+            return View(user);
+        }
+
+        // POST: UserController/EditUserName/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditUserName(int id, UserEditViewModel updatedUser)
+        {
+            if (ModelState.IsValid)
+            {
+                string newUserName = updatedUser.userName;
+                if (_userContainer.UserNameCheck(newUserName))
+                {
+                    _user.UpdateUserName(id, newUserName);
+                    return RedirectToAction("Details", new { id = id });
+                }
+                else
+                {
+                    ViewBag.error = "This username is already in use!";
+                    updatedUser.userId = id;
+                    return View(updatedUser);
+                }
+            }
+            else
+            {
+                updatedUser.userId = id;
+                return View(updatedUser);
+            }
+        }
+        // GET: UserController/EditPassword/5
+        public ActionResult EditPassword(int id)
+        {
+            IUser userById = _userContainer.GetUserById(id);
+            UserEditViewModel user = new UserEditViewModel();
+            user.userId = userById.userId;
+            user.emailaddress = userById.emailaddress;
+            user.userName = userById.userName;
+            user.firstName = userById.firstName;
+            user.lastName = userById.lastName;
+            user.isAdmin = userById.isAdmin;
+            user.isModerator = userById.isModerator;
+            user.password = "";
+            return View(user);
+        }
+
+        // POST: UserController/EditPassword/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPassword(int id, UserEditViewModel updatedUser)
+        {
+            if (ModelState.IsValid)
+            {
+                string newPassword = updatedUser.password;
+                _user.UpdatePassword(id, newPassword);
+                return RedirectToAction("", new { id = id });
+            }
+            else
+            {
+                updatedUser.userId = id;
+                return View(updatedUser);
             }
         }
 
         // GET: UserController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            IUser userById = _userContainer.GetUserById(id);
+            UserViewModel user = new UserViewModel();
+            user.userId = userById.userId;
+            user.emailaddress = userById.emailaddress;
+            user.userName = userById.userName;
+            user.firstName = userById.firstName;
+            user.lastName = userById.lastName;
+            user.isAdmin = userById.isAdmin;
+            user.isModerator = userById.isModerator;
+            return View(user);
         }
 
         // POST: UserController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, UserViewModel user)
         {
-            try
+            if (id == 0)
             {
-                return RedirectToAction(nameof(Index));
+                return View(user);
             }
-            catch
+            else
             {
-                return View();
+                _userContainer.DeleteUser(id);
+                return RedirectToAction("Index");
             }
         }
     }

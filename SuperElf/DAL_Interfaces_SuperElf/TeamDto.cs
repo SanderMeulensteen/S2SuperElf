@@ -4,7 +4,9 @@ using System.Text;
 
 namespace DAL_Interfaces_SuperElf
 {
-    class TeamDto
+    public class TeamDto
     {
+        public int teamPoint { get; set; }
+        public int teamFormation { get; set; }
     }
 }

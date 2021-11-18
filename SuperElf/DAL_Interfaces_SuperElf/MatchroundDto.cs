@@ -4,7 +4,8 @@ using System.Text;
 
 namespace DAL_Interfaces_SuperElf
 {
-    class MatchroundDto
+    public class MatchroundDto
     {
+
     }
 }

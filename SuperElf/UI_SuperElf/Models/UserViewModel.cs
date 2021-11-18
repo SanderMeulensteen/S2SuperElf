@@ -18,9 +18,6 @@ namespace UI_SuperElf.Models
         [DisplayName("Last Name")]
         [Required]
         public string lastName { get; set; }
-        [DisplayName("Password")]
-        [Required]
-        public string password { get; set; }
         [DisplayName("Email address")]
         [Required]
         public string emailaddress { get; set; }

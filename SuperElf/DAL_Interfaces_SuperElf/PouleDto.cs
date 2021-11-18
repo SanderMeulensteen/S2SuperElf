@@ -4,7 +4,9 @@ using System.Text;
 
 namespace DAL_Interfaces_SuperElf
 {
-    class PouleDto
+    public class PouleDto
     {
+        public string pouleName { get; set; }
+        public int competition { get; set; }
     }
 }
