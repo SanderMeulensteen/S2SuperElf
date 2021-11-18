@@ -73,13 +73,13 @@ namespace UI_SuperElf.Controllers
                     }
                     else
                     {
-                        ViewBag.error = "This username is already in use!";
+                        ModelState.AddModelError("", "This username is already in use.");
                         return View(newUser);
                     }
                 }
                 else
                 {
-                    ViewBag.error = "This email address is already in use!";
+                    ModelState.AddModelError("", "This email is already in use.");
                     return View(newUser);
                 }
             }
@@ -111,13 +111,13 @@ namespace UI_SuperElf.Controllers
                     }
                     else
                     {
-                        ViewBag.error = "This username is already in use!";
+                        ModelState.AddModelError("", "This username is already in use.");
                         return View(newUser);
                     }
                 }
                 else
                 {
-                    ViewBag.error = "This email address is already in use!";
+                    ModelState.AddModelError("", "This email is already in use.");
                     return View(newUser);
                 }
             }
@@ -158,7 +158,7 @@ namespace UI_SuperElf.Controllers
                 }
                 else
                 {
-                    ViewBag.error = "This email address is already in use!";
+                    ModelState.AddModelError("", "This email is already in use.");
                     updatedUser.userId = id;
                     return View(updatedUser);
                 }
@@ -268,7 +268,7 @@ namespace UI_SuperElf.Controllers
                 }
                 else
                 {
-                    ViewBag.error = "This username is already in use!";
+                    ModelState.AddModelError("", "This username is already in use.");
                     updatedUser.userId = id;
                     return View(updatedUser);
                 }

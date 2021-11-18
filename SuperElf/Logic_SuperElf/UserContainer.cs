@@ -59,9 +59,12 @@ namespace Logic_SuperElf
             return _userDAL.UserNameCheck(newUserName);
         }
         // Control if email and password are correct
-        public bool LoginCheck(string emailaddress, string password)
+        public IUser LoginCheck(string emailaddress, string password)
         {
-            return _userDAL.LoginCheck(emailaddress, password);
+            UserDto userDto = _userDAL.LoginCheck(emailaddress, password);
+            IUser user = ConvertDtoToUser(userDto.userId, userDto.userName, userDto.firstName, userDto.lastName,
+                userDto.password, userDto.emailaddress, userDto.isAdmin, userDto.isModerator);
+            return user;
         }
         // Convert dto to user
         public IUser ConvertDtoToUser(int userId, string userName, string firstName, string lastName, string password, string emailaddress, bool isAdmin, bool isModerator)

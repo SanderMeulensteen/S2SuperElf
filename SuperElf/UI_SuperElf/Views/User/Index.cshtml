@@ -1,4 +1,5 @@
-﻿@model UI_SuperElf.Models.UserPipeline
+﻿@using Microsoft.AspNetCore.Http
+@model UI_SuperElf.Models.UserPipeline
 
 @{
     ViewData["Title"] = "Users";
@@ -40,39 +41,45 @@
                 Is Moderator
             </th>
             <th>
-                <a class="btn-sm btn-danger" asp-action="Create">Add user</a>
+                @if ((Context.Session.GetString("_SessionIsAdmin") == "True"))
+                {
+                    <a class="btn-sm btn-danger" asp-action="Create">Add user</a>
+                }
             </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var user in @Model.Users)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => user.firstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => user.lastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => user.userName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => user.emailaddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => user.isAdmin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => user.isModerator)
-            </td>
-            <td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => user.firstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.lastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.userName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.emailaddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.isAdmin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.isModerator)
+                </td>
+                <td>
                 <div>
-                    <a class="btn-sm" style="background-color: rgb(0, 142, 68); color: white" asp-action="Details" asp-route-id="@user.userId">Details</a> |
-                    <a class="btn-sm btn-danger" asp-action="Delete" asp-route-id="@user.userId">Delete</a>
-                </div>
-            </td>
-        </tr>
+                    <a class="btn-sm" style="background-color: rgb(0, 142, 68); color: white" asp-action="Details" asp-route-id="@user.userId">Details</a>
+                    @if ((Context.Session.GetString("_SessionIsAdmin") == "True"))
+                        {
+                            <a class="btn-sm btn-danger" asp-action ="Delete" asp-route-id = "@user.userId" > Delete </a>
+                        }
+                </div> 
+                </td>
+            </tr>
         }
     </tbody>
 </table>

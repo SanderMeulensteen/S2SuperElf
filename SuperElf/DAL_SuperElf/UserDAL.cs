@@ -220,9 +220,9 @@ namespace DAL_SuperElf
             }
             return false;
         }
-        public bool LoginCheck(string emailaddress, string password)
+        public UserDto LoginCheck(string emailaddress, string password)
         {
-            string dbPassword = null;
+            UserDto user = new UserDto();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -232,15 +232,22 @@ namespace DAL_SuperElf
                     var reader = query.ExecuteReader();
                     while (reader.Read())
                     {
-                        dbPassword = reader.GetString(5);
+                        user.userId = reader.GetInt32(0);
+                        user.emailaddress = reader.GetString(1);
+                        user.userName = reader.GetString(2);
+                        user.firstName = reader.GetString(3);
+                        user.lastName = reader.GetString(4);
+                        user.password = reader.GetString(5);
+                        user.isAdmin = reader.GetBoolean(6);
+                        user.isModerator = reader.GetBoolean(7);
                     }
                 }
             }
-            if (dbPassword == password)
+            if (user.password == password)
             {
-                return true;
+                return user;
             }
-            return false;
+            return null;
         }
     }
 }
