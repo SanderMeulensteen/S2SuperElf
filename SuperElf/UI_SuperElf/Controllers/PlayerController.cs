@@ -17,11 +17,6 @@ namespace UI_SuperElf.Controllers
         private readonly IClub _club = Club_Factory.CreateClub();
         private readonly ICompetition _competition = Competition_Factory.CreateCompetition();
         
-        //public PlayerController(IPlayer player)
-        //{
-        //    _player = player;
-        //}
-
         // GET: PlayerController
         public ActionResult Index()
         {
