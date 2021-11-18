@@ -12,13 +12,13 @@ namespace UI_SuperElf.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IUser user = User_Factory.CreateUser();
-        private readonly IUserContainer userContainer = UserContainer_Factory.CreateUserContainer();
+        private readonly IUser userLogic = User_Factory.CreateUser();
+        private readonly IUserContainer userContainerLogic = UserContainer_Factory.CreateUserContainer();
         // GET: UserController
         public ActionResult Index()
         {
             UserPipeline userPipeline = new UserPipeline();
-            List<IUser> users = userContainer.GetAllUsers();
+            List<IUser> users = userContainerLogic.GetAllUsers();
             foreach (IUser user in users)
             {
                 UserViewModel userViewModel = new UserViewModel();
@@ -37,7 +37,7 @@ namespace UI_SuperElf.Controllers
         // GET: UserController/Details/5
         public ActionResult Details(int id)
         {
-            IUser userById = userContainer.GetUserById(id);
+            IUser userById = userContainerLogic.GetUserById(id);
             UserViewModel user = new UserViewModel();
             user.userId = userById.userId;
             user.emailaddress = userById.emailaddress;
@@ -63,11 +63,11 @@ namespace UI_SuperElf.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (userContainer.EmailCheck(newUser.emailaddress))
+                if (userLogic.EmailCheck(newUser.emailaddress))
                 {
-                    if (userContainer.UserNameCheck(newUser.userName))
+                    if (userLogic.UserNameCheck(newUser.userName))
                     {
-                        userContainer.AddUser(newUser.emailaddress, newUser.userName, newUser.firstName, newUser.lastName,
+                        userContainerLogic.AddUser(newUser.emailaddress, newUser.userName, newUser.firstName, newUser.lastName,
                             newUser.password, newUser.isAdmin, newUser.isModerator);
                         return RedirectToAction("Index", "Home");
                     }
@@ -102,11 +102,11 @@ namespace UI_SuperElf.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (userContainer.EmailCheck(newUser.emailaddress))
+                if (userLogic.EmailCheck(newUser.emailaddress))
                 {
-                    if(userContainer.UserNameCheck(newUser.userName))
+                    if(userLogic.UserNameCheck(newUser.userName))
                     {
-                        userContainer.AddUser(newUser.emailaddress, newUser.userName, newUser.firstName, newUser.lastName, newUser.password, newUser.isAdmin, newUser.isModerator);
+                        userContainerLogic.AddUser(newUser.emailaddress, newUser.userName, newUser.firstName, newUser.lastName, newUser.password, newUser.isAdmin, newUser.isModerator);
                         return RedirectToAction("Index");
                     }
                     else
@@ -130,7 +130,7 @@ namespace UI_SuperElf.Controllers
         // GET: UserController/EditEmail/5
         public ActionResult EditEmail(int id)
         {
-            IUser userById = userContainer.GetUserById(id);
+            IUser userById = userContainerLogic.GetUserById(id);
             UserEditViewModel user = new UserEditViewModel();
             user.userId = userById.userId;
             user.emailaddress = userById.emailaddress;
@@ -151,9 +151,9 @@ namespace UI_SuperElf.Controllers
             if (ModelState.IsValid)
             {
                 string newEmail = updatedUser.emailaddress;
-                if (userContainer.EmailCheck(newEmail))
+                if (userLogic.EmailCheck(newEmail))
                 {
-                    user.UpdateEmail(id, newEmail);
+                    userLogic.UpdateEmail(id, newEmail);
                     return RedirectToAction("Details", new { id = id });
                 }
                 else
@@ -172,7 +172,7 @@ namespace UI_SuperElf.Controllers
         // GET: UserController/EditName/5
         public ActionResult EditName(int id)
         {
-            IUser userById = userContainer.GetUserById(id);
+            IUser userById = userContainerLogic.GetUserById(id);
             UserEditViewModel user = new UserEditViewModel();
             user.userId = userById.userId;
             user.emailaddress = userById.emailaddress;
@@ -194,7 +194,7 @@ namespace UI_SuperElf.Controllers
             {
                 string newFirstName = updatedUser.firstName;
                 string newLastName = updatedUser.lastName;
-                user.UpdateName(id, newFirstName, newLastName);
+                userLogic.UpdateName(id, newFirstName, newLastName);
                 return RedirectToAction("Details", new { id = id });
             }
             else
@@ -206,7 +206,7 @@ namespace UI_SuperElf.Controllers
         // GET: UserController/EditPermissions/5
         public ActionResult EditPermissions(int id)
         {
-            IUser userById = userContainer.GetUserById(id);
+            IUser userById = userContainerLogic.GetUserById(id);
             UserEditViewModel user = new UserEditViewModel();
             user.userId = userById.userId;
             user.emailaddress = userById.emailaddress;
@@ -228,7 +228,7 @@ namespace UI_SuperElf.Controllers
             {
                 bool isAdmin = updatedUser.isAdmin;
                 bool isModerator = updatedUser.isModerator;
-                user.UpdatePermissions(id, isAdmin, isModerator);
+                userLogic.UpdatePermissions(id, isAdmin, isModerator);
                 return RedirectToAction("Details", new { id = id });
             }
             else
@@ -240,7 +240,7 @@ namespace UI_SuperElf.Controllers
         // GET: UserController/EditUserName/5
         public ActionResult EditUserName(int id)
         {
-            IUser userById = userContainer.GetUserById(id);
+            IUser userById = userContainerLogic.GetUserById(id);
             UserEditViewModel user = new UserEditViewModel();
             user.userId = userById.userId;
             user.emailaddress = userById.emailaddress;
@@ -261,9 +261,9 @@ namespace UI_SuperElf.Controllers
             if (ModelState.IsValid)
             {
                 string newUserName = updatedUser.userName;
-                if (userContainer.UserNameCheck(newUserName))
+                if (userLogic.UserNameCheck(newUserName))
                 {
-                    user.UpdateUserName(id, newUserName);
+                    userLogic.UpdateUserName(id, newUserName);
                     return RedirectToAction("Details", new { id = id });
                 }
                 else
@@ -282,7 +282,7 @@ namespace UI_SuperElf.Controllers
         // GET: UserController/EditPassword/5
         public ActionResult EditPassword(int id)
         {
-            IUser userById = userContainer.GetUserById(id);
+            IUser userById = userContainerLogic.GetUserById(id);
             UserEditViewModel user = new UserEditViewModel();
             user.userId = userById.userId;
             user.emailaddress = userById.emailaddress;
@@ -303,7 +303,7 @@ namespace UI_SuperElf.Controllers
             if (ModelState.IsValid)
             {
                 string newPassword = updatedUser.password;
-                user.UpdatePassword(id, newPassword);
+                userLogic.UpdatePassword(id, newPassword);
                 return RedirectToAction("", new { id = id });
             }
             else
@@ -316,7 +316,7 @@ namespace UI_SuperElf.Controllers
         // GET: UserController/Delete/5
         public ActionResult Delete(int id)
         {
-            IUser userById = userContainer.GetUserById(id);
+            IUser userById = userContainerLogic.GetUserById(id);
             UserViewModel user = new UserViewModel();
             user.userId = userById.userId;
             user.emailaddress = userById.emailaddress;
@@ -339,7 +339,7 @@ namespace UI_SuperElf.Controllers
             }
             else
             {
-                userContainer.DeleteUser(id);
+                userContainerLogic.DeleteUser(id);
                 return RedirectToAction("Index");
             }
         }

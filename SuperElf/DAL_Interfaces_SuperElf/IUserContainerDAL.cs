@@ -10,7 +10,5 @@ namespace DAL_Interfaces_SuperElf
         void AddUser(UserDto userDto);
         UserDto GetUserById(int userId);
         void DeleteUser(int userId);
-        bool EmailCheck(string newEmail);
-        bool UserNameCheck(string newUserName);
     }
 }

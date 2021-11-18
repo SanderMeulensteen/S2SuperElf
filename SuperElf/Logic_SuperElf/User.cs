@@ -58,6 +58,16 @@ namespace Logic_SuperElf
         {
             userDAL.UpdatePassword(userId, newPassword);
         }
+        // Control if email is already in db
+        public bool EmailCheck(string newEmail)
+        {
+            return userDAL.EmailCheck(newEmail);
+        }
+        // Control if username is already in db
+        public bool UserNameCheck(string newUserName)
+        {
+            return userDAL.UserNameCheck(newUserName);
+        }
 
         //----Team
 
