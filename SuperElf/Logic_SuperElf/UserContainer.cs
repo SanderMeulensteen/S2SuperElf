@@ -48,6 +48,16 @@ namespace Logic_SuperElf
         {
             userDAL.DeleteUser(userId);
         }
+        // Control if email is already in db
+        public bool EmailCheck(string newEmail)
+        {
+            return userDAL.EmailCheck(newEmail);
+        }
+        // Control if username is already in db
+        public bool UserNameCheck(string newUserName)
+        {
+            return userDAL.UserNameCheck(newUserName);
+        }
         // Convert dto to user
         public IUser ConvertDtoToUser(int userId, string userName, string firstName, string lastName, string password, string emailaddress, bool isAdmin, bool isModerator)
         {

@@ -16,7 +16,5 @@
         void UpdatePermissions(int userId, bool isAdmin, bool isModerator);
         void UpdateUserName(int userId, string newUserName);
         void UpdatePassword(int userId, string newPassword);
-        bool EmailCheck(string newEmail);
-        bool UserNameCheck(string newUserName);
     }
 }
