@@ -1,4 +1,5 @@
 ﻿@using Logic_Interfaces_SuperElf
+@using Microsoft.AspNetCore.Http
 @model UI_SuperElf.Models.PlayerCreateViewModel
 
 @{
@@ -9,40 +10,49 @@
 <h4>@Model.playerName</h4>
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="EditClub">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="playerId" class="control-label" hidden></label>
-                <input asp-for="playerId" class="form-control" hidden />
-                <span asp-validation-for="playerId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="playerName" class="control-label" hidden></label>
-                <input asp-for="playerName" class="form-control" hidden/>
-                <span asp-validation-for="playerName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="position" class="control-label" hidden></label>
-                <select asp-for="position" class="form-control" hidden asp-items="@Html.GetEnumSelectList<SharedFiles.Position>()"> <option>Select position</option> </select>
-                <span asp-validation-for="position" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="club" class="control-label"></label>
-                <select asp-for="club" class="form-control">
-                    <option>Select club</option>
-                    @foreach (IClub club in @Model.allClubs)
-                    {
-                        <option value="@club.clubId"> @club.clubName </option>
-                    }
-                </select>
-                <span asp-validation-for="club" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Update" class="btn btn-success" /> 
-                <a class="btn btn-danger" asp-action="Details" asp-route-id="@Model.playerId">Back to player</a>
-            </div>
-        </form>
+@if ((Context.Session.GetString("_SessionIsAdmin") == "True") || ((Context.Session.GetString("_SessionIsMod") == "True")))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="EditClub">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="playerId" class="control-label" hidden></label>
+                    <input asp-for="playerId" class="form-control" hidden />
+                    <span asp-validation-for="playerId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="playerName" class="control-label" hidden></label>
+                    <input asp-for="playerName" class="form-control" hidden />
+                    <span asp-validation-for="playerName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="position" class="control-label" hidden></label>
+                    <select asp-for="position" class="form-control" hidden asp-items="@Html.GetEnumSelectList<SharedFiles.Position>()"> <option>Select position</option> </select>
+                    <span asp-validation-for="position" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="club" class="control-label"></label>
+                    <select asp-for="club" class="form-control">
+                        <option>Select club</option>
+                        @foreach (IClub club in @Model.allClubs)
+                        {
+                            <option value="@club.clubId"> @club.clubName </option>
+                        }
+                    </select>
+                    <span asp-validation-for="club" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-success" />
+                    <a class="btn btn-danger" asp-action="Details" asp-route-id="@Model.playerId">Back to player</a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+}
+else
+{
+    <p>
+        You are not signed in or you have no permissions to be on this page.
+    </p>
+}

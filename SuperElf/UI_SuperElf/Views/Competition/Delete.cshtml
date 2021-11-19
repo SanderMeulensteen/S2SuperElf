@@ -1,4 +1,5 @@
-﻿@model UI_SuperElf.Models.CompetitionViewModel
+﻿@using Microsoft.AspNetCore.Http
+@model UI_SuperElf.Models.CompetitionViewModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -7,25 +8,34 @@
 <h1>Delete competition</h1>
 
 <h3>Are you sure you want to delete this competition?</h3>
-<div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2" hidden>
-            @Html.DisplayNameFor(model => model.competitionId)
-        </dt>
-        <dd class = "col-sm-10" hidden>
-            @Html.DisplayFor(model => model.competitionId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.competitionName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.competitionName)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete" asp-route-id="@Model.competitionId">
-        <input type="submit" value="Delete" class="btn btn-danger" /> 
-        <a class="btn btn-success " asp-action="Index">Don't delete</a>
-    </form>
-</div>
+@if ((Context.Session.GetString("_SessionIsAdmin") == "True"))
+{
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2" hidden>
+                @Html.DisplayNameFor(model => model.competitionId)
+            </dt>
+            <dd class="col-sm-10" hidden>
+                @Html.DisplayFor(model => model.competitionId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.competitionName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.competitionName)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete" asp-route-id="@Model.competitionId">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a class="btn btn-success " asp-action="Index">Don't delete</a>
+        </form>
+    </div>
+}
+else
+{
+    <p>
+        You are not signed in or you have no permissions to be on this page.
+    </p>
+}

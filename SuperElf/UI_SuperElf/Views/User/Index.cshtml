@@ -9,7 +9,7 @@
     <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             var dt = $('#user_table').DataTable({
                 "paging": false
             });
@@ -17,10 +17,10 @@
     </script>
 }
 <h1>Users</h1>
-
-
-<table id="user_table" class="table">
-    <thead class="table-borderless table-dark" style="background-color: rgb(0, 142, 68)">
+@if ((Context.Session.GetString("_SessionIsAdmin") == "True") || ((Context.Session.GetString("_SessionIsMod") == "True")))
+{
+    <table id="user_table" class="table">
+        <thead class="table-borderless table-dark" style="background-color: rgb(0, 142, 68)">
         <tr>
             <th>
                 First Name
@@ -47,8 +47,8 @@
                 }
             </th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         @foreach (var user in @Model.Users)
         {
             <tr>
@@ -71,15 +71,22 @@
                     @Html.DisplayFor(modelItem => user.isModerator)
                 </td>
                 <td>
-                <div>
-                    <a class="btn-sm" style="background-color: rgb(0, 142, 68); color: white" asp-action="Details" asp-route-id="@user.userId">Details</a>
-                    @if ((Context.Session.GetString("_SessionIsAdmin") == "True"))
+                    <div>
+                        <a class="btn-sm" style="background-color: rgb(0, 142, 68); color: white" asp-action="Details" asp-route-id="@user.userId">Details</a>
+                        @if ((Context.Session.GetString("_SessionIsAdmin") == "True"))
                         {
-                            <a class="btn-sm btn-danger" asp-action ="Delete" asp-route-id = "@user.userId" > Delete </a>
+                            <a class="btn-sm btn-danger" asp-action="Delete" asp-route-id="@user.userId"> Delete </a>
                         }
-                </div> 
+                    </div>
                 </td>
             </tr>
         }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+}
+else
+{
+    <p>
+        You are not signed in or you have no permissions to be on this page.
+    </p>
+}

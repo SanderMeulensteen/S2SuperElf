@@ -1,4 +1,5 @@
-﻿@model UI_SuperElf.Models.CompetitionPipeline
+﻿@using Microsoft.AspNetCore.Http
+@model UI_SuperElf.Models.CompetitionPipeline
 
 @{
     ViewData["Title"] = "Competitions";
@@ -8,7 +9,7 @@
     <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             var dt = $('#competition_table').DataTable({
                 "paging": false
             });
@@ -16,32 +17,43 @@
     </script>
 }
 <h1>Competitions</h1>
-
-<table id="competition_table" class="table">
-    <thead class="table-borderless table-dark" style="background-color: rgb(0, 142, 68)">
-        <tr>
-            <th>
-                Competition name
-            </th>
-            <th style="width: 20%">
-                <a class="btn-sm btn-danger" asp-action="Create">Add competition</a>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var competition in @Model.Competitions)
-        {
+@if ((Context.Session.GetString("_SessionIsAdmin") == "True") || ((Context.Session.GetString("_SessionIsMod") == "True")))
+{
+    <table id="competition_table" class="table">
+        <thead class="table-borderless table-dark" style="background-color: rgb(0, 142, 68)">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => competition.competitionName)
-                </td>
-                <td>
-                    <div>
-                        <a class="btn-sm" style="background-color: rgb(0, 142, 68); color: white" asp-action="Details" asp-route-id="@competition.competitionId">Details</a>
-                        <a class="btn-sm btn-danger" asp-action="Delete" asp-route-id="@competition.competitionId">Delete</a>
-                    </div>
-                </td>
+                <th>
+                    Competition name
+                </th>
+                <th style="width: 20%">
+                    <a class="btn-sm btn-danger" asp-action="Create">Add competition</a>
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var competition in @Model.Competitions)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => competition.competitionName)
+                    </td>
+                    <td>
+                        <div>
+                            <a class="btn-sm" style="background-color: rgb(0, 142, 68); color: white" asp-action="Details" asp-route-id="@competition.competitionId">Details</a>
+                            @if ((Context.Session.GetString("_SessionIsAdmin") == "True"))
+                            {
+                                <a class="btn-sm btn-danger" asp-action="Delete" asp-route-id="@competition.competitionId">Delete</a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>
+        You are not signed in or you have no permissions to be on this page.
+    </p>
+}
