@@ -93,19 +93,23 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditName(int playerId, PlayerViewModel updatedPlayer)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                string newPlayerName = updatedPlayer.playerName;
-                _player.UpdatePlayerName(playerId, newPlayerName);
-                return RedirectToAction("Details", new { id = playerId });
+                return returnToPlayer();
             }
-            else
-            {
-                PlayerCreateViewModel player = new PlayerCreateViewModel();
-                player.allClubs = _competition.GetAllClubs();
-                return View(player);
-            }
+
+            string newPlayerName = updatedPlayer.playerName;
+            _player.UpdatePlayerName(playerId, newPlayerName);
+            return RedirectToAction("Details", new {id = playerId});
         }
+
+        private ActionResult returnToPlayer()
+        {
+            PlayerCreateViewModel player = new PlayerCreateViewModel();
+            player.allClubs = _competition.GetAllClubs();
+            return View(player);
+        }
+
         // GET: PlayerController/EditPosition/5
         public ActionResult EditPosition(int id)
         {

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DAL_Interfaces_SuperElf;
 using Logic_Factories_SuperElf;
 using Logic_Interfaces_SuperElf;
+using Microsoft.EntityFrameworkCore;
 using UI_SuperElf.Models;
 
 namespace UI_SuperElf.Controllers
@@ -87,19 +88,18 @@ namespace UI_SuperElf.Controllers
         // POST: ClubController/EditName/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditName(int id, ClubViewModel updatedClub)
+        public ActionResult EditName(int clubId, ClubCreateViewModel updatedClub)
         {
             if (ModelState.IsValid)
             {
                 string newClubName = updatedClub.clubName;
-                _club.UpdateClubName(id, newClubName);
-                return RedirectToAction("Details", new { id = id });
+                _club.UpdateClubName(clubId, newClubName);
+                return RedirectToAction("Details", new { id = clubId });
             }
             else
             {
-                ClubCreateViewModel club = new ClubCreateViewModel();
-                club.allCompetitions = _competitionContainer.GetAllCompetitions();
-                return View(club);
+                updatedClub.allCompetitions = _competitionContainer.GetAllCompetitions();
+                return View(updatedClub);
             }
         }
 
@@ -118,19 +118,18 @@ namespace UI_SuperElf.Controllers
         // POST: ClubController/EditCompetition/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditCompetition(int id, ClubViewModel updatedClub)
+        public ActionResult EditCompetition(int clubId, ClubCreateViewModel updatedClub)
         {
             if (ModelState.IsValid)
             {
                 int newCompetition = updatedClub.competitionId;
-                _club.UpdateCompetition(id, newCompetition);
-                return RedirectToAction("Details", new { id = id });
+                _club.UpdateCompetition(clubId, newCompetition);
+                return RedirectToAction("Details", new { id = clubId });
             }
             else
             {
-                ClubCreateViewModel club = new ClubCreateViewModel();
-                club.allCompetitions = _competitionContainer.GetAllCompetitions();
-                return View(club);
+                updatedClub.allCompetitions = _competitionContainer.GetAllCompetitions();
+                return View(updatedClub);
             }
         }
         // GET: ClubController/Delete/5

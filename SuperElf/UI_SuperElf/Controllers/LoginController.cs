@@ -29,19 +29,17 @@ namespace UI_SuperElf.Controllers
         public ActionResult Login(LoginViewModel login)
         {
             IUser user = _userContainer.LoginCheck(login.emailaddress, login.password);
-            if (user != null)
-            {
-                HttpContext.Session.SetString(SessionName, user.firstName);
-                HttpContext.Session.SetString(SessionIsAdmin, user.isAdmin.ToString());
-                HttpContext.Session.SetString(SessionIsMod, user.isModerator.ToString());
-                HttpContext.Session.SetInt32(SessionUserId, user.userId);
-                return RedirectToAction("Index", "Home");
-            }
-            else
+            if (user == null)
             {
                 ModelState.AddModelError("", "Username and/or Password is wrong.");
                 return View(login);
             }
+
+            HttpContext.Session.SetString(SessionName, user.firstName);
+            HttpContext.Session.SetString(SessionIsAdmin, user.isAdmin.ToString());
+            HttpContext.Session.SetString(SessionIsMod, user.isModerator.ToString());
+            HttpContext.Session.SetInt32(SessionUserId, user.userId);
+            return RedirectToAction("Index", "Home");
         }
         public async Task<IActionResult> Logout()
         {

@@ -26,6 +26,11 @@ namespace Logic_SuperElf
             this.position = position;
             this.club = club;
         }
+
+        public Player() : this(0,"",0,0)
+        {
+
+        }
         // Update players and manage matchrounds
         //-----Player
         // Update playername in db

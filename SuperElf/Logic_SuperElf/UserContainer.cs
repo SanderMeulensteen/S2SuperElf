@@ -62,6 +62,8 @@ namespace Logic_SuperElf
         public IUser LoginCheck(string emailaddress, string password)
         {
             UserDto userDto = _userDAL.LoginCheck(emailaddress, password);
+            if (userDto == null) return null;
+            
             IUser user = ConvertDtoToUser(userDto.userId, userDto.userName, userDto.firstName, userDto.lastName,
                 userDto.password, userDto.emailaddress, userDto.isAdmin, userDto.isModerator);
             return user;

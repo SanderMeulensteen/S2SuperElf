@@ -10,7 +10,7 @@ namespace Logic_Factories_SuperElf
     {
         public static IPlayer CreatePlayer()
         {
-            return new Player(0, "", 0, 0);
+            return new Player();
         }
     }
 }

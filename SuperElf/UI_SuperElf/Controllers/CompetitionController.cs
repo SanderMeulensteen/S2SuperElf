@@ -85,21 +85,17 @@ namespace UI_SuperElf.Controllers
         // POST: CompetitionController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, CompetitionViewModel updatedCompetition)
+        public ActionResult Edit(int competitionId, CompetitionViewModel updatedCompetition)
         {
             if (ModelState.IsValid)
             {
                 string newCompetitionName = updatedCompetition.competitionName;
-                _competition.UpdateCompetitionName(id, newCompetitionName);
-                return RedirectToAction("Details", new { id = id });
+                _competition.UpdateCompetitionName(competitionId, newCompetitionName);
+                return RedirectToAction("Details", new { id = competitionId });
             }
             else
             {
-                ICompetition competitionById = _competitionContainer.GetCompetitionById(id);
-                CompetitionViewModel competition = new CompetitionViewModel();
-                competition.competitionId = competitionById.competitionId;
-                competition.competitionName = competitionById.competitionName;
-                return View(competition);
+                return View(updatedCompetition);
             }
         }
 

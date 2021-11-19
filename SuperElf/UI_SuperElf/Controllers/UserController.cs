@@ -146,26 +146,26 @@ namespace UI_SuperElf.Controllers
         // POST: UserController/EditEmail/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditEmail(int id, UserEditViewModel updatedUser)
+        public ActionResult EditEmail(int userId, UserEditViewModel updatedUser)
         {
             if (ModelState.IsValid)
             {
                 string newEmail = updatedUser.emailaddress;
                 if (_userContainer.EmailCheck(newEmail))
                 {
-                    _user.UpdateEmail(id, newEmail);
-                    return RedirectToAction("Details", new { id = id });
+                    _user.UpdateEmail(userId, newEmail);
+                    return RedirectToAction("Details", new { id = userId });
                 }
                 else
                 {
                     ModelState.AddModelError("", "This email is already in use.");
-                    updatedUser.userId = id;
+                    updatedUser.userId = userId;
                     return View(updatedUser);
                 }
             }
             else
             {
-                updatedUser.userId = id;
+                updatedUser.userId = userId;
                 return View(updatedUser);
             }
         }
@@ -188,18 +188,18 @@ namespace UI_SuperElf.Controllers
         // POST: UserController/EditName/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditName(int id, UserEditViewModel updatedUser)
+        public ActionResult EditName(int userId, UserEditViewModel updatedUser)
         {
             if (ModelState.IsValid)
             {
                 string newFirstName = updatedUser.firstName;
                 string newLastName = updatedUser.lastName;
-                _user.UpdateName(id, newFirstName, newLastName);
-                return RedirectToAction("Details", new { id = id });
+                _user.UpdateName(userId, newFirstName, newLastName);
+                return RedirectToAction("Details", new { id = userId });
             }
             else
             {
-                updatedUser.userId = id;
+                updatedUser.userId = userId;
                 return View(updatedUser);
             }
         }
@@ -222,18 +222,18 @@ namespace UI_SuperElf.Controllers
         // POST: UserController/EditPermissions/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPermissions(int id, UserEditViewModel updatedUser)
+        public ActionResult EditPermissions(int userId, UserEditViewModel updatedUser)
         {
             if (ModelState.IsValid)
             {
                 bool isAdmin = updatedUser.isAdmin;
                 bool isModerator = updatedUser.isModerator;
-                _user.UpdatePermissions(id, isAdmin, isModerator);
-                return RedirectToAction("Details", new { id = id });
+                _user.UpdatePermissions(userId, isAdmin, isModerator);
+                return RedirectToAction("Details", new { id = userId });
             }
             else
             {
-                updatedUser.userId = id;
+                updatedUser.userId = userId;
                 return View(updatedUser);
             }
         }
@@ -256,26 +256,26 @@ namespace UI_SuperElf.Controllers
         // POST: UserController/EditUserName/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditUserName(int id, UserEditViewModel updatedUser)
+        public ActionResult EditUserName(int userId, UserEditViewModel updatedUser)
         {
             if (ModelState.IsValid)
             {
                 string newUserName = updatedUser.userName;
                 if (_userContainer.UserNameCheck(newUserName))
                 {
-                    _user.UpdateUserName(id, newUserName);
-                    return RedirectToAction("Details", new { id = id });
+                    _user.UpdateUserName(userId, newUserName);
+                    return RedirectToAction("Details", new { id = userId });
                 }
                 else
                 {
                     ModelState.AddModelError("", "This username is already in use.");
-                    updatedUser.userId = id;
+                    updatedUser.userId = userId;
                     return View(updatedUser);
                 }
             }
             else
             {
-                updatedUser.userId = id;
+                updatedUser.userId = userId;
                 return View(updatedUser);
             }
         }
@@ -298,17 +298,17 @@ namespace UI_SuperElf.Controllers
         // POST: UserController/EditPassword/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPassword(int id, UserEditViewModel updatedUser)
+        public ActionResult EditPassword(int userId, UserEditViewModel updatedUser)
         {
             if (ModelState.IsValid)
             {
                 string newPassword = updatedUser.password;
-                _user.UpdatePassword(id, newPassword);
-                return RedirectToAction("", new { id = id });
+                _user.UpdatePassword(userId, newPassword);
+                return RedirectToAction("", new { id = userId });
             }
             else
             {
-                updatedUser.userId = id;
+                updatedUser.userId = userId;
                 return View(updatedUser);
             }
         }
