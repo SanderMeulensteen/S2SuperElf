@@ -10,7 +10,7 @@ namespace Logic_Factories_SuperElf
     {
         public static ICompetition CreateCompetition()
         {
-            return new Competition(0,"");
+            return new Competition();
         }
     }
 }

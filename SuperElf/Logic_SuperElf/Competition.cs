@@ -20,6 +20,10 @@ namespace Logic_SuperElf
             this.competitionId = competitionId;
             this.competitionName = competitionName;
         }
+        public Competition() : this(0, "")
+        {
+
+        }
         // Update competition and manage clubs
         //-----Competition
         // Update competition name in db

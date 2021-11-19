@@ -10,7 +10,7 @@ namespace Logic_Factories_SuperElf
     {
         public static IClub CreateClub()
         {
-            return new Club(0,"",0);
+            return new Club();
         }
     }
 }

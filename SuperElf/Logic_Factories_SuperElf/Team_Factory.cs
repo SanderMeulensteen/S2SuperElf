@@ -10,7 +10,7 @@ namespace Logic_Factories_SuperElf
     {
         public static ITeam CreateTeam()
         {
-            return new Team(0, 0);
+            return new Team();
         }
     }
 }

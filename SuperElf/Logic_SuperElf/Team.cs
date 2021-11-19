@@ -18,6 +18,10 @@ namespace Logic_SuperElf
             this.teamPoint = teamPoint;
             this.teamFormation = teamFormation;
         }
+        public Team() : this(0, 0)
+        {
+
+        }
         // Update team
 
         //-----Team

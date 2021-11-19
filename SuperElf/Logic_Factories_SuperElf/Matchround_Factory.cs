@@ -10,7 +10,7 @@ namespace Logic_Factories_SuperElf
     {
         public static IMatchround CreateMatchround()
         {
-            return new Matchround(0,0,0,0);
+            return new Matchround();
         }
     }
 }

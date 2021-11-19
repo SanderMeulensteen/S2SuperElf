@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Logic_Factories_SuperElf;
 using Logic_Interfaces_SuperElf;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using UI_SuperElf.Models;
 
 namespace UI_SuperElf.Controllers
@@ -60,26 +61,20 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CompetitionViewModel newCompetition)
         {
-            if (ModelState.IsValid)
-            {
-                _competitionContainer.AddCompetition(newCompetition.competitionId, newCompetition.competitionName);
-                return RedirectToAction("Index");
-            }
-            else
+            if (!ModelState.IsValid)
             {
                 CompetitionViewModel competition = new CompetitionViewModel();
                 return View(competition);
             }
+
+            _competitionContainer.AddCompetition(newCompetition.competitionId, newCompetition.competitionName);
+            return RedirectToAction("Index");
         }
 
         // GET: CompetitionController/Edit/5
         public ActionResult Edit(int id)
         {
-            ICompetition competitionById = _competitionContainer.GetCompetitionById(id);
-            CompetitionViewModel competition = new CompetitionViewModel();
-            competition.competitionId = competitionById.competitionId;
-            competition.competitionName = competitionById.competitionName;
-            return View(competition);
+            return CompetitionViewModelById(id);
         }
 
         // POST: CompetitionController/Edit/5
@@ -87,26 +82,20 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int competitionId, CompetitionViewModel updatedCompetition)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                string newCompetitionName = updatedCompetition.competitionName;
-                _competition.UpdateCompetitionName(competitionId, newCompetitionName);
-                return RedirectToAction("Details", new { id = competitionId });
+                return ReturnToCompetition(competitionId);
             }
-            else
-            {
-                return View(updatedCompetition);
-            }
+
+            string newCompetitionName = updatedCompetition.competitionName;
+            _competition.UpdateCompetitionName(competitionId, newCompetitionName);
+            return RedirectToAction("Details", new {id = competitionId});
         }
 
         // GET: CompetitionController/Delete/5
         public ActionResult Delete(int id)
         {
-            ICompetition competitionById = _competitionContainer.GetCompetitionById(id);
-            CompetitionViewModel competition = new CompetitionViewModel();
-            competition.competitionId = competitionById.competitionId;
-            competition.competitionName = competitionById.competitionName;
-            return View(competition);
+            return CompetitionViewModelById(id);
         }
 
         // POST: CompetitionController/Delete/5
@@ -116,13 +105,27 @@ namespace UI_SuperElf.Controllers
         {
             if (id == 0)
             {
-                return View(competition);
-            }
-            else
-            {
-                _competitionContainer.DeleteCompetition(id);
+                ModelState.AddModelError("", "Delete could not be processed, try again later.");
                 return RedirectToAction("Index");
             }
+
+            _competitionContainer.DeleteCompetition(id);
+            return RedirectToAction("Index");
+        }
+        // Get competitionViewModel by id
+        private ActionResult CompetitionViewModelById(int id)
+        {
+            ICompetition competitionById = _competitionContainer.GetCompetitionById(id);
+            CompetitionViewModel competition = new CompetitionViewModel();
+            competition.competitionId = competitionById.competitionId;
+            competition.competitionName = competitionById.competitionName;
+            return View(competition);
+        }
+        // Return correct competition to view when an error occurs
+        private ActionResult ReturnToCompetition(int competitionId)
+        {
+            ModelState.AddModelError("", "Update could not be processed, try again later.");
+            return CompetitionViewModelById(competitionId);
         }
     }
 }

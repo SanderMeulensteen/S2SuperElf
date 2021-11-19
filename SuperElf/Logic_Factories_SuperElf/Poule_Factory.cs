@@ -10,7 +10,7 @@ namespace Logic_Factories_SuperElf
     {
         public static IPoule CreatePoule()
         {
-            return new Poule("", 0);
+            return new Poule();
         }
     }
 }

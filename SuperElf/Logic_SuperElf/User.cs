@@ -30,6 +30,10 @@ namespace Logic_SuperElf
             this.isAdmin = isAdmin;
             this.isModerator = isModerator;
         }
+        public User() : this(0, "", "", "", "", "", false, false)
+        {
+
+        }
         // Update users and manage teams
 
         //-----User

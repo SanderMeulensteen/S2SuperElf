@@ -15,7 +15,7 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.playerName)
-            | <a class="btn-sm btn-primary" asp-action="EditName" asp-route-id="@Model.playerId">Edit</a>
+            <a class="btn-sm btn-primary" asp-action="EditName" asp-route-id="@Model.playerId">Edit</a>
 
         </dd>
         <dt class = "col-sm-2">
@@ -23,7 +23,7 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.position)
-            | <a class="btn-sm btn-primary" asp-action="EditPosition" asp-route-id="@Model.playerId">Edit</a>
+            <a class="btn-sm btn-primary" asp-action="EditPosition" asp-route-id="@Model.playerId">Edit</a>
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.club)
@@ -37,7 +37,7 @@
                     break;
                 }
             }
-            | <a class="btn-sm btn-primary" asp-action="EditClub" asp-route-id="@Model.playerId">Edit</a>
+            <a class="btn-sm btn-primary" asp-action="EditClub" asp-route-id="@Model.playerId">Edit</a>
         </dd>
     </dl>
 </div>

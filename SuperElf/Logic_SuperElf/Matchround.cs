@@ -19,6 +19,11 @@ namespace Logic_SuperElf
             this.point = point;
             this.week = week;
         }
+
+        public Matchround() : this(0, 0, 0, 0)
+        {
+
+        }
         // Update matchrounds
     }
 }

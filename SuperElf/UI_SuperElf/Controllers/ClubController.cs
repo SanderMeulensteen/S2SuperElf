@@ -38,13 +38,7 @@ namespace UI_SuperElf.Controllers
         // GET: ClubController/Details/5
         public ActionResult Details(int id)
         {
-            IClub clubById = _competition.GetClubById(id);
-            ClubCreateViewModel club = new ClubCreateViewModel();
-            club.clubId = clubById.clubId;
-            club.competitionId = clubById.competitionId;
-            club.clubName = clubById.clubName;
-            club.allCompetitions = _competitionContainer.GetAllCompetitions();
-            return View(club);
+            return ClubCreateViewModelById(id);
         }
 
         // GET: ClubController/Create
@@ -60,29 +54,21 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ClubViewModel newClub)
         {
-            if (ModelState.IsValid)
-            {
-                _competition.AddClub(newClub.clubId, newClub.competitionId, newClub.clubName);
-                return RedirectToAction("Index");
-            }
-            else
+            if (!ModelState.IsValid)
             {
                 ClubCreateViewModel club = new ClubCreateViewModel();
                 club.allCompetitions = _competitionContainer.GetAllCompetitions();
                 return View(club);
             }
+
+            _competition.AddClub(newClub.clubId, newClub.competitionId, newClub.clubName);
+            return RedirectToAction("Index");
         }
 
         // GET: ClubController/EditName/5
         public ActionResult EditName(int id)
         {
-            IClub clubById = _competition.GetClubById(id);
-            ClubCreateViewModel club = new ClubCreateViewModel();
-            club.clubId = clubById.clubId;
-            club.competitionId = clubById.competitionId;
-            club.clubName = clubById.clubName;
-            club.allCompetitions = _competitionContainer.GetAllCompetitions();
-            return View(club);
+            return ClubCreateViewModelById(id);
         }
 
         // POST: ClubController/EditName/5
@@ -90,29 +76,20 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditName(int clubId, ClubCreateViewModel updatedClub)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                string newClubName = updatedClub.clubName;
-                _club.UpdateClubName(clubId, newClubName);
-                return RedirectToAction("Details", new { id = clubId });
+                return ReturnToClub(clubId);
             }
-            else
-            {
-                updatedClub.allCompetitions = _competitionContainer.GetAllCompetitions();
-                return View(updatedClub);
-            }
+
+            string newClubName = updatedClub.clubName;
+            _club.UpdateClubName(clubId, newClubName);
+            return RedirectToAction("Details", new {id = clubId});
         }
 
         // GET: ClubController/EditCompetition/5
         public ActionResult EditCompetition(int id)
         {
-            IClub clubById = _competition.GetClubById(id);
-            ClubCreateViewModel club = new ClubCreateViewModel();
-            club.clubId = clubById.clubId;
-            club.competitionId = clubById.competitionId;
-            club.clubName = clubById.clubName;
-            club.allCompetitions = _competitionContainer.GetAllCompetitions();
-            return View(club);
+            return ClubCreateViewModelById(id);
         }
 
         // POST: ClubController/EditCompetition/5
@@ -120,28 +97,19 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditCompetition(int clubId, ClubCreateViewModel updatedClub)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                int newCompetition = updatedClub.competitionId;
-                _club.UpdateCompetition(clubId, newCompetition);
-                return RedirectToAction("Details", new { id = clubId });
+                return ReturnToClub(clubId);
             }
-            else
-            {
-                updatedClub.allCompetitions = _competitionContainer.GetAllCompetitions();
-                return View(updatedClub);
-            }
+
+            int newCompetition = updatedClub.competitionId;
+            _club.UpdateCompetition(clubId, newCompetition);
+            return RedirectToAction("Details", new {id = clubId});
         }
         // GET: ClubController/Delete/5
         public ActionResult Delete(int id)
         {
-            IClub clubById = _competition.GetClubById(id);
-            ClubCreateViewModel club = new ClubCreateViewModel();
-            club.clubId = clubById.clubId;
-            club.competitionId = clubById.competitionId;
-            club.clubName = clubById.clubName;
-            club.allCompetitions = _competitionContainer.GetAllCompetitions();
-            return View(club);
+            return ClubCreateViewModelById(id);
         }
 
         // POST: ClubController/Delete/5
@@ -151,13 +119,29 @@ namespace UI_SuperElf.Controllers
         {
             if (id == 0)
             {
-                return View(club);
-            }
-            else
-            {
-                _competition.DeleteClub(id);
+                ModelState.AddModelError("", "Delete could not be processed, try again later.");
                 return RedirectToAction("Index");
             }
+
+            _competition.DeleteClub(id);
+            return RedirectToAction("Index");
+        }
+        // Create clubCreateViewModel by id
+        private ActionResult ClubCreateViewModelById(int id)
+        {
+            IClub clubById = _competition.GetClubById(id);
+            ClubCreateViewModel club = new ClubCreateViewModel();
+            club.clubId = clubById.clubId;
+            club.competitionId = clubById.competitionId;
+            club.clubName = clubById.clubName;
+            club.allCompetitions = _competitionContainer.GetAllCompetitions();
+            return View(club);
+        }
+        // Return correct club to view when an error occurs
+        private ActionResult ReturnToClub(int playerId)
+        {
+            ModelState.AddModelError("", "Update could not be processed, try again later.");
+            return ClubCreateViewModelById(playerId);
         }
     }
 }

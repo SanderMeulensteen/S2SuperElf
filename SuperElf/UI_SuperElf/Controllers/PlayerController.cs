@@ -39,8 +39,7 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/Details/5
         public ActionResult Details(int id)
         {
-            PlayerCreateViewModel player = PlayerCreateViewModel(id);
-            return View(player);
+            return PlayerCreateViewModelById(id);
         }
 
         // GET: PlayerController/Create
@@ -71,8 +70,7 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/EditName/5
         public ActionResult EditName(int id)
         {
-            PlayerCreateViewModel player = PlayerCreateViewModel(id);
-            return View(player);
+            return PlayerCreateViewModelById(id);
         }
 
         // POST: PlayerController/EditName/5
@@ -82,7 +80,7 @@ namespace UI_SuperElf.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return returnToPlayer(playerId);
+                return ReturnToPlayer(playerId);
             }
 
             string newPlayerName = updatedPlayer.playerName;
@@ -93,8 +91,7 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/EditPosition/5
         public ActionResult EditPosition(int id)
         {
-            PlayerCreateViewModel player = PlayerCreateViewModel(id);
-            return View(player);
+            return PlayerCreateViewModelById(id);
         }
 
         // POST: PlayerController/EditPosition/5
@@ -104,7 +101,7 @@ namespace UI_SuperElf.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return returnToPlayer(playerId);
+                return ReturnToPlayer(playerId);
             }
 
             int newPlayerPosition = (int) updatedPlayer.position;
@@ -115,8 +112,7 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/EditClub/5
         public ActionResult EditClub(int id)
         {
-            PlayerCreateViewModel player = PlayerCreateViewModel(id);
-            return View(player);
+            return PlayerCreateViewModelById(id);
         }
 
         // POST: PlayerController/EditClub/5
@@ -126,7 +122,7 @@ namespace UI_SuperElf.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return returnToPlayer(playerId);
+                return ReturnToPlayer(playerId);
             }
 
             int newClub = updatedPlayer.club;
@@ -137,8 +133,7 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/Delete/5
         public ActionResult Delete(int id)
         {
-            PlayerCreateViewModel player = PlayerCreateViewModel(id);
-            return View(player);
+            return PlayerCreateViewModelById(id);
         }
 
         // POST: PlayerController/Delete/5
@@ -148,14 +143,15 @@ namespace UI_SuperElf.Controllers
         {
             if (id == 0)
             {
-                return returnToPlayer(id);
+                ModelState.AddModelError("", "Delete could not be processed, try again later.");
+                return RedirectToAction("Index");
             }
 
             _club.DeletePlayer(id);
             return RedirectToAction("Index");
         }
         // Create PlayerCreateViewModel
-        private PlayerCreateViewModel PlayerCreateViewModel(int playerId)
+        private ActionResult PlayerCreateViewModelById(int playerId)
         {
             IPlayer playerById = _club.GetPlayerById(playerId);
             PlayerCreateViewModel player = new PlayerCreateViewModel();
@@ -164,15 +160,14 @@ namespace UI_SuperElf.Controllers
             player.position = playerById.position;
             player.club = playerById.club;
             player.allClubs = _competition.GetAllClubs();
-            return player;
+            return View(player);
         }
 
-        // return correct player to view when an error occurs
-        private ActionResult returnToPlayer(int playerId)
+        // Return correct player to view when an error occurs
+        private ActionResult ReturnToPlayer(int playerId)
         {
-            PlayerCreateViewModel player = PlayerCreateViewModel(playerId);
             ModelState.AddModelError("", "Update could not be processed, try again later.");
-            return View(player);
+            return PlayerCreateViewModelById(playerId);
         }
     }
 }
