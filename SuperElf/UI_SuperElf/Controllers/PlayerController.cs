@@ -39,13 +39,7 @@ namespace UI_SuperElf.Controllers
         // GET: PlayerController/Details/5
         public ActionResult Details(int id)
         {
-            IPlayer playerById = _club.GetPlayerById(id);
-            PlayerCreateViewModel player = new PlayerCreateViewModel();
-            player.playerId = playerById.playerId;
-            player.playerName = playerById.playerName;
-            player.position = playerById.position;
-            player.club = playerById.club;
-            player.allClubs = _competition.GetAllClubs();
+            PlayerCreateViewModel player = PlayerCreateViewModel(id);
             return View(player);
         }
 
@@ -62,29 +56,22 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PlayerViewModel playerViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                _club.AddPlayer(playerViewModel.playerId, playerViewModel.playerName, (int) playerViewModel.position, playerViewModel.club);
-                return RedirectToAction("Index");
-            }
-            else
+            if (!ModelState.IsValid)
             {
                 PlayerCreateViewModel player = new PlayerCreateViewModel();
                 player.allClubs = _competition.GetAllClubs();
                 return View(player);
             }
+
+            _club.AddPlayer(playerViewModel.playerId, playerViewModel.playerName, (int) playerViewModel.position,
+                playerViewModel.club);
+            return RedirectToAction("Index");
         }
 
         // GET: PlayerController/EditName/5
         public ActionResult EditName(int id)
         {
-            IPlayer playerById = _club.GetPlayerById(id);
-            PlayerCreateViewModel player = new PlayerCreateViewModel();
-            player.playerId = playerById.playerId;
-            player.playerName = playerById.playerName;
-            player.position = playerById.position;
-            player.club = playerById.club;
-            player.allClubs = _competition.GetAllClubs();
+            PlayerCreateViewModel player = PlayerCreateViewModel(id);
             return View(player);
         }
 
@@ -95,7 +82,7 @@ namespace UI_SuperElf.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return returnToPlayer();
+                return returnToPlayer(playerId);
             }
 
             string newPlayerName = updatedPlayer.playerName;
@@ -103,23 +90,10 @@ namespace UI_SuperElf.Controllers
             return RedirectToAction("Details", new {id = playerId});
         }
 
-        private ActionResult returnToPlayer()
-        {
-            PlayerCreateViewModel player = new PlayerCreateViewModel();
-            player.allClubs = _competition.GetAllClubs();
-            return View(player);
-        }
-
         // GET: PlayerController/EditPosition/5
         public ActionResult EditPosition(int id)
         {
-            IPlayer playerById = _club.GetPlayerById(id);
-            PlayerCreateViewModel player = new PlayerCreateViewModel();
-            player.playerId = playerById.playerId;
-            player.playerName = playerById.playerName;
-            player.position = playerById.position;
-            player.club = playerById.club;
-            player.allClubs = _competition.GetAllClubs();
+            PlayerCreateViewModel player = PlayerCreateViewModel(id);
             return View(player);
         }
 
@@ -128,30 +102,20 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditPosition(int playerId, PlayerViewModel updatedPlayer)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                int newPlayerPosition = (int) updatedPlayer.position;
-                _player.UpdatePlayerPosition(playerId, newPlayerPosition);
-                return RedirectToAction("Details", new { id = playerId });
+                return returnToPlayer(playerId);
             }
-            else
-            {
-                PlayerCreateViewModel player = new PlayerCreateViewModel();
-                player.allClubs = _competition.GetAllClubs();
-                return View(player);
-            }
+
+            int newPlayerPosition = (int) updatedPlayer.position;
+            _player.UpdatePlayerPosition(playerId, newPlayerPosition);
+            return RedirectToAction("Details", new {id = playerId});
         }
 
         // GET: PlayerController/EditClub/5
         public ActionResult EditClub(int id)
         {
-            IPlayer playerById = _club.GetPlayerById(id);
-            PlayerCreateViewModel player = new PlayerCreateViewModel();
-            player.playerId = playerById.playerId;
-            player.playerName = playerById.playerName;
-            player.position = playerById.position;
-            player.club = playerById.club;
-            player.allClubs = _competition.GetAllClubs();
+            PlayerCreateViewModel player = PlayerCreateViewModel(id);
             return View(player);
         }
 
@@ -160,47 +124,55 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditClub(int playerId, PlayerViewModel updatedPlayer)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                int newClub = updatedPlayer.club;
-                _player.UpdatePlayerClub(playerId, newClub);
-                return RedirectToAction("Details", new { id = playerId });
+                return returnToPlayer(playerId);
             }
-            else
-            {
-                PlayerCreateViewModel player = new PlayerCreateViewModel();
-                player.allClubs = _competition.GetAllClubs();
-                return View(player);
-            }
+
+            int newClub = updatedPlayer.club;
+            _player.UpdatePlayerClub(playerId, newClub);
+            return RedirectToAction("Details", new {id = playerId});
         }
 
         // GET: PlayerController/Delete/5
         public ActionResult Delete(int id)
         {
-            IPlayer playerById = _club.GetPlayerById(id);
-            PlayerCreateViewModel player = new PlayerCreateViewModel();
-            player.playerId = playerById.playerId;
-            player.playerName = playerById.playerName;
-            player.position = playerById.position;
-            player.club = playerById.club;
-            player.allClubs = _competition.GetAllClubs();
+            PlayerCreateViewModel player = PlayerCreateViewModel(id);
             return View(player);
         }
 
         // POST: PlayerController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, PlayerCreateViewModel player)
+        public ActionResult Delete(int id, PlayerViewModel player)
         {
             if (id == 0)
             {
-                return View(player);
+                return returnToPlayer(id);
             }
-            else
-            {
-                _club.DeletePlayer(id);
-                return RedirectToAction("Index");
-            }
+
+            _club.DeletePlayer(id);
+            return RedirectToAction("Index");
+        }
+        // Create PlayerCreateViewModel
+        private PlayerCreateViewModel PlayerCreateViewModel(int playerId)
+        {
+            IPlayer playerById = _club.GetPlayerById(playerId);
+            PlayerCreateViewModel player = new PlayerCreateViewModel();
+            player.playerId = playerById.playerId;
+            player.playerName = playerById.playerName;
+            player.position = playerById.position;
+            player.club = playerById.club;
+            player.allClubs = _competition.GetAllClubs();
+            return player;
+        }
+
+        // return correct player to view when an error occurs
+        private ActionResult returnToPlayer(int playerId)
+        {
+            PlayerCreateViewModel player = PlayerCreateViewModel(playerId);
+            ModelState.AddModelError("", "Update could not be processed, try again later.");
+            return View(player);
         }
     }
 }
