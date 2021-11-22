@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Http
+@model UI_SuperElf.Models.FormationViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create formation</h1>
+
+<hr />
+@if ((Context.Session.GetString("_SessionIsAdmin") == "True") || ((Context.Session.GetString("_SessionIsMod") == "True")))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="formationId" class="control-label" hidden></label>
+                    <input asp-for="formationId" class="form-control" hidden />
+                    <span asp-validation-for="formationId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="formationName" class="control-label"></label>
+                    <input asp-for="formationName" class="form-control" />
+                    <span asp-validation-for="formationName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <a class="btn btn-danger" asp-action="Index">Back to formations</a>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+    <p>
+        You are not signed in or you have no permissions to be on this page.
+    </p>
+}
