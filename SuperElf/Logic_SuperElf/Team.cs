@@ -10,16 +10,20 @@ namespace Logic_SuperElf
 {
     public class Team : ITeam
     {
-        private IFormationContainerDAL formationDal = FormationDAL_Factory.CreateFormationContainerDAL();
+        private readonly IFormationContainerDAL formationDal = FormationDAL_Factory.CreateFormationContainerDAL();
+        public int teamId { get; private set; }
+        public int userId { get; private set; }
         public int teamPoint { get; private set; }
-        public int teamFormation { get; private set; }
+        public int formationId { get; private set; }
 
-        public Team(int teamPoint, int teamFormation)
+        public Team(int teamId, int userId, int teamPoint, int formationId)
         {
+            this.teamId = teamId;
+            this.userId = userId;
             this.teamPoint = teamPoint;
-            this.teamFormation = teamFormation;
+            this.formationId = formationId;
         }
-        public Team() : this(0, 0)
+        public Team() : this(0, 0,0,0)
         {
 
         }

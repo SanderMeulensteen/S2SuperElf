@@ -1,0 +1,56 @@
+﻿@using Logic_Interfaces_SuperElf
+@model UI_SuperElf.Models.MyTeamViewModel
+
+@{
+    ViewData["Title"] = "MyTeam";
+}
+
+<h1>My Team</h1>
+
+@if (@Model.Players.Count != 0)
+{
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.formation)
+            </dt>
+            <dd class="col-sm-10">
+                @foreach (IFormation formation in @Model.formations)
+                {
+                    if (formation.formationId == @Model.formation)
+                    {
+                        @formation.formationName
+                        ;
+                        break;
+                    }
+                }
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.teamPoints)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.teamPoints)
+            </dd>
+            <dt class="col-sm-2">
+                Team:
+            </dt>
+            @foreach (IPlayer player in @Model.Players)
+            {
+                <dt class="col-sm-2">
+
+                </dt>
+                <dd class="col-sm-10">
+                    @player.playerName
+                </dd>
+            }
+        </dl>
+    </div>
+}
+else
+{
+    <p>
+        You currently have no team.
+    </p>
+    <a class="btn btn-primary" asp-action="Create">Create team</a>
+}

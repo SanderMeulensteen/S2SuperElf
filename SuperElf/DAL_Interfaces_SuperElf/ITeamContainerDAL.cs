@@ -6,5 +6,7 @@ namespace DAL_Interfaces_SuperElf
 {
     public interface ITeamContainerDAL
     {
+        TeamDto GetTeamById(int userId);
+        int GetTeamIdByUserId(int userId);
     }
 }

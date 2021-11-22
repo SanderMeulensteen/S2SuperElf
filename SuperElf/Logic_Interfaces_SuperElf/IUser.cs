@@ -1,4 +1,6 @@
-﻿namespace Logic_Interfaces_SuperElf
+﻿using System.Collections.Generic;
+
+namespace Logic_Interfaces_SuperElf
 {
     public interface IUser
     {
@@ -16,5 +18,7 @@
         void UpdatePermissions(int userId, bool isAdmin, bool isModerator);
         void UpdateUserName(int userId, string newUserName);
         void UpdatePassword(int userId, string newPassword);
+        ITeam GetTeamDetailsById(int userId);
+        List<IPlayer> GetPlayersFromTeam(int userId);
     }
 }

@@ -1,4 +1,5 @@
 ﻿@using System.Threading
+@using Logic_Interfaces_SuperElf
 @using Logic_SuperElf
 @using Microsoft.AspNetCore.Http
 @model UI_SuperElf.Models.CompetitionDetailsViewModel
@@ -31,7 +32,7 @@
         <dt class="col-sm-2">
             Clubs:
         </dt>
-        @foreach (Club club in @Model.clubs)
+        @foreach (IClub club in @Model.clubs)
         {
             <dt class="col-sm-2">
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using DAL_Interfaces_SuperElf;
 using Microsoft.Data.SqlClient;
@@ -134,6 +135,58 @@ namespace DAL_SuperElf
                     query.ExecuteNonQuery();
                 }
             }
+        }
+        // Get players from MyTeam by userId
+        public List<PlayerDto> GetPlayersFromTeam(int teamId)
+        {
+            List<int> players = new List<int>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand query = new SqlCommand("select * from player_teamTable where TeamId = @teamId", conn))
+                {
+                    query.Parameters.AddWithValue("@teamId", teamId);
+                    var reader = query.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        players.Add(reader.GetInt32(0));
+                    }
+                }
+                conn.Close();
+            }
+            List<PlayerDto> playerDtos = GetPlayersFromList(players);
+            return playerDtos;
+        }
+        public List<PlayerDto> GetPlayersFromList(List<int> players)
+        {
+            List<PlayerDto> playerDtos = new List<PlayerDto>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                if (players.Count != 0)
+                {
+                    foreach (int playerId in players)
+                    {
+                        conn.Open();
+                        using (SqlCommand query =
+                            new SqlCommand("select * from playerTable where PlayerId = @Id", conn))
+                        {
+                            query.Parameters.AddWithValue("@Id", playerId);
+                            var reader = query.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                PlayerDto player = new PlayerDto();
+                                player.playerId = reader.GetInt32(0);
+                                player.playerName = reader.GetString(2);
+                                player.position = reader.GetInt32(3);
+                                player.club = reader.GetInt32(1);
+                                playerDtos.Add(player);
+                            }
+                        }
+                        conn.Close();
+                    }
+                }
+            }
+            return playerDtos;
         }
     }
 }

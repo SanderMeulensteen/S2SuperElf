@@ -10,5 +10,6 @@ namespace DAL_Interfaces_SuperElf
         void AddPlayer(PlayerDto playerDto);
         void DeletePlayer(int id);
         PlayerDto GetPlayerDtoById(int playerId);
+        List<PlayerDto> GetPlayersFromTeam(int teamId);
     }
 }
