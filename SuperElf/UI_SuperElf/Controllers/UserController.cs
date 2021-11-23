@@ -52,7 +52,24 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel newUser)
         {
-            return AddUser(newUser);
+            if (!ModelState.IsValid)
+            {
+                RegisterViewModel user = new RegisterViewModel();
+                return View();
+            }
+            if (!_userContainer.EmailCheck(newUser.emailaddress))
+            {
+                ModelState.AddModelError("", "This email is already in use.");
+                return View(newUser);
+            }
+            if (!_userContainer.UserNameCheck(newUser.userName))
+            {
+                ModelState.AddModelError("", "This username is already in use.");
+                return View(newUser);
+            }
+            _userContainer.AddUser(newUser.emailaddress, newUser.userName, newUser.firstName,
+                newUser.lastName, newUser.password, newUser.isAdmin, newUser.isModerator);
+            return RedirectToAction("Login","Login");
         }
         // GET: UserController/Create
         public ActionResult Create()
@@ -66,7 +83,24 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(RegisterViewModel newUser)
         {
-            return AddUser(newUser);
+            if (!ModelState.IsValid)
+            {
+                RegisterViewModel user = new RegisterViewModel();
+                return View();
+            }
+            if (!_userContainer.EmailCheck(newUser.emailaddress))
+            {
+                ModelState.AddModelError("", "This email is already in use.");
+                return View(newUser);
+            }
+            if (!_userContainer.UserNameCheck(newUser.userName))
+            {
+                ModelState.AddModelError("", "This username is already in use.");
+                return View(newUser);
+            }
+            _userContainer.AddUser(newUser.emailaddress, newUser.userName, newUser.firstName,
+                newUser.lastName, newUser.password, newUser.isAdmin, newUser.isModerator);
+            return RedirectToAction("Index");
         }
 
         // GET: UserController/EditEmail/5
@@ -235,28 +269,6 @@ namespace UI_SuperElf.Controllers
         {
             ModelState.AddModelError("", "Update could not be processed, try again later.");
             return UserEditViewModelById(userId);
-        }
-        // Add user to db
-        private ActionResult AddUser(RegisterViewModel newUser)
-        {
-            if (!ModelState.IsValid)
-            {
-                RegisterViewModel user = new RegisterViewModel();
-                return View();
-            }
-            if (!_userContainer.EmailCheck(newUser.emailaddress))
-            {
-                ModelState.AddModelError("", "This email is already in use.");
-                return View(newUser);
-            }
-            if (!_userContainer.UserNameCheck(newUser.userName))
-            {
-                ModelState.AddModelError("", "This username is already in use.");
-                return View(newUser);
-            }
-            _userContainer.AddUser(newUser.emailaddress, newUser.userName, newUser.firstName,
-                newUser.lastName, newUser.password, newUser.isAdmin, newUser.isModerator);
-            return RedirectToAction("Index");
         }
     }
 }

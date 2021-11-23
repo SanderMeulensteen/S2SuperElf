@@ -1,0 +1,15 @@
+﻿@using Logic_Interfaces_SuperElf
+@model UI_SuperElf.Models.MyTeamViewModel
+
+@{
+    ViewData["Title"] = "MyTeam";
+}
+
+<h1>Choose formation</h1>
+
+<div>
+    @foreach (IFormation formation in @Model.formations)
+    {
+        <a class="btn btn-primary" asp-action="Create" asp-route-id="@formation.formationId">@formation.formationName</a>
+    }
+</div>

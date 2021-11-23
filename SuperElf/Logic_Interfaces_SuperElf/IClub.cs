@@ -14,5 +14,9 @@ namespace Logic_Interfaces_SuperElf
         void DeletePlayer(int playerId);
         IPlayer GetPlayerById(int playerId);
         IPlayer ConvertDtoToPlayer(int playerId, string playerName, int position, int club);
+        List<IPlayer> GetAllKeepers();
+        List<IPlayer> GetAllDefenders();
+        List<IPlayer> GetAllMidfielders();
+        List<IPlayer> GetAllForwards();
     }
 }

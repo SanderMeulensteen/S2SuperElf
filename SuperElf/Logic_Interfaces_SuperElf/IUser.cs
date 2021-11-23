@@ -20,5 +20,7 @@ namespace Logic_Interfaces_SuperElf
         void UpdatePassword(int userId, string newPassword);
         ITeam GetTeamDetailsById(int userId);
         List<IPlayer> GetPlayersFromTeam(int userId);
+        int AddTeam(int userId, int formationId);
+        void AddPlayersToTeam(int teamId, List<int> players);
     }
 }

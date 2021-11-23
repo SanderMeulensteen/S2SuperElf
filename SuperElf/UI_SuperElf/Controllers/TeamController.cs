@@ -15,6 +15,7 @@ namespace UI_SuperElf.Controllers
     {
         private readonly ITeam _team = Team_Factory.CreateTeam();
         private readonly IUser _user = User_Factory.CreateUser();
+        private readonly IClub _club = Club_Factory.CreateClub();
         // GET: TeamController
         public ActionResult Index()
         {
@@ -47,25 +48,57 @@ namespace UI_SuperElf.Controllers
             return View(myTeam);
         }
 
-        // GET: TeamController/Create
-        public ActionResult Create()
+        // Get formation for create team
+        public ActionResult ChooseTeamFormation()
         {
-            return View();
+            MyTeamViewModel myTeamViewModel = new MyTeamViewModel();
+            myTeamViewModel.formations = _team.GetAllFormations();
+            return View(myTeamViewModel);
+        }
+
+        // GET: TeamController/Create
+        public ActionResult Create(int id)
+        {
+            TeamCreateViewModel teamCreateViewModel = new TeamCreateViewModel();
+            teamCreateViewModel.keepers = _club.GetAllKeepers();
+            teamCreateViewModel.defenders = _club.GetAllDefenders();
+            teamCreateViewModel.midfielders = _club.GetAllMidfielders();
+            teamCreateViewModel.forwards = _club.GetAllForwards();
+            teamCreateViewModel.formationId = id;
+            return View(teamCreateViewModel);
         }
 
         // POST: TeamController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(TeamAddModel newTeam)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                TeamCreateViewModel teamCreateViewModel = new TeamCreateViewModel();
+                teamCreateViewModel.keepers = _club.GetAllKeepers();
+                teamCreateViewModel.defenders = _club.GetAllDefenders();
+                teamCreateViewModel.midfielders = _club.GetAllMidfielders();
+                teamCreateViewModel.forwards = _club.GetAllForwards();
+                teamCreateViewModel.formationId = newTeam.formationId;
+                ModelState.AddModelError("", "Select for each position a player.");
+                return View(teamCreateViewModel);
             }
-            catch
-            {
-                return View();
-            }
+            List<int> players = new List<int>();
+            players.Add(newTeam.playerId1);
+            players.Add(newTeam.playerId2);
+            players.Add(newTeam.playerId3);
+            players.Add(newTeam.playerId4);
+            players.Add(newTeam.playerId5);
+            players.Add(newTeam.playerId6);
+            players.Add(newTeam.playerId7);
+            players.Add(newTeam.playerId8);
+            players.Add(newTeam.playerId9);
+            players.Add(newTeam.playerId10);
+            players.Add(newTeam.playerId11);
+            int teamId = _user.AddTeam(newTeam.userId, newTeam.formationId);
+            _user.AddPlayersToTeam(teamId, players);
+            return RedirectToAction("MyTeam");
         }
 
         // GET: TeamController/Edit/5

@@ -82,5 +82,61 @@ namespace Logic_SuperElf
             Player player = new Player(playerId, playerName, (Position) position, club);
             return player;
         }
+        // Get all keepers from db
+        public List<IPlayer> GetAllKeepers()
+        {
+            List<PlayerDto> allPlayers = playerDAL.GetAllPlayers();
+            List<IPlayer> keepers = new List<IPlayer>();
+            foreach (PlayerDto player in allPlayers)
+            {
+                if (player.position == 0)
+                {
+                    keepers.Add(ConvertDtoToPlayer(player.playerId, player.playerName, player.position, player.club));
+                }
+            }
+            return keepers;
+        }
+        // Get all Defenders from db
+        public List<IPlayer> GetAllDefenders()
+        {
+            List<PlayerDto> allPlayers = playerDAL.GetAllPlayers();
+            List<IPlayer> defenders = new List<IPlayer>();
+            foreach (PlayerDto player in allPlayers)
+            {
+                if (player.position == 1)
+                {
+                    defenders.Add(ConvertDtoToPlayer(player.playerId, player.playerName, player.position, player.club));
+                }
+            }
+            return defenders;
+        }
+        // Get all midfielders from db
+        public List<IPlayer> GetAllMidfielders()
+        {
+            List<PlayerDto> allPlayers = playerDAL.GetAllPlayers();
+            List<IPlayer> midfielders = new List<IPlayer>();
+            foreach (PlayerDto player in allPlayers)
+            {
+                if (player.position == 2)
+                {
+                    midfielders.Add(ConvertDtoToPlayer(player.playerId, player.playerName, player.position, player.club));
+                }
+            }
+            return midfielders;
+        }
+        // Get all forwards from db
+        public List<IPlayer> GetAllForwards()
+        {
+            List<PlayerDto> allPlayers = playerDAL.GetAllPlayers();
+            List<IPlayer> forwards = new List<IPlayer>();
+            foreach (PlayerDto player in allPlayers)
+            {
+                if (player.position == 3)
+                {
+                    forwards.Add(ConvertDtoToPlayer(player.playerId, player.playerName, player.position, player.club));
+                }
+            }
+            return forwards;
+        }
     }
 }

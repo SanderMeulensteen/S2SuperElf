@@ -38,7 +38,6 @@ namespace Logic_SuperElf
 
         }
         // Update users and manage teams
-
         //-----User
         // Update email in db
         public void UpdateEmail(int userId, string newEmail)
@@ -89,6 +88,17 @@ namespace Logic_SuperElf
                 }
             }
             return players;
+        }
+        // Create team in db and return teamId
+        public int AddTeam(int userId, int formationId)
+        {
+            
+            return 0;
+        }
+        // Add players to MyTeam
+        public void AddPlayersToTeam(int teamId, List<int> players)
+        {
+
         }
         // Convert dto to player
         public IPlayer ConvertDtoToPlayer(int playerId, int clubId, int position, string playerName)
