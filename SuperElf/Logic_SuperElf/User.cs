@@ -92,13 +92,13 @@ namespace Logic_SuperElf
         // Create team in db and return teamId
         public int AddTeam(int userId, int formationId)
         {
-            
-            return 0;
+            int teamId = teamDAL.AddTeam(userId, formationId);
+            return teamId;
         }
         // Add players to MyTeam
         public void AddPlayersToTeam(int teamId, List<int> players)
         {
-
+            teamDAL.AddPlayersToTeam(teamId, players);
         }
         // Convert dto to player
         public IPlayer ConvertDtoToPlayer(int playerId, int clubId, int position, string playerName)

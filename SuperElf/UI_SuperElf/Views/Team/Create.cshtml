@@ -7,7 +7,7 @@
 }
 
 <h1>Create team</h1>
-
+<p>Click on players in the menu to see all players.</p>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -35,6 +35,7 @@
             </div>
             @if (@Model.formationId == 1) //4-4-2
             {
+                <p>Formation: 4-4-2</p>
                 <div class="form-group">
                     <label asp-for="playerId1" class="control-label"></label>
                     <select asp-for="playerId1" class="form-control">
@@ -49,6 +50,7 @@
                 <div class="form-group">
                     <label asp-for="playerId2" class="control-label"></label>
                     <select asp-for="playerId2" class="form-control">
+                        <option>-Select defender-</option>
                         @foreach (IPlayer player in @Model.defenders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -59,6 +61,7 @@
                 <div class="form-group">
                     <label asp-for="playerId3" class="control-label"></label>
                     <select asp-for="playerId3" class="form-control">
+                        <option>-Select defender-</option>
                         @foreach (IPlayer player in @Model.defenders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -69,6 +72,7 @@
                 <div class="form-group">
                     <label asp-for="playerId4" class="control-label"></label>
                     <select asp-for="playerId4" class="form-control">
+                        <option>-Select defender-</option>
                         @foreach (IPlayer player in @Model.defenders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -79,6 +83,7 @@
                 <div class="form-group">
                     <label asp-for="playerId5" class="control-label"></label>
                     <select asp-for="playerId5" class="form-control">
+                        <option>-Select defender-</option>
                         @foreach (IPlayer player in @Model.defenders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -89,6 +94,7 @@
                 <div class="form-group">
                     <label asp-for="playerId6" class="control-label"></label>
                     <select asp-for="playerId6" class="form-control">
+                        <option>-Select midfielder-</option>
                         @foreach (IPlayer player in @Model.midfielders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -99,6 +105,7 @@
                 <div class="form-group">
                     <label asp-for="playerId7" class="control-label"></label>
                     <select asp-for="playerId7" class="form-control">
+                        <option>-Select midfielder-</option>
                         @foreach (IPlayer player in @Model.midfielders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -109,6 +116,7 @@
                 <div class="form-group">
                     <label asp-for="playerId8" class="control-label"></label>
                     <select asp-for="playerId8" class="form-control">
+                        <option>-Select midfielder-</option>
                         @foreach (IPlayer player in @Model.midfielders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -119,6 +127,7 @@
                 <div class="form-group">
                     <label asp-for="playerId9" class="control-label"></label>
                     <select asp-for="playerId9" class="form-control">
+                        <option>-Select midfielder-</option>
                         @foreach (IPlayer player in @Model.midfielders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -129,6 +138,7 @@
                 <div class="form-group">
                     <label asp-for="playerId10" class="control-label"></label>
                     <select asp-for="playerId10" class="form-control">
+                        <option>-Select forward-</option>
                         @foreach (IPlayer player in @Model.forwards)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -139,6 +149,7 @@
                 <div class="form-group">
                     <label asp-for="playerId11" class="control-label"></label>
                     <select asp-for="playerId11" class="form-control">
+                        <option>-Select forward-</option>
                         @foreach (IPlayer player in @Model.forwards)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -149,9 +160,11 @@
             }
             else if (@Model.formationId == 2) //4-3-3
             {
+                <p>Formation: 4-3-3</p>
                 <div class="form-group">
                     <label asp-for="playerId1" class="control-label"></label>
                     <select asp-for="playerId1" class="form-control">
+                        <option>-Select goalkeeper-</option>
                         @foreach (IPlayer player in @Model.keepers)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -162,6 +175,7 @@
                 <div class="form-group">
                     <label asp-for="playerId2" class="control-label"></label>
                     <select asp-for="playerId2" class="form-control">
+                        <option>-Select defender-</option>
                         @foreach (IPlayer player in @Model.defenders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -172,6 +186,7 @@
                 <div class="form-group">
                     <label asp-for="playerId3" class="control-label"></label>
                     <select asp-for="playerId3" class="form-control">
+                        <option>-Select defender-</option>
                         @foreach (IPlayer player in @Model.defenders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -182,6 +197,7 @@
                 <div class="form-group">
                     <label asp-for="playerId4" class="control-label"></label>
                     <select asp-for="playerId4" class="form-control">
+                        <option>-Select defender-</option>
                         @foreach (IPlayer player in @Model.defenders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -192,6 +208,7 @@
                 <div class="form-group">
                     <label asp-for="playerId5" class="control-label"></label>
                     <select asp-for="playerId5" class="form-control">
+                        <option>-Select defender-</option>
                         @foreach (IPlayer player in @Model.defenders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -202,6 +219,7 @@
                 <div class="form-group">
                     <label asp-for="playerId6" class="control-label"></label>
                     <select asp-for="playerId6" class="form-control">
+                        <option>-Select midfielder-</option>
                         @foreach (IPlayer player in @Model.midfielders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -212,6 +230,7 @@
                 <div class="form-group">
                     <label asp-for="playerId7" class="control-label"></label>
                     <select asp-for="playerId7" class="form-control">
+                        <option>-Select midfielder-</option>
                         @foreach (IPlayer player in @Model.midfielders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -222,6 +241,7 @@
                 <div class="form-group">
                     <label asp-for="playerId8" class="control-label"></label>
                     <select asp-for="playerId8" class="form-control">
+                        <option>-Select midfielder-</option>
                         @foreach (IPlayer player in @Model.midfielders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -232,6 +252,7 @@
                 <div class="form-group">
                     <label asp-for="playerId9" class="control-label"></label>
                     <select asp-for="playerId9" class="form-control">
+                        <option>-Select forward-</option>
                         @foreach (IPlayer player in @Model.forwards)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -242,6 +263,7 @@
                 <div class="form-group">
                     <label asp-for="playerId10" class="control-label"></label>
                     <select asp-for="playerId10" class="form-control">
+                        <option>-Select forward-</option>
                         @foreach (IPlayer player in @Model.forwards)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -252,6 +274,7 @@
                 <div class="form-group">
                     <label asp-for="playerId11" class="control-label"></label>
                     <select asp-for="playerId11" class="form-control">
+                        <option>-Select forward-</option>
                         @foreach (IPlayer player in @Model.forwards)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -262,9 +285,11 @@
             }
             else if (@Model.formationId == 3) //3-4-3
             {
+                <p>Formation: 3-4-3</p>
                 <div class="form-group">
                     <label asp-for="playerId1" class="control-label"></label>
                     <select asp-for="playerId1" class="form-control">
+                        <option>-Select goalkeeper-</option>
                         @foreach (IPlayer player in @Model.keepers)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -275,6 +300,7 @@
                 <div class="form-group">
                     <label asp-for="playerId2" class="control-label"></label>
                     <select asp-for="playerId2" class="form-control">
+                        <option>-Select defender-</option>
                         @foreach (IPlayer player in @Model.defenders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -285,6 +311,7 @@
                 <div class="form-group">
                     <label asp-for="playerId3" class="control-label"></label>
                     <select asp-for="playerId3" class="form-control">
+                        <option>-Select defender-</option>
                         @foreach (IPlayer player in @Model.defenders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -295,6 +322,7 @@
                 <div class="form-group">
                     <label asp-for="playerId4" class="control-label"></label>
                     <select asp-for="playerId4" class="form-control">
+                        <option>-Select defender-</option>
                         @foreach (IPlayer player in @Model.defenders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -305,6 +333,7 @@
                 <div class="form-group">
                     <label asp-for="playerId5" class="control-label"></label>
                     <select asp-for="playerId5" class="form-control">
+                        <option>-Select midfielder-</option>
                         @foreach (IPlayer player in @Model.midfielders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -315,6 +344,7 @@
                 <div class="form-group">
                     <label asp-for="playerId6" class="control-label"></label>
                     <select asp-for="playerId6" class="form-control">
+                        <option>-Select midfielder-</option>
                         @foreach (IPlayer player in @Model.midfielders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -325,6 +355,7 @@
                 <div class="form-group">
                     <label asp-for="playerId7" class="control-label"></label>
                     <select asp-for="playerId7" class="form-control">
+                        <option>-Select midfielder-</option>
                         @foreach (IPlayer player in @Model.midfielders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -335,6 +366,7 @@
                 <div class="form-group">
                     <label asp-for="playerId8" class="control-label"></label>
                     <select asp-for="playerId8" class="form-control">
+                        <option>-Select midfielder-</option>
                         @foreach (IPlayer player in @Model.midfielders)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -345,6 +377,7 @@
                 <div class="form-group">
                     <label asp-for="playerId9" class="control-label"></label>
                     <select asp-for="playerId9" class="form-control">
+                        <option>-Select forward-</option>
                         @foreach (IPlayer player in @Model.forwards)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -355,6 +388,7 @@
                 <div class="form-group">
                     <label asp-for="playerId10" class="control-label"></label>
                     <select asp-for="playerId10" class="form-control">
+                        <option>-Select forward-</option>
                         @foreach (IPlayer player in @Model.forwards)
                         {
                             <option value="@player.playerId"> @player.playerName </option>
@@ -365,6 +399,7 @@
                 <div class="form-group">
                     <label asp-for="playerId11" class="control-label"></label>
                     <select asp-for="playerId11" class="form-control">
+                        <option>-Select forward-</option>
                         @foreach (IPlayer player in @Model.forwards)
                         {
                             <option value="@player.playerId"> @player.playerName </option>

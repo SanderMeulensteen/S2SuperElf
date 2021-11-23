@@ -8,5 +8,7 @@ namespace DAL_Interfaces_SuperElf
     {
         TeamDto GetTeamById(int userId);
         int GetTeamIdByUserId(int userId);
+        int AddTeam(int userId, int formationId);
+        void AddPlayersToTeam(int teamId, List<int> players);
     }
 }

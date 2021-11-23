@@ -18,3 +18,4 @@ C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Factories_Supe
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Factories_SuperElf\obj\Debug\netcoreapp3.1\DAL_Factories_SuperElf.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Factories_SuperElf\obj\Debug\netcoreapp3.1\DAL_Factories_SuperElf.genruntimeconfig.cache
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Factories_SuperElf\bin\Debug\netcoreapp3.1\DAL_SuperElf.dll.config
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\DAL_Factories_SuperElf\obj\Debug\netcoreapp3.1\DAL_Factories_SuperElf.csproj.CopyComplete
