@@ -13,3 +13,4 @@ C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Interfaces_S
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Interfaces_SuperElf\bin\Debug\netcoreapp3.1\Logic_Interfaces_SuperElf.runtimeconfig.dev.json
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\Logic_Interfaces_SuperElf.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\Logic_Interfaces_SuperElf.genruntimeconfig.cache
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Interfaces_SuperElf\obj\Debug\netcoreapp3.1\Logic_Interfaces_SuperElf.csproj.CopyComplete
