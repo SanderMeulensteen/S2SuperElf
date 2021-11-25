@@ -20,7 +20,6 @@ namespace UI_SuperElf.Controllers
         // GET: TeamController
         public ActionResult Index()
         {
-
             return View();
         }
 

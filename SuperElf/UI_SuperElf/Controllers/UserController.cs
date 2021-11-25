@@ -38,6 +38,11 @@ namespace UI_SuperElf.Controllers
         {
             return UserViewModelById(id);
         }
+        // GET: UserController/MyProfile/5
+        public ActionResult MyProfile(int id)
+        {
+            return UserProfileViewModelById(id);
+        }
         
         // GET: UserController/Register
         public ActionResult Register()
@@ -125,6 +130,10 @@ namespace UI_SuperElf.Controllers
             }
             IUser user = _userContainer.GetUserById(userId);
             user.UpdateEmail(user, newEmail);
+            if (userId == HttpContext.Session.GetInt32("_SessionUserId"))
+            {
+                return RedirectToAction("MyProfile", new {id = userId});
+            }
             return RedirectToAction("Details", new {id = userId});
         }
         // GET: UserController/EditName/5
@@ -147,6 +156,10 @@ namespace UI_SuperElf.Controllers
             string newLastName = updatedUser.lastName;
             IUser user = _userContainer.GetUserById(userId);
             user.UpdateName(user, newFirstName, newLastName);
+            if (userId == HttpContext.Session.GetInt32("_SessionUserId"))
+            {
+                return RedirectToAction("MyProfile", new {id = userId});
+            }
             return RedirectToAction("Details", new {id = userId});
         }
         // GET: UserController/EditPermissions/5
@@ -194,6 +207,10 @@ namespace UI_SuperElf.Controllers
             }
             IUser user = _userContainer.GetUserById(userId);
             user.UpdateUserName(user, newUserName);
+            if (userId == HttpContext.Session.GetInt32("_SessionUserId"))
+            {
+                return RedirectToAction("MyProfile", new { id = userId });
+            }
             return RedirectToAction("Details", new {id = userId});
         }
         // GET: UserController/EditPassword/5
@@ -215,7 +232,7 @@ namespace UI_SuperElf.Controllers
             string newPassword = updatedUser.password;
             IUser user = _userContainer.GetUserById(userId);
             user.UpdatePassword(user, newPassword);
-            return RedirectToAction("", new {id = userId});
+            return RedirectToAction("MyProfile", new {id = userId});
         }
 
         // GET: UserController/Delete/5
@@ -265,6 +282,19 @@ namespace UI_SuperElf.Controllers
             user.isAdmin = userById.isAdmin;
             user.isModerator = userById.isModerator;
             user.password = "";
+            return View(user);
+        }
+        // Get UserProfileViewModel by id
+        private ActionResult UserProfileViewModelById(int userId)
+        {
+            IUser userById = _userContainer.GetUserById(userId);
+            UserProfileViewModel user = new UserProfileViewModel();
+            user.userId = userById.userId;
+            user.emailaddress = userById.emailaddress;
+            user.userName = userById.userName;
+            user.firstName = userById.firstName;
+            user.lastName = userById.lastName;
+            user.myTeam = userById.GetPlayersFromTeam(userById.userId).OrderBy(x => x.position).ToList();
             return View(user);
         }
         // Return correct user to view when an error occurs
