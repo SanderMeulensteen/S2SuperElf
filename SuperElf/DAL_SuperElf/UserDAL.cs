@@ -89,16 +89,50 @@ namespace DAL_SuperElf
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                conn.Open();
-                using (SqlCommand query = new SqlCommand("DELETE FROM [dbo].[teamTable] WHERE UserId = @userId", conn))
+                int teamId = 0;
+                using (SqlCommand queryGet = new SqlCommand("select * from teamTable where UserId = @userId", conn))
                 {
-                    query.Parameters.AddWithValue("@userId", userId);
-                    query.ExecuteNonQuery();
+                    conn.Open();
+                    queryGet.Parameters.AddWithValue("@userId", userId);
+                    var reader = queryGet.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        teamId = reader.GetInt32(0);
+                    }
+                    conn.Close();
                 }
-                using (SqlCommand query = new SqlCommand("DELETE FROM [dbo].[userTable] WHERE UserId = @userId", conn))
+                if (teamId == 0)
                 {
-                    query.Parameters.AddWithValue("@userId", userId);
-                    query.ExecuteNonQuery();
+                    conn.Open();
+                    using (SqlCommand query =
+                        new SqlCommand("DELETE FROM [dbo].[userTable] WHERE UserId = @userId", conn))
+                    {
+                        query.Parameters.AddWithValue("@userId", userId);
+                        query.ExecuteNonQuery();
+                    }
+                    conn.Close();
+                }
+                else
+                {
+                    conn.Open();
+                    using (SqlCommand query1 =
+                        new SqlCommand("DELETE FROM [dbo].[teamTable] WHERE UserId = @userId", conn))
+                    {
+                        query1.Parameters.AddWithValue("@userId", userId);
+                        using (SqlCommand query2 =
+                            new SqlCommand("DELETE FROM [dbo].[userTable] WHERE UserId = @userId", conn))
+                        {
+                            query2.Parameters.AddWithValue("@userId", userId);
+                            using (SqlCommand query3 = new SqlCommand("DELETE FROM [dbo].[player_teamTable] WHERE TeamId = @teamId", conn))
+                            {
+                                query3.Parameters.AddWithValue("@teamId", teamId);
+                                query3.ExecuteNonQuery();
+                                query1.ExecuteNonQuery();
+                                query2.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    conn.Close();
                 }
             }
         }
