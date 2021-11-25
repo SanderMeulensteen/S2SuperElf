@@ -16,17 +16,32 @@ namespace UI_SuperElf.Controllers
         private readonly ITeam _team = Team_Factory.CreateTeam();
         private readonly IUser _user = User_Factory.CreateUser();
         private readonly IClub _club = Club_Factory.CreateClub();
+        private readonly IUserContainer _userContainer = UserContainer_Factory.CreateUserContainer();
         // GET: TeamController
         public ActionResult Index()
         {
+
             return View();
         }
 
         // GET: TeamController/Details/5
         public ActionResult Details(int id)
         {
-
-            return View();
+            TeamViewModel team = new TeamViewModel();
+            ITeam teamDetails = _user.GetTeamDetailsById(id);
+            List<IPlayer> players = _user.GetPlayersFromTeam(id);
+            List<IPlayer> sortedPlayers = players.OrderBy(x => x.position).ToList();
+            if (players.Count != 0)
+            {
+                foreach (IPlayer player in sortedPlayers)
+                {
+                    team.players.Add(player);
+                }
+            }
+            team.formations = _team.GetAllFormations();
+            team.formation = teamDetails.formationId;
+            team.teamPoints = teamDetails.teamPoint;
+            return View(team);
         }
 
         public ActionResult MyTeam(int id)

@@ -6,7 +6,7 @@ namespace Logic_Interfaces_SuperElf
     {
         int competitionId { get; }
         string competitionName { get; }
-        void UpdateCompetitionName(int competitionId, string newCompetitionName);
+        void UpdateCompetitionName(ICompetition competition, string newCompetitionName);
         List<IClub> GetAllClubs();
         void AddClub(int clubId, int clubCompetitionId, string clubName);
         IClub GetClubById(int clubId);

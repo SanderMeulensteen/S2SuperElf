@@ -12,7 +12,6 @@ namespace UI_SuperElf.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IUser _user = User_Factory.CreateUser();
         private readonly IUserContainer _userContainer = UserContainer_Factory.CreateUserContainer();
         // GET: UserController
         public ActionResult Index()
@@ -124,7 +123,8 @@ namespace UI_SuperElf.Controllers
                 ModelState.AddModelError("", "This email is already in use.");
                 return ReturnToUser(userId);
             }
-            _user.UpdateEmail(userId, newEmail);
+            IUser user = _userContainer.GetUserById(userId);
+            user.UpdateEmail(user, newEmail);
             return RedirectToAction("Details", new {id = userId});
         }
         // GET: UserController/EditName/5
@@ -145,7 +145,8 @@ namespace UI_SuperElf.Controllers
 
             string newFirstName = updatedUser.firstName;
             string newLastName = updatedUser.lastName;
-            _user.UpdateName(userId, newFirstName, newLastName);
+            IUser user = _userContainer.GetUserById(userId);
+            user.UpdateName(user, newFirstName, newLastName);
             return RedirectToAction("Details", new {id = userId});
         }
         // GET: UserController/EditPermissions/5
@@ -166,7 +167,8 @@ namespace UI_SuperElf.Controllers
 
             bool isAdmin = updatedUser.isAdmin;
             bool isModerator = updatedUser.isModerator;
-            _user.UpdatePermissions(userId, isAdmin, isModerator);
+            IUser user = _userContainer.GetUserById(userId);
+            user.UpdatePermissions(user, isAdmin, isModerator);
             return RedirectToAction("Details", new {id = userId});
         }
         // GET: UserController/EditUserName/5
@@ -190,8 +192,8 @@ namespace UI_SuperElf.Controllers
                 ModelState.AddModelError("", "This username is already in use.");
                 return ReturnToUser(userId);
             }
-
-            _user.UpdateUserName(userId, newUserName);
+            IUser user = _userContainer.GetUserById(userId);
+            user.UpdateUserName(user, newUserName);
             return RedirectToAction("Details", new {id = userId});
         }
         // GET: UserController/EditPassword/5
@@ -211,7 +213,8 @@ namespace UI_SuperElf.Controllers
             }
 
             string newPassword = updatedUser.password;
-            _user.UpdatePassword(userId, newPassword);
+            IUser user = _userContainer.GetUserById(userId);
+            user.UpdatePassword(user, newPassword);
             return RedirectToAction("", new {id = userId});
         }
 

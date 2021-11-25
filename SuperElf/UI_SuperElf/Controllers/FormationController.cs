@@ -12,7 +12,6 @@ namespace UI_SuperElf.Controllers
 {
     public class FormationController : Controller
     {
-        private readonly IFormation _formation = Formation_Factory.CreateFormation();
         private readonly ITeam _team = Team_Factory.CreateTeam();
         // GET: FormationController
         public ActionResult Index()
@@ -66,9 +65,9 @@ namespace UI_SuperElf.Controllers
             {
                 return ReturnToFormation(formationId);
             }
-
+            IFormation formation = _team.GetFormationById(formationId);
             string newFormationName = updatedFormation.formationName;
-            _formation.UpdateFormation(formationId, newFormationName);
+            formation.UpdateFormation(formation, newFormationName);
             return RedirectToAction("Index");
         }
 

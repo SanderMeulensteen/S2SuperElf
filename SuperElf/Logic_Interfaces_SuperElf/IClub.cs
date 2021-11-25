@@ -7,8 +7,8 @@ namespace Logic_Interfaces_SuperElf
         int clubId { get; }
         string clubName { get; }
         int competitionId { get; }
-        void UpdateClubName(int clubId, string newClubName);
-        void UpdateCompetition(int clubId, int newCompetition);
+        void UpdateClubName(IClub club, string newClubName);
+        void UpdateCompetition(IClub club, int newCompetition);
         void AddPlayer(int playerId, string playerName, int position, int club);
         List<IPlayer> GetAllPlayers();
         void DeletePlayer(int playerId);

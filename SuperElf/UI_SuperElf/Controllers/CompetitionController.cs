@@ -87,8 +87,9 @@ namespace UI_SuperElf.Controllers
                 return ReturnToCompetition(competitionId);
             }
 
+            ICompetition competition = _competitionContainer.GetCompetitionById(competitionId);
             string newCompetitionName = updatedCompetition.competitionName;
-            _competition.UpdateCompetitionName(competitionId, newCompetitionName);
+            competition.UpdateCompetitionName(competition, newCompetitionName);
             return RedirectToAction("Details", new {id = competitionId});
         }
 

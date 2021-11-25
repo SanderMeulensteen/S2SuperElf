@@ -32,12 +32,12 @@ namespace Logic_SuperElf
 
         //-----Club
         // Update clubname in db
-        public void UpdateClubName(int clubId, string newClubName)
+        public void UpdateClubName(IClub club, string newClubName)
         {
             clubDAL.UpdateClubName(clubId, newClubName);
         }
         // Update competition in db
-        public void UpdateCompetition(int clubId, int newCompetition)
+        public void UpdateCompetition(IClub club, int newCompetition)
         {
             clubDAL.UpdateCompetition(clubId, newCompetition);
         }

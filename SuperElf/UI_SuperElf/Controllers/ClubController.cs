@@ -14,7 +14,6 @@ namespace UI_SuperElf.Controllers
 {
     public class ClubController : Controller
     {
-        private readonly IClub _club = Club_Factory.CreateClub();
         private readonly ICompetition _competition = Competition_Factory.CreateCompetition();
         private readonly ICompetitionContainer _competitionContainer =
             CompetitionContainer_Factory.CreateCompetitionContainer();
@@ -80,9 +79,9 @@ namespace UI_SuperElf.Controllers
             {
                 return ReturnToClub(clubId);
             }
-
+            IClub club = _competition.GetClubById(clubId);
             string newClubName = updatedClub.clubName;
-            _club.UpdateClubName(clubId, newClubName);
+            club.UpdateClubName(club, newClubName);
             return RedirectToAction("Details", new {id = clubId});
         }
 
@@ -101,9 +100,9 @@ namespace UI_SuperElf.Controllers
             {
                 return ReturnToClub(clubId);
             }
-
+            IClub club = _competition.GetClubById(clubId);
             int newCompetition = updatedClub.competitionId;
-            _club.UpdateCompetition(clubId, newCompetition);
+            club.UpdateCompetition(club, newCompetition);
             return RedirectToAction("Details", new {id = clubId});
         }
         // GET: ClubController/Delete/5

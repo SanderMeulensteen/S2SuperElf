@@ -4,6 +4,6 @@
     {
         int formationId { get; }
         string formationName { get; }
-        void UpdateFormation(int formationId, string newFormationName);
+        void UpdateFormation(IFormation formationId, string newFormationName);
     }
 }

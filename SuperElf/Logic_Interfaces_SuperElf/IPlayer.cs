@@ -8,8 +8,8 @@ namespace Logic_Interfaces_SuperElf
         string playerName { get; }
         Position position { get; }
         int club { get; }
-        void UpdatePlayerName(int playerId, string newPlayerName);
-        void UpdatePlayerPosition(int playerId, int newPosition);
-        void UpdatePlayerClub(int playerId, int newClub);
+        void UpdatePlayerName(IPlayer player, string newPlayerName);
+        void UpdatePlayerPosition(IPlayer player, int newPosition);
+        void UpdatePlayerClub(IPlayer player, int newClub);
     }
 }

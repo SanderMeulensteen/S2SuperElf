@@ -13,11 +13,11 @@ namespace Logic_Interfaces_SuperElf
         bool isAdmin { get; }
         bool isModerator { get; }
 
-        void UpdateEmail(int userId, string newEmail);
-        void UpdateName(int userId, string newFirstName, string newLastName);
-        void UpdatePermissions(int userId, bool isAdmin, bool isModerator);
-        void UpdateUserName(int userId, string newUserName);
-        void UpdatePassword(int userId, string newPassword);
+        void UpdateEmail(IUser userId, string newEmail);
+        void UpdateName(IUser userId, string newFirstName, string newLastName);
+        void UpdatePermissions(IUser userId, bool isAdmin, bool isModerator);
+        void UpdateUserName(IUser userId, string newUserName);
+        void UpdatePassword(IUser userId, string newPassword);
         ITeam GetTeamDetailsById(int userId);
         List<IPlayer> GetPlayersFromTeam(int userId);
         int AddTeam(int userId, int formationId);

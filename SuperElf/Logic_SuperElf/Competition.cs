@@ -27,7 +27,7 @@ namespace Logic_SuperElf
         // Update competition and manage clubs
         //-----Competition
         // Update competition name in db
-        public void UpdateCompetitionName(int competitionId, string newCompetitionName)
+        public void UpdateCompetitionName(ICompetition competition, string newCompetitionName)
         {
             competitionDal.UpdateCompetitionName(competitionId, newCompetitionName);
         }

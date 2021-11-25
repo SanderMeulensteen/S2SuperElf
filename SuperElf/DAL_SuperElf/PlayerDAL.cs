@@ -97,6 +97,7 @@ namespace DAL_SuperElf
         // Update playername in db
         public void UpdatePlayerName(int playerId, string newPlayerName)
         {
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();

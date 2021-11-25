@@ -13,7 +13,6 @@ namespace UI_SuperElf.Controllers
 {
     public class PlayerController : Controller
     {
-        private readonly IPlayer _player = Player_Factory.CreatePlayer();
         private readonly IClub _club = Club_Factory.CreateClub();
         private readonly ICompetition _competition = Competition_Factory.CreateCompetition();
         
@@ -82,9 +81,9 @@ namespace UI_SuperElf.Controllers
             {
                 return ReturnToPlayer(playerId);
             }
-
+            IPlayer player = _club.GetPlayerById(playerId);
             string newPlayerName = updatedPlayer.playerName;
-            _player.UpdatePlayerName(playerId, newPlayerName);
+            player.UpdatePlayerName(player, newPlayerName);
             return RedirectToAction("Details", new {id = playerId});
         }
 
@@ -103,9 +102,9 @@ namespace UI_SuperElf.Controllers
             {
                 return ReturnToPlayer(playerId);
             }
-
+            IPlayer player = _club.GetPlayerById(playerId);
             int newPlayerPosition = (int) updatedPlayer.position;
-            _player.UpdatePlayerPosition(playerId, newPlayerPosition);
+            player.UpdatePlayerPosition(player, newPlayerPosition);
             return RedirectToAction("Details", new {id = playerId});
         }
 
@@ -124,9 +123,9 @@ namespace UI_SuperElf.Controllers
             {
                 return ReturnToPlayer(playerId);
             }
-
+            IPlayer player = _club.GetPlayerById(playerId);
             int newClub = updatedPlayer.club;
-            _player.UpdatePlayerClub(playerId, newClub);
+            player.UpdatePlayerClub(player, newClub);
             return RedirectToAction("Details", new {id = playerId});
         }
 

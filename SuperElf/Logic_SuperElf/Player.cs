@@ -33,19 +33,19 @@ namespace Logic_SuperElf
         // Update players and manage matchrounds
         //-----Player
         // Update playername in db
-        public void UpdatePlayerName(int playerId, string newPlayerName)
+        public void UpdatePlayerName(IPlayer player, string newPlayerName)
         {
             playerDAL.UpdatePlayerName(playerId, newPlayerName);
         }
 
         // Update players position in db
-        public void UpdatePlayerPosition(int playerId, int newPosition)
+        public void UpdatePlayerPosition(IPlayer player, int newPosition)
         {
             playerDAL.UpdatePlayerPosition(playerId, newPosition);
         }
 
         // Update players club in db
-        public void UpdatePlayerClub(int playerId, int newClub)
+        public void UpdatePlayerClub(IPlayer player, int newClub)
         {
             playerDAL.UpdatePlayerClub(playerId, newClub);
         }

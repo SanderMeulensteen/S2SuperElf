@@ -40,27 +40,27 @@ namespace Logic_SuperElf
         // Update users and manage teams
         //-----User
         // Update email in db
-        public void UpdateEmail(int userId, string newEmail)
+        public void UpdateEmail(IUser user, string newEmail)
         {
             userDAL.UpdateEmail(userId, newEmail);
         }
         // Update name in db
-        public void UpdateName(int userId, string newFirstName, string newLastName)
+        public void UpdateName(IUser user, string newFirstName, string newLastName)
         {
             userDAL.UpdateName(userId, newFirstName, newLastName);
         }
         // Update permissions in db
-        public void UpdatePermissions(int userId, bool isAdmin, bool isModerator)
+        public void UpdatePermissions(IUser user, bool isAdmin, bool isModerator)
         {
             userDAL.UpdatePermissions(userId, isAdmin, isModerator);
         }
         // Update username in db
-        public void UpdateUserName(int userId, string newUserName)
+        public void UpdateUserName(IUser user, string newUserName)
         {
             userDAL.UpdateUserName(userId, newUserName);
         }
         // Update password in db
-        public void UpdatePassword(int userId, string newPassword)
+        public void UpdatePassword(IUser user, string newPassword)
         {
             userDAL.UpdatePassword(userId, newPassword);
         }

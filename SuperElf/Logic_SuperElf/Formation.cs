@@ -26,7 +26,7 @@ namespace Logic_SuperElf
         // Updates formation
         //-----Formation
         // Update formation in db
-        public void UpdateFormation(int formationId, string newFormationName)
+        public void UpdateFormation(IFormation formation, string newFormationName)
         {
             formationDAL.UpdateFormation(formationId, newFormationName);
         }

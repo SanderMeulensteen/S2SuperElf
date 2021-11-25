@@ -22,6 +22,6 @@ namespace UI_SuperElf.Models
 
         public List<IUser> users = new List<IUser>();
         public List<IFormation> formations = new List<IFormation>();
-
+        public List<IPlayer> players = new List<IPlayer>();
     }
 }
