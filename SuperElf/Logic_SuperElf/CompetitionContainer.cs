@@ -9,7 +9,7 @@ namespace Logic_SuperElf
 {
     public class CompetitionContainer : ICompetitionContainer
     {
-        private ICompetitionContainerDAL competitionDAL = CompetitionDAL_Factory.CreateCompetitionContainerDal();
+        private readonly ICompetitionContainerDAL competitionDAL = CompetitionDAL_Factory.CreateCompetitionContainerDal();
         // Manage competitions
         // Get all competitions from db
         public List<ICompetition> GetAllCompetitions()

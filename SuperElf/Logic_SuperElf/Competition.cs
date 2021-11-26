@@ -11,8 +11,8 @@ namespace Logic_SuperElf
 {
     public class Competition : ICompetition
     {
-        private IClubContainerDAL clubDAL = ClubDAL_Factory.CreateClubContainerDal();
-        private ICompetitionDAL competitionDal = CompetitionDAL_Factory.CreateCompetitionDal();
+        private readonly IClubContainerDAL clubDAL = ClubDAL_Factory.CreateClubContainerDal();
+        private readonly ICompetitionDAL competitionDal = CompetitionDAL_Factory.CreateCompetitionDal();
         public int competitionId { get; private set; }
         public string competitionName { get; private set; }
         public Competition(int competitionId, string competitionName)

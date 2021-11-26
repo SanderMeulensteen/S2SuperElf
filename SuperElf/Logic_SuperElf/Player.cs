@@ -12,7 +12,10 @@ namespace Logic_SuperElf
 {
     public class Player : IPlayer
     {
-        private IPlayerDAL playerDAL = PlayerDAL_Factory.CreatePlayerDal();
+        // Interface for web application
+        // private readonly IPlayerDAL playerDAL = PlayerDAL_Factory.CreatePlayerDal();
+        // Interface for testing
+        private readonly IPlayerDAL playerDAL = PlayerDAL_Factory.CreateTestPlayerDal();
         public int playerId { get; private set; }
         public string playerName { get; private set; }
         public Position position { get; private set; }
@@ -35,19 +38,19 @@ namespace Logic_SuperElf
         // Update playername in db
         public void UpdatePlayerName(IPlayer player, string newPlayerName)
         {
-            playerDAL.UpdatePlayerName(playerId, newPlayerName);
+            playerDAL.UpdatePlayerName(player.playerId, newPlayerName);
         }
 
         // Update players position in db
         public void UpdatePlayerPosition(IPlayer player, int newPosition)
         {
-            playerDAL.UpdatePlayerPosition(playerId, newPosition);
+            playerDAL.UpdatePlayerPosition(player.playerId, newPosition);
         }
 
         // Update players club in db
         public void UpdatePlayerClub(IPlayer player, int newClub)
         {
-            playerDAL.UpdatePlayerClub(playerId, newClub);
+            playerDAL.UpdatePlayerClub(player.playerId, newClub);
         }
     }
 }

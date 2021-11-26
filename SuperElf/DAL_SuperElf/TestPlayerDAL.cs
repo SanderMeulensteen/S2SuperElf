@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using DAL_Interfaces_SuperElf;
 
@@ -7,26 +8,26 @@ namespace DAL_SuperElf
 {
     public class TestPlayerDAL : IPlayerDAL, IPlayerContainerDAL
     {
-        public List<PlayerDto> players = new List<PlayerDto>();
+        public List<PlayerDto> testPlayers = CreateTestPlayerDALData();
         public void UpdatePlayerName(int playerId, string newPlayerName)
         {
-
+            testPlayers.Find(x => x.playerId == playerId).playerName = newPlayerName;
         }
 
         public void UpdatePlayerPosition(int playerId, int newPosition)
         {
-
+            testPlayers.Find(x => x.playerId == playerId).position = newPosition;
         }
 
         public void UpdatePlayerClub(int playerId, int newClub)
         {
-
+            testPlayers.Find(x => x.playerId == playerId).club = newClub;
         }
 
         public List<PlayerDto> GetAllPlayers()
         {
             List<PlayerDto> playerDtos = new List<PlayerDto>();
-            foreach (PlayerDto playerDto in players)
+            foreach (PlayerDto playerDto in testPlayers)
             {
                 playerDtos.Add(playerDto);
             }
@@ -35,47 +36,54 @@ namespace DAL_SuperElf
 
         public void AddPlayer(PlayerDto playerDto)
         {
-
+            testPlayers.Add(playerDto);
         }
 
         public void DeletePlayer(int id)
         {
-
+            testPlayers.RemoveAll(x => x.playerId == id);
         }
 
         public PlayerDto GetPlayerDtoById(int playerId)
         {
-            PlayerDto playerDto = new PlayerDto();
-
+            PlayerDto playerDto = testPlayers.Find(x => x.playerId == playerId);
             return playerDto;
         }
 
         public List<PlayerDto> GetPlayersFromTeam(int teamId)
         {
+            List<int> playerIds = GetPlayerIdsFromTeamId(teamId);
             List<PlayerDto> playerDtos = new List<PlayerDto>();
-
+            foreach (int playerId in playerIds)
+            {
+                PlayerDto player = testPlayers.Find(x =>x.playerId == playerId);
+				playerDtos.Add(player);
+            }
             return playerDtos;
         }
-        public void CreateTestPlayerDALData()
+
+        public static List<PlayerDto> CreateTestPlayerDALData()
         {
-            PlayerDto player1 = CreateTestPlayer(1, "keeper1",0,10);
-            PlayerDto player2 = CreateTestPlayer(1, "keeper2", 0, 11);
-            PlayerDto player3 = CreateTestPlayer(1, "keeper3", 0, 12);
-            PlayerDto player4 = CreateTestPlayer(1, "keeper4", 0, 13);
-            PlayerDto player5 = CreateTestPlayer(1, "defender1", 0, 14);
-            PlayerDto player6 = CreateTestPlayer(1, "defender2", 0, 15);
-            PlayerDto player7 = CreateTestPlayer(1, "defender3", 0, 16);
-            PlayerDto player8 = CreateTestPlayer(1, "defender4", 0, 17);
-            PlayerDto player9 = CreateTestPlayer(1, "midfielder1", 0, 18);
-            PlayerDto player10 = CreateTestPlayer(1, "midfielder2", 0, 19);
-            PlayerDto player11 = CreateTestPlayer(1, "midfielder3", 0, 20);
-            PlayerDto player12 = CreateTestPlayer(1, "midfielder4", 0, 21);
-            PlayerDto player13 = CreateTestPlayer(1, "forward1", 0, 22);
-            PlayerDto player14 = CreateTestPlayer(1, "forward2", 0, 23);
-            PlayerDto player15 = CreateTestPlayer(1, "forward3", 0, 24);
-            PlayerDto player16 = CreateTestPlayer(1, "forward4", 0, 25);
+            List<PlayerDto> players = new List<PlayerDto>();
+            players.Add(CreateTestPlayer(1, "keeper1", 0, 1));
+            players.Add(CreateTestPlayer(2, "keeper2", 0, 2));
+            players.Add(CreateTestPlayer(3, "keeper3", 0, 3));
+            players.Add(CreateTestPlayer(4, "keeper4", 0, 16));
+            players.Add(CreateTestPlayer(5, "defender1", 1, 1));
+            players.Add(CreateTestPlayer(6, "defender2", 1, 2));
+            players.Add(CreateTestPlayer(7, "defender3", 1, 3));
+            players.Add(CreateTestPlayer(8, "defender4", 1, 16));
+            players.Add(CreateTestPlayer(9, "midfielder1", 2, 1));
+            players.Add(CreateTestPlayer(10, "midfielder2", 2, 2));
+            players.Add(CreateTestPlayer(11, "midfielder3", 2, 3));
+            players.Add(CreateTestPlayer(12, "midfielder4", 2, 16));
+            players.Add(CreateTestPlayer(13, "forward1", 3, 1));
+            players.Add(CreateTestPlayer(14, "forward2", 3, 2));
+            players.Add(CreateTestPlayer(15, "forward3", 3, 3));
+            players.Add(CreateTestPlayer(16, "forward4", 3, 16));
+            return players;
         }
-        private PlayerDto CreateTestPlayer(int playerId, string playerName, int position, int clubId)
+        private static PlayerDto CreateTestPlayer(int playerId, string playerName, int position, int clubId)
         {
             PlayerDto player = new PlayerDto();
             player.playerId = playerId;
@@ -83,6 +91,22 @@ namespace DAL_SuperElf
             player.position = position;
             player.club = clubId;
             return player;
+        }
+        private List<int> GetPlayerIdsFromTeamId(int teamId)
+        {
+            List<int> players = new List<int>();
+                players.Add(1);
+                players.Add(5);
+                players.Add(6);
+                players.Add(7);
+                players.Add(8);
+                players.Add(9);
+                players.Add(10);
+                players.Add(11);
+                players.Add(13);
+                players.Add(14);
+                players.Add(15);
+            return players;
         }
     }
 }

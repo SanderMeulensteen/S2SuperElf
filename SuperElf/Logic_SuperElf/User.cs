@@ -10,9 +10,12 @@ namespace Logic_SuperElf
 {
     public class User : IUser
     {
+        // Interfaces for web application
         private readonly IUserDAL userDAL = UserDAL_Factory.CreateUserDal();
         private readonly ITeamContainerDAL teamDAL = TeamDAL_Factory.CreateTeamContainerDal();
-        private readonly IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreatePlayerContainerDal();
+        // private readonly IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreatePlayerContainerDal();
+        // Interfaces for testing
+        private readonly IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreateTestPlayerContainerDal();
         public int userId { get; private set; }
         public string userName { get; private set; }
         public string firstName { get; private set; }
