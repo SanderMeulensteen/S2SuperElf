@@ -18,35 +18,51 @@ namespace UI_SuperElf.Controllers
         // GET: CompetitionController
         public ActionResult Index()
         {
-            CompetitionPipeline competitionPipeline = new CompetitionPipeline();
-            List<ICompetition> competitions = _competitionContainer.GetAllCompetitions();
-            foreach (ICompetition competition in competitions)
+            try
             {
-                CompetitionViewModel competitionViewModel = new CompetitionViewModel();
-                competitionViewModel.competitionId = competition.competitionId;
-                competitionViewModel.competitionName = competition.competitionName;
-                competitionPipeline.Competitions.Add(competitionViewModel);
+                CompetitionPipeline competitionPipeline = new CompetitionPipeline();
+                List<ICompetition> competitions = _competitionContainer.GetAllCompetitions();
+                foreach (ICompetition competition in competitions)
+                {
+                    CompetitionViewModel competitionViewModel = new CompetitionViewModel();
+                    competitionViewModel.competitionId = competition.competitionId;
+                    competitionViewModel.competitionName = competition.competitionName;
+                    competitionPipeline.Competitions.Add(competitionViewModel);
+                }
+
+                return View(competitionPipeline);
             }
-            return View(competitionPipeline);
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // GET: CompetitionController/Details/5
         public ActionResult Details(int id)
         {
-            ICompetition competitionById = _competitionContainer.GetCompetitionById(id);
-            CompetitionDetailsViewModel competition = new CompetitionDetailsViewModel();
-            competition.competitionId = competitionById.competitionId;
-            competition.competitionName = competitionById.competitionName;
-            competition.clubs = new List<IClub>();
-            List<IClub> allClubs = _competition.GetAllClubs();
-            foreach (IClub club in allClubs)
+            try
             {
-                if (club.competitionId == competition.competitionId)
+                ICompetition competitionById = _competitionContainer.GetCompetitionById(id);
+                CompetitionDetailsViewModel competition = new CompetitionDetailsViewModel();
+                competition.competitionId = competitionById.competitionId;
+                competition.competitionName = competitionById.competitionName;
+                competition.clubs = new List<IClub>();
+                List<IClub> allClubs = _competition.GetAllClubs();
+                foreach (IClub club in allClubs)
                 {
-                    competition.clubs.Add(club);
+                    if (club.competitionId == competition.competitionId)
+                    {
+                        competition.clubs.Add(club);
+                    }
                 }
+
+                return View(competition);
             }
-            return View(competition);
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // GET: CompetitionController/Create
@@ -61,20 +77,34 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CompetitionViewModel newCompetition)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                CompetitionViewModel competition = new CompetitionViewModel();
-                return View(competition);
-            }
+                if (!ModelState.IsValid)
+                {
+                    CompetitionViewModel competition = new CompetitionViewModel();
+                    return View(competition);
+                }
 
-            _competitionContainer.AddCompetition(newCompetition.competitionId, newCompetition.competitionName);
-            return RedirectToAction("Index");
+                _competitionContainer.AddCompetition(newCompetition.competitionId, newCompetition.competitionName);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // GET: CompetitionController/Edit/5
         public ActionResult Edit(int id)
         {
-            return CompetitionViewModelById(id);
+            try
+            {
+                return CompetitionViewModelById(id);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // POST: CompetitionController/Edit/5
@@ -82,21 +112,35 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int competitionId, CompetitionViewModel updatedCompetition)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return ReturnToCompetition(competitionId);
-            }
+                if (!ModelState.IsValid)
+                {
+                    return ReturnToCompetition(competitionId);
+                }
 
-            ICompetition competition = _competitionContainer.GetCompetitionById(competitionId);
-            string newCompetitionName = updatedCompetition.competitionName;
-            competition.UpdateCompetitionName(competition, newCompetitionName);
-            return RedirectToAction("Details", new {id = competitionId});
+                ICompetition competition = _competitionContainer.GetCompetitionById(competitionId);
+                string newCompetitionName = updatedCompetition.competitionName;
+                competition.UpdateCompetitionName(competition, newCompetitionName);
+                return RedirectToAction("Details", new {id = competitionId});
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // GET: CompetitionController/Delete/5
         public ActionResult Delete(int id)
         {
-            return CompetitionViewModelById(id);
+            try
+            {
+                return CompetitionViewModelById(id);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // POST: CompetitionController/Delete/5
@@ -104,14 +148,21 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, CompetitionViewModel competition)
         {
-            if (id == 0)
+            try
             {
-                ModelState.AddModelError("", "Delete could not be processed, try again later.");
+                if (id == 0)
+                {
+                    ModelState.AddModelError("", "Delete could not be processed, try again later.");
+                    return RedirectToAction("Index");
+                }
+
+                _competitionContainer.DeleteCompetition(id);
                 return RedirectToAction("Index");
             }
-
-            _competitionContainer.DeleteCompetition(id);
-            return RedirectToAction("Index");
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
         // Get competitionViewModel by id
         private ActionResult CompetitionViewModelById(int id)

@@ -16,32 +16,53 @@ namespace UI_SuperElf.Controllers
         // GET: UserController
         public ActionResult Index()
         {
-            UserPipeline userPipeline = new UserPipeline();
-            List<IUser> users = _userContainer.GetAllUsers();
-            foreach (IUser user in users)
+            try
             {
-                UserViewModel userViewModel = new UserViewModel();
-                userViewModel.userId = user.userId;
-                userViewModel.firstName = user.firstName;
-                userViewModel.lastName = user.lastName;
-                userViewModel.userName = user.userName;
-                userViewModel.emailaddress = user.emailaddress;
-                userViewModel.isAdmin = user.isAdmin;
-                userViewModel.isModerator = user.isModerator;
-                userPipeline.Users.Add(userViewModel);
+                UserPipeline userPipeline = new UserPipeline();
+                List<IUser> users = _userContainer.GetAllUsers();
+                foreach (IUser user in users)
+                {
+                    UserViewModel userViewModel = new UserViewModel();
+                    userViewModel.userId = user.userId;
+                    userViewModel.firstName = user.firstName;
+                    userViewModel.lastName = user.lastName;
+                    userViewModel.userName = user.userName;
+                    userViewModel.emailaddress = user.emailaddress;
+                    userViewModel.isAdmin = user.isAdmin;
+                    userViewModel.isModerator = user.isModerator;
+                    userPipeline.Users.Add(userViewModel);
+                }
+                return View(userPipeline);
             }
-            return View(userPipeline);
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // GET: UserController/Details/5
         public ActionResult Details(int id)
         {
-            return UserViewModelById(id);
+            try
+            {
+                return UserViewModelById(id);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
         // GET: UserController/MyProfile/5
         public ActionResult MyProfile(int id)
         {
-            return UserProfileViewModelById(id);
+            try
+            {
+                return UserProfileViewModelById(id);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
         
         // GET: UserController/Register
@@ -56,24 +77,34 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel newUser)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                RegisterViewModel user = new RegisterViewModel();
-                return View();
+                if (!ModelState.IsValid)
+                {
+                    RegisterViewModel user = new RegisterViewModel();
+                    return View();
+                }
+
+                if (!_userContainer.EmailCheck(newUser.emailaddress))
+                {
+                    ModelState.AddModelError("", "This email is already in use.");
+                    return View(newUser);
+                }
+
+                if (!_userContainer.UserNameCheck(newUser.userName))
+                {
+                    ModelState.AddModelError("", "This username is already in use.");
+                    return View(newUser);
+                }
+
+                _userContainer.AddUser(newUser.emailaddress, newUser.userName, newUser.firstName,
+                    newUser.lastName, newUser.password, newUser.isAdmin, newUser.isModerator);
+                return RedirectToAction("Login", "Login");
             }
-            if (!_userContainer.EmailCheck(newUser.emailaddress))
+            catch
             {
-                ModelState.AddModelError("", "This email is already in use.");
-                return View(newUser);
+                return RedirectToAction("Error", "Home");
             }
-            if (!_userContainer.UserNameCheck(newUser.userName))
-            {
-                ModelState.AddModelError("", "This username is already in use.");
-                return View(newUser);
-            }
-            _userContainer.AddUser(newUser.emailaddress, newUser.userName, newUser.firstName,
-                newUser.lastName, newUser.password, newUser.isAdmin, newUser.isModerator);
-            return RedirectToAction("Login","Login");
         }
         // GET: UserController/Create
         public ActionResult Create()
@@ -87,30 +118,47 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(RegisterViewModel newUser)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                RegisterViewModel user = new RegisterViewModel();
-                return View();
+                if (!ModelState.IsValid)
+                {
+                    RegisterViewModel user = new RegisterViewModel();
+                    return View();
+                }
+
+                if (!_userContainer.EmailCheck(newUser.emailaddress))
+                {
+                    ModelState.AddModelError("", "This email is already in use.");
+                    return View(newUser);
+                }
+
+                if (!_userContainer.UserNameCheck(newUser.userName))
+                {
+                    ModelState.AddModelError("", "This username is already in use.");
+                    return View(newUser);
+                }
+
+                _userContainer.AddUser(newUser.emailaddress, newUser.userName, newUser.firstName,
+                    newUser.lastName, newUser.password, newUser.isAdmin, newUser.isModerator);
+                return RedirectToAction("Index");
             }
-            if (!_userContainer.EmailCheck(newUser.emailaddress))
+            catch
             {
-                ModelState.AddModelError("", "This email is already in use.");
-                return View(newUser);
+                return RedirectToAction("Error", "Home");
             }
-            if (!_userContainer.UserNameCheck(newUser.userName))
-            {
-                ModelState.AddModelError("", "This username is already in use.");
-                return View(newUser);
-            }
-            _userContainer.AddUser(newUser.emailaddress, newUser.userName, newUser.firstName,
-                newUser.lastName, newUser.password, newUser.isAdmin, newUser.isModerator);
-            return RedirectToAction("Index");
         }
 
         // GET: UserController/EditEmail/5
         public ActionResult EditEmail(int id)
         {
-            return UserEditViewModelById(id);
+            try
+            {
+                return UserEditViewModelById(id);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // POST: UserController/EditEmail/5
@@ -118,28 +166,42 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditEmail(int userId, UserEditViewModel updatedUser)
         {
-            if (!ModelState.IsValid)
+			try
+			{
+				if (!ModelState.IsValid)
+				{
+					return ReturnToUser(userId);
+				}
+				string newEmail = updatedUser.emailaddress;
+				if (!_userContainer.EmailCheck(newEmail))
+				{
+					ModelState.AddModelError("", "This email is already in use.");
+					return ReturnToUser(userId);
+				}
+				IUser user = _userContainer.GetUserById(userId);
+				user.UpdateEmail(user, newEmail);
+				if (userId == HttpContext.Session.GetInt32("_SessionUserId"))
+				{
+					return RedirectToAction("MyProfile", new {id = userId});
+				}
+				return RedirectToAction("Details", new {id = userId});
+			}
+			catch
             {
-                return ReturnToUser(userId);
+                return RedirectToAction("Error", "Home");
             }
-            string newEmail = updatedUser.emailaddress;
-            if (!_userContainer.EmailCheck(newEmail))
-            {
-                ModelState.AddModelError("", "This email is already in use.");
-                return ReturnToUser(userId);
-            }
-            IUser user = _userContainer.GetUserById(userId);
-            user.UpdateEmail(user, newEmail);
-            if (userId == HttpContext.Session.GetInt32("_SessionUserId"))
-            {
-                return RedirectToAction("MyProfile", new {id = userId});
-            }
-            return RedirectToAction("Details", new {id = userId});
         }
         // GET: UserController/EditName/5
         public ActionResult EditName(int id)
         {
-            return UserEditViewModelById(id);
+            try
+            {
+                return UserEditViewModelById(id);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // POST: UserController/EditName/5
@@ -147,25 +209,40 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditName(int userId, UserEditViewModel updatedUser)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return ReturnToUser(userId);
-            }
+                if (!ModelState.IsValid)
+                {
+                    return ReturnToUser(userId);
+                }
 
-            string newFirstName = updatedUser.firstName;
-            string newLastName = updatedUser.lastName;
-            IUser user = _userContainer.GetUserById(userId);
-            user.UpdateName(user, newFirstName, newLastName);
-            if (userId == HttpContext.Session.GetInt32("_SessionUserId"))
-            {
-                return RedirectToAction("MyProfile", new {id = userId});
+                string newFirstName = updatedUser.firstName;
+                string newLastName = updatedUser.lastName;
+                IUser user = _userContainer.GetUserById(userId);
+                user.UpdateName(user, newFirstName, newLastName);
+                if (userId == HttpContext.Session.GetInt32("_SessionUserId"))
+                {
+                    return RedirectToAction("MyProfile", new {id = userId});
+                }
+
+                return RedirectToAction("Details", new {id = userId});
             }
-            return RedirectToAction("Details", new {id = userId});
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
         // GET: UserController/EditPermissions/5
         public ActionResult EditPermissions(int id)
         {
-            return UserEditViewModelById(id);
+            try
+            {
+                return UserEditViewModelById(id);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // POST: UserController/EditPermissions/5
@@ -173,21 +250,35 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditPermissions(int userId, UserEditViewModel updatedUser)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return ReturnToUser(userId);
-            }
+                if (!ModelState.IsValid)
+                {
+                    return ReturnToUser(userId);
+                }
 
-            bool isAdmin = updatedUser.isAdmin;
-            bool isModerator = updatedUser.isModerator;
-            IUser user = _userContainer.GetUserById(userId);
-            user.UpdatePermissions(user, isAdmin, isModerator);
-            return RedirectToAction("Details", new {id = userId});
+                bool isAdmin = updatedUser.isAdmin;
+                bool isModerator = updatedUser.isModerator;
+                IUser user = _userContainer.GetUserById(userId);
+                user.UpdatePermissions(user, isAdmin, isModerator);
+                return RedirectToAction("Details", new {id = userId});
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
         // GET: UserController/EditUserName/5
         public ActionResult EditUserName(int id)
         {
-            return UserEditViewModelById(id);
+            try
+            {
+                return UserEditViewModelById(id);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // POST: UserController/EditUserName/5
@@ -195,28 +286,45 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditUserName(int userId, UserEditViewModel updatedUser)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return ReturnToUser(userId);
+                if (!ModelState.IsValid)
+                {
+                    return ReturnToUser(userId);
+                }
+
+                string newUserName = updatedUser.userName;
+                if (!_userContainer.UserNameCheck(newUserName))
+                {
+                    ModelState.AddModelError("", "This username is already in use.");
+                    return ReturnToUser(userId);
+                }
+
+                IUser user = _userContainer.GetUserById(userId);
+                user.UpdateUserName(user, newUserName);
+                if (userId == HttpContext.Session.GetInt32("_SessionUserId"))
+                {
+                    return RedirectToAction("MyProfile", new {id = userId});
+                }
+
+                return RedirectToAction("Details", new {id = userId});
             }
-            string newUserName = updatedUser.userName;
-            if (!_userContainer.UserNameCheck(newUserName))
+            catch
             {
-                ModelState.AddModelError("", "This username is already in use.");
-                return ReturnToUser(userId);
+                return RedirectToAction("Error", "Home");
             }
-            IUser user = _userContainer.GetUserById(userId);
-            user.UpdateUserName(user, newUserName);
-            if (userId == HttpContext.Session.GetInt32("_SessionUserId"))
-            {
-                return RedirectToAction("MyProfile", new { id = userId });
-            }
-            return RedirectToAction("Details", new {id = userId});
         }
         // GET: UserController/EditPassword/5
         public ActionResult EditPassword(int id)
         {
-            return UserEditViewModelById(id);
+            try
+            {
+                return UserEditViewModelById(id);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // POST: UserController/EditPassword/5
@@ -224,21 +332,35 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditPassword(int userId, UserEditViewModel updatedUser)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return ReturnToUser(userId);
-            }
+                if (!ModelState.IsValid)
+                {
+                    return ReturnToUser(userId);
+                }
 
-            string newPassword = updatedUser.password;
-            IUser user = _userContainer.GetUserById(userId);
-            user.UpdatePassword(user, newPassword);
-            return RedirectToAction("MyProfile", new {id = userId});
+                string newPassword = updatedUser.password;
+                IUser user = _userContainer.GetUserById(userId);
+                user.UpdatePassword(user, newPassword);
+                return RedirectToAction("MyProfile", new {id = userId});
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // GET: UserController/Delete/5
         public ActionResult Delete(int id)
         {
-            return UserViewModelById(id);
+            try
+            {
+                return UserViewModelById(id);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // POST: UserController/Delete/5
@@ -246,14 +368,21 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, UserViewModel user)
         {
-            if (id == 0)
+            try
             {
-                ModelState.AddModelError("", "Delete could not be processed, try again later.");
+                if (id == 0)
+                {
+                    ModelState.AddModelError("", "Delete could not be processed, try again later.");
+                    return RedirectToAction("Index");
+                }
+
+                _userContainer.DeleteUser(id);
                 return RedirectToAction("Index");
             }
-
-            _userContainer.DeleteUser(id);
-            return RedirectToAction("Index");
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
         // Get userViewModel by id
         private ActionResult UserViewModelById(int id)

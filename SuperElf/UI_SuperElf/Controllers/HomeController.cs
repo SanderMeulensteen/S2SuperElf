@@ -20,12 +20,18 @@ namespace UI_SuperElf.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
         
         public ActionResult Error()
         {
-            
             return View();
         }
     }

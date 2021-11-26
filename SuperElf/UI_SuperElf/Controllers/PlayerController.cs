@@ -35,7 +35,11 @@ namespace UI_SuperElf.Controllers
                 playersPipeline.Clubs = _competition.GetAllClubs();
                 return View(playersPipeline);
             }
-            
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
         }
 
         // GET: PlayerController/Details/5

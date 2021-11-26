@@ -26,60 +26,90 @@ namespace UI_SuperElf.Controllers
         // GET: TeamController/Details/5
         public ActionResult Details(int id)
         {
-            TeamViewModel team = new TeamViewModel();
-            ITeam teamDetails = _user.GetTeamDetailsById(id);
-            List<IPlayer> players = _user.GetPlayersFromTeam(id);
-            List<IPlayer> sortedPlayers = players.OrderBy(x => x.position).ToList();
-            if (players.Count != 0)
+            try
             {
-                foreach (IPlayer player in sortedPlayers)
+                TeamViewModel team = new TeamViewModel();
+                ITeam teamDetails = _user.GetTeamDetailsById(id);
+                List<IPlayer> players = _user.GetPlayersFromTeam(id);
+                List<IPlayer> sortedPlayers = players.OrderBy(x => x.position).ToList();
+                if (players.Count != 0)
                 {
-                    team.players.Add(player);
+                    foreach (IPlayer player in sortedPlayers)
+                    {
+                        team.players.Add(player);
+                    }
                 }
+
+                team.formations = _team.GetAllFormations();
+                team.formation = teamDetails.formationId;
+                team.teamPoints = teamDetails.teamPoint;
+                return View(team);
             }
-            team.formations = _team.GetAllFormations();
-            team.formation = teamDetails.formationId;
-            team.teamPoints = teamDetails.teamPoint;
-            return View(team);
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         public ActionResult MyTeam(int id)
         {
-            MyTeamViewModel myTeam = new MyTeamViewModel();
-            ITeam teamDetails = _user.GetTeamDetailsById(id);
-            List<IPlayer> players = _user.GetPlayersFromTeam(id);
-            List<IPlayer> sortedPlayers = players.OrderBy(x => x.position).ToList();
-            if (players.Count != 0)
+            try
             {
-                foreach (IPlayer player in sortedPlayers)
+                MyTeamViewModel myTeam = new MyTeamViewModel();
+                ITeam teamDetails = _user.GetTeamDetailsById(id);
+                List<IPlayer> players = _user.GetPlayersFromTeam(id);
+                List<IPlayer> sortedPlayers = players.OrderBy(x => x.position).ToList();
+                if (players.Count != 0)
                 {
-                    myTeam.Players.Add(player);
+                    foreach (IPlayer player in sortedPlayers)
+                    {
+                        myTeam.Players.Add(player);
+                    }
                 }
+
+                myTeam.formations = _team.GetAllFormations();
+                myTeam.formation = teamDetails.formationId;
+                myTeam.teamPoints = teamDetails.teamPoint;
+                return View(myTeam);
             }
-            myTeam.formations = _team.GetAllFormations();
-            myTeam.formation = teamDetails.formationId;
-            myTeam.teamPoints = teamDetails.teamPoint;
-            return View(myTeam);
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // Get formation for create team
         public ActionResult ChooseTeamFormation()
         {
-            MyTeamViewModel myTeamViewModel = new MyTeamViewModel();
-            myTeamViewModel.formations = _team.GetAllFormations();
-            return View(myTeamViewModel);
+            try
+            {
+                MyTeamViewModel myTeamViewModel = new MyTeamViewModel();
+                myTeamViewModel.formations = _team.GetAllFormations();
+                return View(myTeamViewModel);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // GET: TeamController/Create
         public ActionResult Create(int id)
         {
-            TeamCreateViewModel teamCreateViewModel = new TeamCreateViewModel();
-            teamCreateViewModel.keepers = _club.GetAllKeepers();
-            teamCreateViewModel.defenders = _club.GetAllDefenders();
-            teamCreateViewModel.midfielders = _club.GetAllMidfielders();
-            teamCreateViewModel.forwards = _club.GetAllForwards();
-            teamCreateViewModel.formationId = id;
-            return View(teamCreateViewModel);
+            try
+            {
+                TeamCreateViewModel teamCreateViewModel = new TeamCreateViewModel();
+                teamCreateViewModel.keepers = _club.GetAllKeepers();
+                teamCreateViewModel.defenders = _club.GetAllDefenders();
+                teamCreateViewModel.midfielders = _club.GetAllMidfielders();
+                teamCreateViewModel.forwards = _club.GetAllForwards();
+                teamCreateViewModel.formationId = id;
+                return View(teamCreateViewModel);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // POST: TeamController/Create
@@ -87,35 +117,46 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(TeamAddModel newTeam)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                TeamCreateViewModel teamCreateViewModel = ReturnTeamCreateViewModel(newTeam);
-                ModelState.AddModelError("", "Select for each position a player.");
-                return View(teamCreateViewModel);
+                if (!ModelState.IsValid)
+                {
+                    TeamCreateViewModel teamCreateViewModel = ReturnTeamCreateViewModel(newTeam);
+                    ModelState.AddModelError("", "Select for each position a player.");
+                    return View(teamCreateViewModel);
+                }
+
+                List<int> players = AddPlayerIdsToList(newTeam);
+                if (players.Distinct().Count() != 11)
+                {
+                    TeamCreateViewModel teamCreateViewModel = ReturnTeamCreateViewModel(newTeam);
+                    ModelState.AddModelError("", "Select 11 different players for your team.");
+                    return View(teamCreateViewModel);
+                }
+
+                List<int> clubs = AddClubIdsToList(players);
+                if (clubs.Distinct().Count() != 11)
+                {
+                    TeamCreateViewModel teamCreateViewModel = ReturnTeamCreateViewModel(newTeam);
+                    ModelState.AddModelError("", "Select players from 11 different clubs for your team.");
+                    return View(teamCreateViewModel);
+                }
+
+                int teamId = _user.AddTeam(newTeam.userId, newTeam.formationId);
+                if (teamId == 0)
+                {
+                    TeamCreateViewModel teamCreateViewModel = ReturnTeamCreateViewModel(newTeam);
+                    ModelState.AddModelError("", "You already have a team or the database could not connect.");
+                    return View(teamCreateViewModel);
+                }
+
+                _user.AddPlayersToTeam(teamId, players);
+                return RedirectToAction("MyTeam", new {id = newTeam.userId});
             }
-            List<int> players = AddPlayerIdsToList(newTeam);
-            if (players.Distinct().Count() != 11)
+            catch
             {
-                TeamCreateViewModel teamCreateViewModel = ReturnTeamCreateViewModel(newTeam);
-                ModelState.AddModelError("", "Select 11 different players for your team.");
-                return View(teamCreateViewModel);
+                return RedirectToAction("Error", "Home");
             }
-            List<int> clubs = AddClubIdsToList(players);
-            if (clubs.Distinct().Count() != 11)
-            {
-                TeamCreateViewModel teamCreateViewModel = ReturnTeamCreateViewModel(newTeam);
-                ModelState.AddModelError("", "Select players from 11 different clubs for your team.");
-                return View(teamCreateViewModel);
-            }
-            int teamId = _user.AddTeam(newTeam.userId, newTeam.formationId);
-            if (teamId == 0)
-            {
-                TeamCreateViewModel teamCreateViewModel = ReturnTeamCreateViewModel(newTeam);
-                ModelState.AddModelError("", "You already have a team or the database could not connect.");
-                return View(teamCreateViewModel);
-            }
-            _user.AddPlayersToTeam(teamId, players);
-            return RedirectToAction("MyTeam", new { id =  newTeam.userId});
         }
         
         // GET: TeamController/Edit/5

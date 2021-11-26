@@ -16,16 +16,23 @@ namespace UI_SuperElf.Controllers
         // GET: FormationController
         public ActionResult Index()
         {
-            FormationPipeline formationPipeline = new FormationPipeline();
-            List<IFormation> formations = _team.GetAllFormations();
-            foreach (IFormation formation in formations)
+            try
             {
-                FormationViewModel formationViewModel = new FormationViewModel();
-                formationViewModel.formationId = formation.formationId;
-                formationViewModel.formationName = formation.formationName;
-                formationPipeline.Formations.Add(formationViewModel);
+                FormationPipeline formationPipeline = new FormationPipeline();
+                List<IFormation> formations = _team.GetAllFormations();
+                foreach (IFormation formation in formations)
+                {
+                    FormationViewModel formationViewModel = new FormationViewModel();
+                    formationViewModel.formationId = formation.formationId;
+                    formationViewModel.formationName = formation.formationName;
+                    formationPipeline.Formations.Add(formationViewModel);
+                }
+                return View(formationPipeline);
             }
-            return View(formationPipeline);
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // GET: FormationController/Create
@@ -40,20 +47,34 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(FormationViewModel newFormation)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                FormationViewModel formation = newFormation;
-                return View(formation);
-            }
+                if (!ModelState.IsValid)
+                {
+                    FormationViewModel formation = newFormation;
+                    return View(formation);
+                }
 
-            _team.AddFormation(newFormation.formationName);
-            return RedirectToAction("Index");
+                _team.AddFormation(newFormation.formationName);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // GET: FormationController/Edit/5
         public ActionResult Edit(int id)
         {
-            return FormationViewModelById(id);
+            try
+            {
+                return FormationViewModelById(id);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // POST: FormationController/Edit/5
@@ -61,20 +82,35 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int formationId, FormationViewModel updatedFormation)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return ReturnToFormation(formationId);
+                if (!ModelState.IsValid)
+                {
+                    return ReturnToFormation(formationId);
+                }
+
+                IFormation formation = _team.GetFormationById(formationId);
+                string newFormationName = updatedFormation.formationName;
+                formation.UpdateFormation(formation, newFormationName);
+                return RedirectToAction("Index");
             }
-            IFormation formation = _team.GetFormationById(formationId);
-            string newFormationName = updatedFormation.formationName;
-            formation.UpdateFormation(formation, newFormationName);
-            return RedirectToAction("Index");
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // GET: FormationController/Delete/5
         public ActionResult Delete(int id)
         {
-            return FormationViewModelById(id);
+            try
+            {
+                return FormationViewModelById(id);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // POST: FormationController/Delete/5
@@ -82,14 +118,21 @@ namespace UI_SuperElf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormationViewModel formation)
         {
-            if (id == 0)
+            try
             {
-                ModelState.AddModelError("", "Delete could not be processed, try again later.");
+                if (id == 0)
+                {
+                    ModelState.AddModelError("", "Delete could not be processed, try again later.");
+                    return RedirectToAction("Index");
+                }
+
+                _team.DeleteFormation(id);
                 return RedirectToAction("Index");
             }
-
-            _team.DeleteFormation(id);
-            return RedirectToAction("Index");
+            catch
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
         //
         private ActionResult FormationViewModelById(int formationId)
