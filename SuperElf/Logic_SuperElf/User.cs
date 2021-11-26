@@ -13,9 +13,9 @@ namespace Logic_SuperElf
         // Interfaces for web application
         private readonly IUserDAL userDAL = UserDAL_Factory.CreateUserDal();
         private readonly ITeamContainerDAL teamDAL = TeamDAL_Factory.CreateTeamContainerDal();
-        // private readonly IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreatePlayerContainerDal();
+        private readonly IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreatePlayerContainerDal();
         // Interfaces for testing
-        private readonly IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreateTestPlayerContainerDal();
+        // private readonly IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreateTestPlayerContainerDal();
         public int userId { get; private set; }
         public string userName { get; private set; }
         public string firstName { get; private set; }
