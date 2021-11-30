@@ -4,7 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using DAL_Interfaces_SuperElf;
 
-namespace DAL_SuperElf
+namespace UnitTest_SuperElf
 {
     public class TestPlayerDAL : IPlayerDAL, IPlayerContainerDAL
     {

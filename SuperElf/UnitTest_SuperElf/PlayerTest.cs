@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-using DAL_Interfaces_SuperElf;
 using Logic_Interfaces_SuperElf;
 using Logic_SuperElf;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
