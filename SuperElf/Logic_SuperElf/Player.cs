@@ -12,25 +12,22 @@ namespace Logic_SuperElf
 {
     public class Player : IPlayer
     {
-        // Interface for web application
         private readonly IPlayerDAL playerDAL = PlayerDAL_Factory.CreatePlayerDal();
-        // Interface for testing
-        // private readonly IPlayerDAL playerDAL = PlayerDAL_Factory.CreateTestPlayerDal();
-
         public int playerId { get; private set; }
         public string playerName { get; private set; }
         public Position position { get; private set; }
         public int club { get; private set; }
         
 
-        public Player(int playerId, string playerName, Position position, int club)
+        public Player(int playerId, string playerName, Position position, int club, IPlayerDAL playerDAL)
         {
             this.playerId = playerId;
             this.playerName = playerName;
             this.position = position;
             this.club = club;
+            this.playerDAL = playerDAL;
         }
-        public Player() : this(0,"",0,0)
+        public Player() : this(0,"",0,0, PlayerDAL_Factory.CreatePlayerDal())
         {
 
         }

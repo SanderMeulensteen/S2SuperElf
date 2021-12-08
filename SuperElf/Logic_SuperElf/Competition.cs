@@ -39,7 +39,7 @@ namespace Logic_SuperElf
             List<ClubDto> clubDtos = clubDAL.GetAllClubDtos();
             foreach (ClubDto clubDto in clubDtos)
             {
-                Club club = new Club(clubDto.clubId, clubDto.clubName, clubDto.competitionId);
+                Club club = new Club(clubDto.clubId, clubDto.clubName, clubDto.competitionId, PlayerDAL_Factory.CreatePlayerContainerDal());
                 clubs.Add(club);
             }
             return clubs;
@@ -67,7 +67,7 @@ namespace Logic_SuperElf
         // Convert dto to club
         public IClub ConvertDtoToClub(int clubId, string clubName, int clubCompetitionId)
         {
-            Club club = new Club(clubId, clubName, clubCompetitionId);
+            Club club = new Club(clubId, clubName, clubCompetitionId, PlayerDAL_Factory.CreatePlayerContainerDal());
             return club;
         }
     }

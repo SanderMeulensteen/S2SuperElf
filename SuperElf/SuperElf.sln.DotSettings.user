@@ -5,9 +5,10 @@
 	<s:Boolean x:Key="/Default/Environment/ExcludedFiles/FilesAndFoldersToSkip/=ECE8F204_002DA3F8_002D48D6_002D9CA1_002D5B180000619F_002Fd_003Awwwroot_002Fd_003Alib_002Fd_003Abootstrap_002Fd_003Adist_002Fd_003Ajs_002Ff_003Abootstrap_002Ebundle_002Ejs/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/ExcludedFiles/FilesAndFoldersToSkip/=ECE8F204_002DA3F8_002D48D6_002D9CA1_002D5B180000619F_002Fd_003Awwwroot_002Fd_003Alib_002Fd_003Ajquery_002Fd_003Adist_002Ff_003Ajquery_002Ejs/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/ExcludedFiles/FilesAndFoldersToSkip/=ECE8F204_002DA3F8_002D48D6_002D9CA1_002D5B180000619F_002Fd_003Awwwroot_002Fd_003Alib_002Fd_003Ajquery_002Dvalidation_002Fd_003Adist_002Ff_003Aadditional_002Dmethods_002Ejs/@EntryIndexedValue">True</s:Boolean>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b46034dc_002D2810_002D4b0e_002Db061_002D2dca34e75de2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Player_Can_Be_Added" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e6920090_002D94fa_002D42f5_002D9e9e_002D254c636f1926/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PlayerTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;MSTest::FAB72299-B8EC-4C6F-9B68-0D2CFF3B7467::.NETCoreApp,Version=v3.1::UnitTest_SuperElf.PlayerTest.Update_PlayerName_In_MockDB&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::FAB72299-B8EC-4C6F-9B68-0D2CFF3B7467::.NETCoreApp,Version=v3.1::UnitTest_SuperElf.PlayerTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
+	
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Matchround/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

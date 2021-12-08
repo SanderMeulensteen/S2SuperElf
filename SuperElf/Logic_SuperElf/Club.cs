@@ -12,22 +12,20 @@ namespace Logic_SuperElf
 {
     public class Club : IClub
     {
-        // Interfaces for web application
         private readonly IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreatePlayerContainerDal();
         private readonly IClubDAL clubDAL = ClubDAL_Factory.CreateClubDal();
-        // Interfaces for testing
-        // private readonly IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreateTestPlayerContainerDal();
         public int clubId { get; private set; }
         public string clubName { get; private set; }
         public int competitionId { get; private set; }
 
-        public Club(int clubId, string clubName, int competition)
+        public Club(int clubId, string clubName, int competition, IPlayerContainerDAL playerDAL)
         {
             this.clubId = clubId;
             this.clubName = clubName;
             this.competitionId = competition;
+            this.playerDAL = playerDAL;
         }
-        public Club() : this(0,"",0)
+        public Club() : this(0,"",0, PlayerDAL_Factory.CreatePlayerContainerDal())
         {
 
         }
@@ -82,7 +80,7 @@ namespace Logic_SuperElf
         // Convert playerDto to player
         public IPlayer ConvertDtoToPlayer(int playerId, string playerName, int position, int club)
         {
-            Player player = new Player(playerId, playerName, (Position) position, club);
+            Player player = new Player(playerId, playerName, (Position) position, club, PlayerDAL_Factory.CreatePlayerDal());
             return player;
         }
         // Get all keepers from db

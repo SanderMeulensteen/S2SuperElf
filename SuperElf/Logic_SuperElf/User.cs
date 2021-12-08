@@ -10,12 +10,9 @@ namespace Logic_SuperElf
 {
     public class User : IUser
     {
-        // Interfaces for web application
         private readonly IUserDAL userDAL = UserDAL_Factory.CreateUserDal();
         private readonly ITeamContainerDAL teamDAL = TeamDAL_Factory.CreateTeamContainerDal();
         private readonly IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreatePlayerContainerDal();
-        // Interfaces for testing
-        // private readonly IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreateTestPlayerContainerDal();
         public int userId { get; private set; }
         public string userName { get; private set; }
         public string firstName { get; private set; }
@@ -24,8 +21,7 @@ namespace Logic_SuperElf
         public string emailaddress { get; private set; }
         public bool isAdmin { get; private set; }
         public bool isModerator { get; private set; }
-
-        public User(int userId, string userName, string firstName, string lastName, string password, string emailaddress, bool isAdmin, bool isModerator)
+        public User(int userId, string userName, string firstName, string lastName, string password, string emailaddress, bool isAdmin, bool isModerator, IPlayerContainerDAL playerDAL)
         {
             this.userId = userId;
             this.userName = userName;
@@ -35,8 +31,9 @@ namespace Logic_SuperElf
             this.emailaddress = emailaddress;
             this.isAdmin = isAdmin;
             this.isModerator = isModerator;
+            this.playerDAL = playerDAL;
         }
-        public User() : this(0, "", "", "", "", "", false, false)
+        public User() : this(0, "", "", "", "", "", false, false, PlayerDAL_Factory.CreatePlayerContainerDal())
         {
 
         }
@@ -106,7 +103,7 @@ namespace Logic_SuperElf
         // Convert dto to player
         public IPlayer ConvertDtoToPlayer(int playerId, int clubId, int position, string playerName)
         {
-            IPlayer player = new Player(playerId, playerName, (Position) position, clubId);
+            IPlayer player = new Player(playerId, playerName, (Position) position, clubId, PlayerDAL_Factory.CreatePlayerDal());
             return player;
         }
         // Convert dto to team

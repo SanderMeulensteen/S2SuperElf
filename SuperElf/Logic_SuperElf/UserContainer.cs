@@ -71,7 +71,7 @@ namespace Logic_SuperElf
         // Convert dto to user
         public IUser ConvertDtoToUser(int userId, string userName, string firstName, string lastName, string password, string emailaddress, bool isAdmin, bool isModerator)
         {
-            User user = new User(userId, userName, firstName, lastName, password, emailaddress, isAdmin, isModerator);
+            User user = new User(userId, userName, firstName, lastName, password, emailaddress, isAdmin, isModerator, PlayerDAL_Factory.CreatePlayerContainerDal());
             return user;
         }
     }

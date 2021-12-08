@@ -156,3 +156,5 @@ C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UnitTest_SuperElf\
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UnitTest_SuperElf\obj\Debug\netcoreapp3.1\UnitTest_SuperElf.dll
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UnitTest_SuperElf\obj\Debug\netcoreapp3.1\UnitTest_SuperElf.pdb
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UnitTest_SuperElf\obj\Debug\netcoreapp3.1\UnitTest_SuperElf.genruntimeconfig.cache
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UnitTest_SuperElf\bin\Debug\netcoreapp3.1\Logic_Factories_SuperElf.dll
+C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\UnitTest_SuperElf\bin\Debug\netcoreapp3.1\Logic_Factories_SuperElf.pdb

@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "UnitTest_SuperElf/1.0.0": {
         "dependencies": {
+          "Logic_Factories_SuperElf": "1.0.0",
           "Logic_SuperElf": "1.0.0",
           "MSTest.TestAdapter": "2.2.3",
           "MSTest.TestFramework": "2.2.3",
@@ -1722,6 +1723,15 @@
           "DAL_SuperElf.dll": {}
         }
       },
+      "Logic_Factories_SuperElf/1.0.0": {
+        "dependencies": {
+          "Logic_Interfaces_SuperElf": "1.0.0",
+          "Logic_SuperElf": "1.0.0"
+        },
+        "runtime": {
+          "Logic_Factories_SuperElf.dll": {}
+        }
+      },
       "Logic_Interfaces_SuperElf/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "5.0.11",
@@ -2732,6 +2742,11 @@
       "sha512": ""
     },
     "DAL_SuperElf/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Logic_Factories_SuperElf/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
