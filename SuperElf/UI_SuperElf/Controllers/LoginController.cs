@@ -42,7 +42,7 @@ namespace UI_SuperElf.Controllers
                 HttpContext.Session.SetString(SessionIsAdmin, user.isAdmin.ToString());
                 HttpContext.Session.SetString(SessionIsMod, user.isModerator.ToString());
                 HttpContext.Session.SetInt32(SessionUserId, user.userId);
-                HttpContext.Session.SetString(SessionBlackMode, user.isAdmin.ToString());
+                HttpContext.Session.SetString(SessionBlackMode, "False");
                 return RedirectToAction("Index", "Home");
             }
             catch
