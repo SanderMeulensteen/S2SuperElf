@@ -8,128 +8,255 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
     <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var dt = $('#player_table').DataTable({
-                "paging": false,
-                "scrollY": "50vh",
-                "scrollCollapse": true
+    @if (Context.Session.GetString("_SessionBlackMode") == "True")
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var dt = $('#player_table').DataTable({
+                    "paging": false,
+                    "scrollY": "50vh",
+                    "scrollCollapse": true,
+                    "rowCallback": function () {
+                        {
+                            $('td').css('background', 'rgb(31,31,35)');
+                            $('td').css('color', 'rgb(239,239,241)');
+                            $('div').css('color', 'rgb(239,239,241)');
+                            $('input').css('color', 'rgb(239,239,241)');
+                        }
+                    }
+                });
+                $('#all').click(function () {
+                    dt.column(1).search('').draw();
+                    dt.column(2).search('').draw();
+                });
+                $('#all_positions').click(function () {
+                    dt.column(1).search('').draw();
+                });
+                $('#all_clubs').click(function () {
+                    dt.column(2).search('').draw();
+                });
+                $('#goalkeeper').click(function () {
+                    dt.column(1).search('Goalkeeper').draw();
+                });
+                $('#defender').click(function () {
+                    dt.column(1).search('Defender').draw();
+                });
+                $('#midfielder').click(function () {
+                    dt.column(1).search('Midfielder').draw();
+                });
+                $('#forward').click(function () {
+                    dt.column(1).search('Forward').draw();
+                });
+                $('#ajax').click(function () {
+                    dt.column(2).search('ajax').draw();
+                });
+                $('#az').click(function () {
+                    dt.column(2).search('az').draw();
+                });
+                $('#cambuur').click(function () {
+                    dt.column(2).search('cambuur').draw();
+                });
+                $('#feyenoord').click(function () {
+                    dt.column(2).search('feyenoord').draw();
+                });
+                $('#fortuna').click(function () {
+                    dt.column(2).search('fortuna').draw();
+                });
+                $('#eagles').click(function () {
+                    dt.column(2).search('eagles').draw();
+                });
+                $('#groningen').click(function () {
+                    dt.column(2).search('groningen').draw();
+                });
+                $('#heerenveen').click(function () {
+                    dt.column(2).search('heerenveen').draw();
+                });
+                $('#heracles').click(function () {
+                    dt.column(2).search('heracles').draw();
+                });
+                $('#nec').click(function () {
+                    dt.column(2).search('nec').draw();
+                });
+                $('#pec').click(function () {
+                    dt.column(2).search('pec').draw();
+                });
+                $('#psv').click(function () {
+                    dt.column(2).search('psv').draw();
+                });
+                $('#rkc').click(function () {
+                    dt.column(2).search('rkc').draw();
+                });
+                $('#sparta').click(function () {
+                    dt.column(2).search('sparta').draw();
+                });
+                $('#twente').click(function () {
+                    dt.column(2).search('twente').draw();
+                });
+                $('#utrecht').click(function () {
+                    dt.column(2).search('utrecht').draw();
+                });
+                $('#vitesse').click(function () {
+                    dt.column(2).search('vitesse').draw();
+                });
+                $('#willem').click(function () {
+                    dt.column(2).search('willem').draw();
+                });
             });
-            $('#all').click(function() {
-                dt.column(1).search('').draw();
-                dt.column(2).search('').draw();
+        </script>
+    }
+    else
+    {
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var dt = $('#player_table').DataTable({
+                    "paging": false,
+                    "scrollY": "50vh",
+                    "scrollCollapse": true
+                });
+                $('#all').click(function() {
+                    dt.column(1).search('').draw();
+                    dt.column(2).search('').draw();
+                });
+                $('#all_positions').click(function() {
+                    dt.column(1).search('').draw();
+                });
+                $('#all_clubs').click(function() {
+                    dt.column(2).search('').draw();
+                });
+                $('#goalkeeper').click(function() {
+                    dt.column(1).search('Goalkeeper').draw();
+                });
+                $('#defender').click(function() {
+                    dt.column(1).search('Defender').draw();
+                });
+                $('#midfielder').click(function() {
+                    dt.column(1).search('Midfielder').draw();
+                });
+                $('#forward').click(function() {
+                    dt.column(1).search('Forward').draw();
+                });
+                $('#ajax').click(function() {
+                    dt.column(2).search('ajax').draw();
+                });
+                $('#az').click(function() {
+                    dt.column(2).search('az').draw();
+                });
+                $('#cambuur').click(function() {
+                    dt.column(2).search('cambuur').draw();
+                });
+                $('#feyenoord').click(function() {
+                    dt.column(2).search('feyenoord').draw();
+                });
+                $('#fortuna').click(function() {
+                    dt.column(2).search('fortuna').draw();
+                });
+                $('#eagles').click(function() {
+                    dt.column(2).search('eagles').draw();
+                });
+                $('#groningen').click(function() {
+                    dt.column(2).search('groningen').draw();
+                });
+                $('#heerenveen').click(function() {
+                    dt.column(2).search('heerenveen').draw();
+                });
+                $('#heracles').click(function() {
+                    dt.column(2).search('heracles').draw();
+                });
+                $('#nec').click(function() {
+                    dt.column(2).search('nec').draw();
+                });
+                $('#pec').click(function() {
+                    dt.column(2).search('pec').draw();
+                });
+                $('#psv').click(function() {
+                    dt.column(2).search('psv').draw();
+                });
+                $('#rkc').click(function() {
+                    dt.column(2).search('rkc').draw();
+                });
+                $('#sparta').click(function() {
+                    dt.column(2).search('sparta').draw();
+                });
+                $('#twente').click(function() {
+                    dt.column(2).search('twente').draw();
+                });
+                $('#utrecht').click(function() {
+                    dt.column(2).search('utrecht').draw();
+                });
+                $('#vitesse').click(function() {
+                    dt.column(2).search('vitesse').draw();
+                });
+                $('#willem').click(function() {
+                    dt.column(2).search('willem').draw();
+                });
             });
-            $('#all_positions').click(function () {
-                dt.column(1).search('').draw();
-            });
-            $('#all_clubs').click(function () {
-                dt.column(2).search('').draw();
-            });
-            $('#goalkeeper').click(function () {
-                dt.column(1).search('Goalkeeper').draw();
-            });
-            $('#defender').click(function () {
-                dt.column(1).search('Defender').draw();
-            });
-            $('#midfielder').click(function () {
-                dt.column(1).search('Midfielder').draw();
-            });
-            $('#forward').click(function () {
-                dt.column(1).search('Forward').draw();
-            });
-            $('#ajax').click(function () {
-                dt.column(2).search('ajax').draw();
-            });
-            $('#az').click(function () {
-                dt.column(2).search('az').draw();
-            });
-            $('#cambuur').click(function () {
-                dt.column(2).search('cambuur').draw();
-            });
-            $('#feyenoord').click(function () {
-                dt.column(2).search('feyenoord').draw();
-            });
-            $('#fortuna').click(function () {
-                dt.column(2).search('fortuna').draw();
-            });
-            $('#eagles').click(function () {
-                dt.column(2).search('eagles').draw();
-            });
-            $('#groningen').click(function () {
-                dt.column(2).search('groningen').draw();
-            });
-            $('#heerenveen').click(function () {
-                dt.column(2).search('heerenveen').draw();
-            });
-            $('#heracles').click(function () {
-                dt.column(2).search('heracles').draw();
-            });
-            $('#nec').click(function () {
-                dt.column(2).search('nec').draw();
-            });
-            $('#pec').click(function () {
-                dt.column(2).search('pec').draw();
-            });
-            $('#psv').click(function () {
-                dt.column(2).search('psv').draw();
-            });
-            $('#rkc').click(function () {
-                dt.column(2).search('rkc').draw();
-            });
-            $('#sparta').click(function () {
-                dt.column(2).search('sparta').draw();
-            });
-            $('#twente').click(function () {
-                dt.column(2).search('twente').draw();
-            });
-            $('#utrecht').click(function () {
-                dt.column(2).search('utrecht').draw();
-            });
-            $('#vitesse').click(function () {
-                dt.column(2).search('vitesse').draw();
-            });
-            $('#willem').click(function () {
-                dt.column(2).search('willem').draw();
-            });
-
-        });
-    </script>
+        </script>
+    }
 }
 
 <h1>Players</h1>
 
 <div class="container">
     <br />
-    <button id="all_positions" style="background-color: white; border-color: rgb(0, 142, 68)">All</button>
-    <button id="goalkeeper" style="background-color: white; border-color: rgb(0,142,68)">Goalkeepers</button>
-    <button id="defender" style="background-color: white; border-color: rgb(0,142,68)">Defenders</button>
-    <button id="midfielder" style="background-color: white; border-color: rgb(0,142,68)">Midfielders</button>
-    <button id="forward" style="background-color: white; border-color: rgb(0,142,68)">Forwards</button>
-    <br />
-    <br />
-    <button id="all_clubs" style="background-color: white; border-color: rgb(0, 142, 68)"><img src="/logo/eredivisie/eredivisie.png" style="width: 25px" /></button>
-    @*@foreach (var club in Model.Clubs)
+    @if (Context.Session.GetString("_SessionBlackMode") == "True")
     {
-        <button id="@club.clubName" style="background-color: white; border-color: rgb(0,142,68)"><img src="@club.clubLogo" style="width: 25px" /></button>
-    }*@
-    <button id="ajax" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/ajax.png" style="width: 25px" /></button>
-    <button id="az" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/az.png" style="width: 25px" /></button>
-    <button id="cambuur" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/cambuur.png" style="width: 25px" /></button>
-    <button id="feyenoord" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/feyenoord.png" style="width: 25px" /></button>
-    <button id="fortuna" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/fortuna.png" style="width: 25px" /></button>
-    <button id="eagles" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/eagles.png" style="width: 25px" /></button>
-    <button id="groningen" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/groningen.png" style="width: 25px" /></button>
-    <button id="heerenveen" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/heerenveen.png" style="width: 25px" /></button>
-    <button id="heracles" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/heracles.png" style="width: 25px" /></button>
-    <button id="nec" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/nec.png" style="width: 25px" /></button>
-    <button id="pec" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/pec.png" style="width: 25px" /></button>
-    <button id="psv" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/psv.png" style="width: 25px" /></button>
-    <button id="rkc" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/rkc.png" style="width: 25px" /></button>
-    <button id="sparta" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/sparta.png" style="width: 25px" /></button>
-    <button id="twente" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/twente.png" style="width: 25px" /></button>
-    <button id="utrecht" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/utrecht.png" style="width: 25px" /></button>
-    <button id="vitesse" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/vitesse.png" style="width: 25px" /></button>
-    <button id="willem" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/willem.png" style="width: 25px" /></button>
+        <button id="all_positions" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0, 142, 68) ">All</button>
+        <button id="goalkeeper" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) ">Goalkeepers</button>
+        <button id="defender" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) ">Defenders</button>
+        <button id="midfielder" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) ">Midfielders</button>
+        <button id="forward" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) ">Forwards</button>
+        <br />
+        <br />
+        <button id="all_clubs" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0, 142, 68) "><img src="/logo/eredivisie/eredivisie.png" style="width: 25px" /></button>
+        <button id="ajax" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/ajax.png" style="width: 25px" /></button>
+        <button id="az" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/az.png" style="width: 25px" /></button>
+        <button id="cambuur" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/cambuur.png" style="width: 25px" /></button>
+        <button id="feyenoord" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/feyenoord.png" style="width: 25px" /></button>
+        <button id="fortuna" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/fortuna.png" style="width: 25px" /></button>
+        <button id="eagles" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/eagles.png" style="width: 25px" /></button>
+        <button id="groningen" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/groningen.png" style="width: 25px" /></button>
+        <button id="heerenveen" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/heerenveen.png" style="width: 25px" /></button>
+        <button id="heracles" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/heracles.png" style="width: 25px" /></button>
+        <button id="nec" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/nec.png" style="width: 25px" /></button>
+        <button id="pec" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/pec.png" style="width: 25px" /></button>
+        <button id="psv" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/psv.png" style="width: 25px" /></button>
+        <button id="rkc" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/rkc.png" style="width: 25px" /></button>
+        <button id="sparta" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/sparta.png" style="width: 25px" /></button>
+        <button id="twente" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/twente.png" style="width: 25px" /></button>
+        <button id="utrecht" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/utrecht.png" style="width: 25px" /></button>
+        <button id="vitesse" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/vitesse.png" style="width: 25px" /></button>
+        <button id="willem" style="background-color: rgb(31,31,35); color: rgb(239,239,241); border-color: rgb(0,142,68) "><img src="/logo/eredivisie/willem.png" style="width: 25px" /></button>
+
+    }
+    else
+    {
+        <button id="all_positions" style="background-color: white; border-color: rgb(0, 142, 68)">All</button>
+        <button id="goalkeeper" style="background-color: white; border-color: rgb(0,142,68)">Goalkeepers</button>
+        <button id="defender" style="background-color: white; border-color: rgb(0,142,68)">Defenders</button>
+        <button id="midfielder" style="background-color: white; border-color: rgb(0,142,68)">Midfielders</button>
+        <button id="forward" style="background-color: white; border-color: rgb(0,142,68)">Forwards</button>
+        <br />
+        <br />
+        <button id="all_clubs" style="background-color: white; border-color: rgb(0, 142, 68)"><img src="/logo/eredivisie/eredivisie.png" style="width: 25px" /></button>
+        <button id="ajax" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/ajax.png" style="width: 25px" /></button>
+        <button id="az" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/az.png" style="width: 25px" /></button>
+        <button id="cambuur" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/cambuur.png" style="width: 25px" /></button>
+        <button id="feyenoord" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/feyenoord.png" style="width: 25px" /></button>
+        <button id="fortuna" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/fortuna.png" style="width: 25px" /></button>
+        <button id="eagles" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/eagles.png" style="width: 25px" /></button>
+        <button id="groningen" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/groningen.png" style="width: 25px" /></button>
+        <button id="heerenveen" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/heerenveen.png" style="width: 25px" /></button>
+        <button id="heracles" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/heracles.png" style="width: 25px" /></button>
+        <button id="nec" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/nec.png" style="width: 25px" /></button>
+        <button id="pec" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/pec.png" style="width: 25px" /></button>
+        <button id="psv" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/psv.png" style="width: 25px" /></button>
+        <button id="rkc" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/rkc.png" style="width: 25px" /></button>
+        <button id="sparta" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/sparta.png" style="width: 25px" /></button>
+        <button id="twente" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/twente.png" style="width: 25px" /></button>
+        <button id="utrecht" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/utrecht.png" style="width: 25px" /></button>
+        <button id="vitesse" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/vitesse.png" style="width: 25px" /></button>
+        <button id="willem" style="background-color: white; border-color: rgb(0,142,68)"><img src="/logo/eredivisie/willem.png" style="width: 25px" /></button>
+    }
     <br />
     <br />
     <table id="player_table" class="table">
@@ -152,7 +279,7 @@
                 </th>
             </tr>
         </thead>
-        <tbody class="table table-bordered">
+        <tbody>
             @foreach (PlayerViewModel player in Model.Players)
             {
                 <tr>

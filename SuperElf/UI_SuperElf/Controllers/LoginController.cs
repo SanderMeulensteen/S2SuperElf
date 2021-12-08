@@ -17,6 +17,7 @@ namespace UI_SuperElf.Controllers
         string SessionIsAdmin = "_SessionIsAdmin";
         string SessionIsMod = "_SessionIsMod";
         string SessionUserId = "_SessionUserId";
+        private string SessionBlackMode = "_SessionBlackMode";
         [HttpGet]
         public ActionResult Login()
         {
@@ -41,6 +42,7 @@ namespace UI_SuperElf.Controllers
                 HttpContext.Session.SetString(SessionIsAdmin, user.isAdmin.ToString());
                 HttpContext.Session.SetString(SessionIsMod, user.isModerator.ToString());
                 HttpContext.Session.SetInt32(SessionUserId, user.userId);
+                HttpContext.Session.SetString(SessionBlackMode, user.isAdmin.ToString());
                 return RedirectToAction("Index", "Home");
             }
             catch
@@ -54,6 +56,7 @@ namespace UI_SuperElf.Controllers
             HttpContext.Session.Remove(SessionUserId);
             HttpContext.Session.Remove(SessionIsAdmin);
             HttpContext.Session.Remove(SessionIsMod);
+            HttpContext.Session.Remove(SessionBlackMode);
             return RedirectToAction("Login", "Login");
         }
     }

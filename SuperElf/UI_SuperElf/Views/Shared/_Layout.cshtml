@@ -9,93 +9,189 @@
     <link rel="stylesheet" href="~/css/site.css" />
 
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3" style="background-color: rgb(0,142,68)">
+@if (Context.Session.GetString("_SessionBlackMode") == "True")
+{
+    <body style="background-color: rgb(31,31,35); color: rgb(239,239,241)">
+        <header>
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark box-shadow mb-3" style="background-color: rgb(0,142,68)">
+                    <div class="container">
+                        <a class="navbar-brand" style="color: white"><image src=""></image>SuperElf</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                            <ul class="navbar-nav flex-grow-1">
+                                @if (Context.Session.GetString("_SessionName") != null)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Player" asp-action="Index">Players</a>
+                                    </li>
+                                    @*<li class="nav-item">
+                                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Poules</a>
+                                        </li>*@
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Team" asp-action="MyTeam" asp-route-id="@Context.Session.GetInt32("_SessionUserId")">My team</a>
+                                    </li>
+                                    @if ((Context.Session.GetString("_SessionIsAdmin") == "True") || ((Context.Session.GetString("_SessionIsMod") == "True")))
+                                    {
+                                        @*<li class="nav-item">
+                                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Teams</a>
+                                            </li>*@
+                                        <li class="nav-item">
+                                            <a class="nav-link text-light" asp-area="" asp-controller="Formation" asp-action="Index">Formations</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-light" asp-area="" asp-controller="Club" asp-action="Index">Clubs</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-light" asp-area="" asp-controller="Competition" asp-action="Index">Competitions</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="Index">Users</a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+
+                        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                            <ul class="navbar-nav ml-auto">
+                                @if (Context.Session.GetString("_SessionName") == null)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Login">Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                                    </li>
+                                }
+                                @if (Context.Session.GetString("_SessionName") != null)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="MyProfile" asp-route-id="@Context.Session.GetInt32("_SessionUserId")">My Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light">Welcome @Context.Session.GetString("_SessionName") </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                    </div>
+                </nav>
+            </header>
             <div class="container">
-                <a class="navbar-brand" style="color: white"><image src=""></image>SuperElf</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        @if (Context.Session.GetString("_SessionName") != null)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Player" asp-action="Index">Players</a>
-                            </li>
-                            @*<li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Poules</a>
-                            </li>*@
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Team" asp-action="MyTeam" asp-route-id="@Context.Session.GetInt32("_SessionUserId")">My team</a>
-                            </li>
-                            @if ((Context.Session.GetString("_SessionIsAdmin") == "True") || ((Context.Session.GetString("_SessionIsMod") == "True")))
-                            {
-                                @*<li class="nav-item">
-                                    <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Teams</a>
-                                </li>*@
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" asp-area="" asp-controller="Formation" asp-action="Index">Formations</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" asp-area="" asp-controller="Club" asp-action="Index">Clubs</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" asp-area="" asp-controller="Competition" asp-action="Index">Competitions</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="Index">Users</a>
-                                </li>
-                            }
-                        }
-                    </ul>
-                </div>
-            
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav ml-auto">
-                        @if (Context.Session.GetString("_SessionName") == null)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="Register">Register</a>
-                            </li>
-                        }
-                        @if (Context.Session.GetString("_SessionName") != null)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="MyProfile" asp-route-id="@Context.Session.GetInt32("_SessionUserId")">My Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light">Welcome @Context.Session.GetString("_SessionName") </a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
+
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+            @RenderSection("Scripts", required: false)
+    </body>
+}
+else
+{
+<body>
+        <header>
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3" style="background-color: rgb(0,142,68)">
+                    <div class="container">
+                        <a class="navbar-brand" style="color: white"><image src=""></image>SuperElf</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                            <ul class="navbar-nav flex-grow-1">
+                                @if (Context.Session.GetString("_SessionName") != null)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Player" asp-action="Index">Players</a>
+                                    </li>
+                                    @*<li class="nav-item">
+                                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Poules</a>
+                                        </li>*@
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Team" asp-action="MyTeam" asp-route-id="@Context.Session.GetInt32("_SessionUserId")">My team</a>
+                                    </li>
+                                    @if ((Context.Session.GetString("_SessionIsAdmin") == "True") || ((Context.Session.GetString("_SessionIsMod") == "True")))
+                                    {
+                                        @*<li class="nav-item">
+                                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Teams</a>
+                                            </li>*@
+                                        <li class="nav-item">
+                                            <a class="nav-link text-light" asp-area="" asp-controller="Formation" asp-action="Index">Formations</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-light" asp-area="" asp-controller="Club" asp-action="Index">Clubs</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-light" asp-area="" asp-controller="Competition" asp-action="Index">Competitions</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="Index">Users</a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+
+                        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                            <ul class="navbar-nav ml-auto">
+                                @if (Context.Session.GetString("_SessionName") == null)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Login">Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                                    </li>
+                                }
+                                @if (Context.Session.GetString("_SessionName") != null)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="MyProfile" asp-route-id="@Context.Session.GetInt32("_SessionUserId")">My Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light">Welcome @Context.Session.GetString("_SessionName") </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                    </div>
+                </nav>
+            </header>
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+
+
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+            @RenderSection("Scripts", required: false)
+    </body>
+}
     
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
-</body>
 </html>
