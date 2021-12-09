@@ -12,7 +12,7 @@ namespace Logic_SuperElf
     {
         private readonly IUserDAL userDAL = UserDAL_Factory.CreateUserDal();
         private readonly ITeamContainerDAL teamDAL = TeamDAL_Factory.CreateTeamContainerDal();
-        private readonly IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreatePlayerContainerDal();
+        private readonly IPlayerContainerDAL playerDAL; // = PlayerDAL_Factory.CreatePlayerContainerDal();
         public int userId { get; private set; }
         public string userName { get; private set; }
         public string firstName { get; private set; }

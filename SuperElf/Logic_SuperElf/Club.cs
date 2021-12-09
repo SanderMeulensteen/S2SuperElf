@@ -12,7 +12,7 @@ namespace Logic_SuperElf
 {
     public class Club : IClub
     {
-        private readonly IPlayerContainerDAL playerDAL = PlayerDAL_Factory.CreatePlayerContainerDal();
+        private readonly IPlayerContainerDAL playerDAL; // = PlayerDAL_Factory.CreatePlayerContainerDal();
         private readonly IClubDAL clubDAL = ClubDAL_Factory.CreateClubDal();
         public int clubId { get; private set; }
         public string clubName { get; private set; }

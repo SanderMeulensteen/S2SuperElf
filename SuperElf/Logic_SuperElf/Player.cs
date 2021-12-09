@@ -12,7 +12,7 @@ namespace Logic_SuperElf
 {
     public class Player : IPlayer
     {
-        private readonly IPlayerDAL playerDAL = PlayerDAL_Factory.CreatePlayerDal();
+        private readonly IPlayerDAL playerDAL; // = PlayerDAL_Factory.CreatePlayerDal();
         public int playerId { get; private set; }
         public string playerName { get; private set; }
         public Position position { get; private set; }
