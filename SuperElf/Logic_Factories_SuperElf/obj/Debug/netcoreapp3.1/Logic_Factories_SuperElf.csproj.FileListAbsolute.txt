@@ -21,4 +21,3 @@ C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Factories_Su
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Factories_SuperElf\obj\Debug\netcoreapp3.1\Logic_Factories_SuperElf.csproj.CoreCompileInputs.cache
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Factories_SuperElf\obj\Debug\netcoreapp3.1\Logic_Factories_SuperElf.dll
 C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Factories_SuperElf\obj\Debug\netcoreapp3.1\Logic_Factories_SuperElf.pdb
-C:\Users\sande\OneDrive\Documenten\GitHub\S2SuperElf\SuperElf\Logic_Factories_SuperElf\obj\Debug\netcoreapp3.1\Logic_Factories_SuperElf.csproj.CopyComplete

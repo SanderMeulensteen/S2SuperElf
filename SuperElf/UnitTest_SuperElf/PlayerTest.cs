@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-using DAL_Factories_SuperElf;
-using DAL_Interfaces_SuperElf;
 using DAL_SuperElf;
 using Logic_Interfaces_SuperElf;
 using Logic_SuperElf;
@@ -22,7 +20,7 @@ namespace UnitTest_SuperElf
         public void Player_Can_Be_Added_To_MockDB()
         {
             // Arrange
-            Player newPlayer = new Player(20,"newPlayer",0,3, PlayerDAL_Factory.CreateTestPlayerDal());
+            Player newPlayer = new Player(20,"newPlayer",0,3, new TestPlayerDAL());
             // Act
             club.AddPlayer(newPlayer.playerId, newPlayer.playerName, (int)newPlayer.position, newPlayer.club);
             // Assert
