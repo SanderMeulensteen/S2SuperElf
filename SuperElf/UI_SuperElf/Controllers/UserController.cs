@@ -387,14 +387,36 @@ namespace UI_SuperElf.Controllers
         // Dark mode on
         public async Task<IActionResult> DarkModeOn(int id)
         {
-            HttpContext.Session.SetString("_SessionBlackMode", "True");
-            return RedirectToAction("MyProfile", new { id = id });
+            try
+            {
+                IUser user = _userContainer.GetUserById(id);
+                user.UpdateDarkMode(user, true);
+                HttpContext.Session.SetString("_SessionBlackMode", "True");
+                return RedirectToAction("MyProfile", new { id = id });
+            }
+            catch
+            {
+                ModelState.AddModelError("", "The database is not accessible, the dark mode settings aren't saved.");
+                HttpContext.Session.SetString("_SessionBlackMode", "True");
+                return RedirectToAction("MyProfile", new { id = id });
+            }
         }
         // Dark mode off
         public async Task<IActionResult> DarkModeOff(int id)
         {
-            HttpContext.Session.SetString("_SessionBlackMode", "False");
-            return RedirectToAction("MyProfile", new { id = id });
+            try
+            {
+                IUser user = _userContainer.GetUserById(id);
+                user.UpdateDarkMode(user, false);
+                HttpContext.Session.SetString("_SessionBlackMode", "False");
+                return RedirectToAction("MyProfile", new { id = id });
+            }
+            catch
+            {
+                ModelState.AddModelError("", "The database is not accessible, the dark mode settings aren't saved.");
+                HttpContext.Session.SetString("_SessionBlackMode", "True");
+                return RedirectToAction("MyProfile", new { id = id});
+            }
         }
         // Get userViewModel by id
         private ActionResult UserViewModelById(int id)

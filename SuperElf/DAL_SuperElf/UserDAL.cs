@@ -30,7 +30,8 @@ namespace DAL_SuperElf
                         user.lastName = reader.GetString(4);
                         user.password = reader.GetString(5);
                         user.isAdmin = reader.GetBoolean(6);
-                        user.isModerator = reader.GetBoolean(7); 
+                        user.isModerator = reader.GetBoolean(7);
+                        user.darkMode = reader.GetBoolean(8);
                         users.Add(user);
                     }
                 }
@@ -44,7 +45,7 @@ namespace DAL_SuperElf
             {
                 conn.Open();
                 string query =
-                    "INSERT INTO [dbo].[userTable]([EmailAddress],[UserName],[FirstName],[LastName],[Password],[IsAdmin],[IsModerator])VALUES(@EmailAddress,@UserName,@FirstName,@LastName,@Password,@IsAdmin,@IsModerator)";
+                    "INSERT INTO [dbo].[userTable]([EmailAddress],[UserName],[FirstName],[LastName],[Password],[IsAdmin],[IsModerator],[DarkMode])VALUES(@EmailAddress,@UserName,@FirstName,@LastName,@Password,@IsAdmin,@IsModerator,@DarkMode)";
                 using (SqlCommand sqlCommand = new SqlCommand(query, conn))
                 {
                     sqlCommand.Parameters.AddWithValue("@EmailAddress", user.emailaddress);
@@ -54,6 +55,7 @@ namespace DAL_SuperElf
                     sqlCommand.Parameters.AddWithValue("@Password", user.password);
                     sqlCommand.Parameters.AddWithValue("@IsAdmin", user.isAdmin);
                     sqlCommand.Parameters.AddWithValue("@IsModerator", user.isModerator);
+                    sqlCommand.Parameters.AddWithValue("@DarkMode", user.darkMode);
                     sqlCommand.ExecuteNonQuery();
                 }
             }
@@ -79,6 +81,7 @@ namespace DAL_SuperElf
                         user.password = reader.GetString(5);
                         user.isAdmin = reader.GetBoolean(6);
                         user.isModerator = reader.GetBoolean(7);
+                        user.darkMode = reader.GetBoolean(8);
                     }
                 }
             }
@@ -194,6 +197,20 @@ namespace DAL_SuperElf
                 }
             }
         }
+        // Update darkmode in db
+        public void UpdateDarkMode(int userId, bool darkMode)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand query = new SqlCommand("UPDATE[dbo].[userTable] SET[DarkMode] = @darkMode WHERE UserId = @userId", conn))
+                {
+                    query.Parameters.AddWithValue("@userId", userId);
+                    query.Parameters.AddWithValue("@darkMode", darkMode);
+                    query.ExecuteNonQuery();
+                }
+            }
+        }
         // Update password in db
         public void UpdatePassword(int userId, string newPassword)
         {
@@ -274,6 +291,7 @@ namespace DAL_SuperElf
                         user.password = reader.GetString(5);
                         user.isAdmin = reader.GetBoolean(6);
                         user.isModerator = reader.GetBoolean(7);
+                        user.darkMode = reader.GetBoolean(8);
                     }
                 }
             }

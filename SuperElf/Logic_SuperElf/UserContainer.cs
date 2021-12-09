@@ -18,7 +18,7 @@ namespace Logic_SuperElf
             List<UserDto> userDtos = _userDAL.GetAllUsers();
             foreach (UserDto userDto in userDtos)
             {
-                users.Add(ConvertDtoToUser(userDto.userId, userDto.userName, userDto.firstName, userDto.lastName, userDto.password, userDto.emailaddress, userDto.isAdmin, userDto.isModerator));
+                users.Add(ConvertDtoToUser(userDto.userId, userDto.userName, userDto.firstName, userDto.lastName, userDto.password, userDto.emailaddress, userDto.isAdmin, userDto.isModerator, userDto.darkMode));
             }
             return users;
         }
@@ -40,7 +40,7 @@ namespace Logic_SuperElf
         public IUser GetUserById(int userId)
         {
             UserDto userDto = _userDAL.GetUserById(userId);
-            IUser user = ConvertDtoToUser(userDto.userId, userDto.userName, userDto.firstName, userDto.lastName, userDto.password, userDto.emailaddress, userDto.isAdmin, userDto.isModerator);
+            IUser user = ConvertDtoToUser(userDto.userId, userDto.userName, userDto.firstName, userDto.lastName, userDto.password, userDto.emailaddress, userDto.isAdmin, userDto.isModerator, userDto.darkMode);
             return user;
         }
         // Delete user from db
@@ -65,13 +65,13 @@ namespace Logic_SuperElf
             if (userDto == null) return null;
             
             IUser user = ConvertDtoToUser(userDto.userId, userDto.userName, userDto.firstName, userDto.lastName,
-                userDto.password, userDto.emailaddress, userDto.isAdmin, userDto.isModerator);
+                userDto.password, userDto.emailaddress, userDto.isAdmin, userDto.isModerator, userDto.darkMode);
             return user;
         }
         // Convert dto to user
-        public IUser ConvertDtoToUser(int userId, string userName, string firstName, string lastName, string password, string emailaddress, bool isAdmin, bool isModerator)
+        public IUser ConvertDtoToUser(int userId, string userName, string firstName, string lastName, string password, string emailaddress, bool isAdmin, bool isModerator, bool darkMode)
         {
-            User user = new User(userId, userName, firstName, lastName, password, emailaddress, isAdmin, isModerator, PlayerDAL_Factory.CreatePlayerContainerDal());
+            User user = new User(userId, userName, firstName, lastName, password, emailaddress, isAdmin, isModerator, darkMode, PlayerDAL_Factory.CreatePlayerContainerDal());
             return user;
         }
     }

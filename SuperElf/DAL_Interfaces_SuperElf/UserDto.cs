@@ -14,5 +14,6 @@ namespace DAL_Interfaces_SuperElf
         public string emailaddress { get; set; }
         public bool isAdmin { get; set; }
         public bool isModerator { get; set; }
+        public bool darkMode { get; set; }
     }
 }

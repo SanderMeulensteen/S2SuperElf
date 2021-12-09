@@ -16,7 +16,7 @@ namespace UnitTest_SuperElf
     public class PlayerTest
     {
         private readonly Club club = new Club(0,"",0,new TestPlayerDAL());
-        private readonly User user = new User(0,"","","","","",false,false,new TestPlayerDAL());
+        private readonly User user = new User(0,"","","","","",false,false,false,new TestPlayerDAL());
 
         [TestMethod]
         public void Player_Can_Be_Added_To_MockDB()

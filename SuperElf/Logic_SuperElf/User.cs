@@ -21,7 +21,8 @@ namespace Logic_SuperElf
         public string emailaddress { get; private set; }
         public bool isAdmin { get; private set; }
         public bool isModerator { get; private set; }
-        public User(int userId, string userName, string firstName, string lastName, string password, string emailaddress, bool isAdmin, bool isModerator, IPlayerContainerDAL playerDAL)
+        public bool darkMode { get; private set; }
+        public User(int userId, string userName, string firstName, string lastName, string password, string emailaddress, bool isAdmin, bool isModerator, bool darkMode, IPlayerContainerDAL playerDAL)
         {
             this.userId = userId;
             this.userName = userName;
@@ -31,9 +32,10 @@ namespace Logic_SuperElf
             this.emailaddress = emailaddress;
             this.isAdmin = isAdmin;
             this.isModerator = isModerator;
+            this.darkMode = darkMode;
             this.playerDAL = playerDAL;
         }
-        public User() : this(0, "", "", "", "", "", false, false, PlayerDAL_Factory.CreatePlayerContainerDal())
+        public User() : this(0, "", "", "", "", "", false, false, false, PlayerDAL_Factory.CreatePlayerContainerDal())
         {
 
         }
@@ -64,7 +66,11 @@ namespace Logic_SuperElf
         {
             userDAL.UpdatePassword(userId, newPassword);
         }
-
+        // Update darkmode in db
+        public void UpdateDarkMode(IUser user, bool darkMode)
+        {
+            userDAL.UpdateDarkMode(userId, darkMode);
+        }
         //----Team
         // Get MyTeam details by userId
         public ITeam GetTeamDetailsById(int userId)

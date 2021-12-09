@@ -12,6 +12,7 @@ namespace Logic_Interfaces_SuperElf
         string emailaddress { get; }
         bool isAdmin { get; }
         bool isModerator { get; }
+        bool darkMode { get; }
 
         void UpdateEmail(IUser userId, string newEmail);
         void UpdateName(IUser userId, string newFirstName, string newLastName);
@@ -22,5 +23,6 @@ namespace Logic_Interfaces_SuperElf
         List<IPlayer> GetPlayersFromTeam(int userId);
         int AddTeam(int userId, int formationId);
         void AddPlayersToTeam(int teamId, List<int> players);
+        void UpdateDarkMode(IUser user, bool darkMode);
     }
 }
