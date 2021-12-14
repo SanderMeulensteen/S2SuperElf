@@ -13,28 +13,31 @@ namespace UnitTest_SuperElf
     [TestClass]
     public class PlayerTest
     {
-        private readonly Club club = new Club(0,"",0,new TestPlayerDAL());
-        private readonly User user = new User(0,"","","","","",false,false,false,new TestPlayerDAL());
+        private static TestPlayerDAL _playerDAL = new TestPlayerDAL();
+        private readonly Club club = new Club(0,"",0,_playerDAL);
+        private readonly User user = new User(0,"","","","","",false,false,false,_playerDAL);
 
         [TestMethod]
         public void Player_Can_Be_Added_To_MockDB()
         {
             // Arrange
+            int expectedPlayerCount = club.GetAllPlayers().Count + 1;
             Player newPlayer = new Player(20,"newPlayer",0,3, new TestPlayerDAL());
             // Act
             club.AddPlayer(newPlayer.playerId, newPlayer.playerName, (int)newPlayer.position, newPlayer.club);
             // Assert
-            Assert.AreEqual(17, club.GetAllPlayers().Count);
+            Assert.AreEqual(expectedPlayerCount, club.GetAllPlayers().Count);
         }
         [TestMethod]
         public void Player_Can_Be_Deleted_From_MockDB()
         {
             // Arrange
+            int expectedPlayerCount = club.GetAllPlayers().Count - 1;
             int playerId = 10;
             // Act
             club.DeletePlayer(playerId);
             // Assert
-            Assert.AreEqual(15, club.GetAllPlayers().Count);
+            Assert.AreEqual(expectedPlayerCount, club.GetAllPlayers().Count);
         }
         [TestMethod]
         public void Get_All_Players_From_MockDB()
@@ -66,12 +69,11 @@ namespace UnitTest_SuperElf
             int playerId = 8;
             IPlayer iPlayer = club.GetPlayerById(playerId);
             string newPlayerName = "newName";
-            Player player = new Player(iPlayer.playerId, iPlayer.playerName, iPlayer.position, iPlayer.club, new TestPlayerDAL());
-            // Act
+            Player player = new Player(iPlayer.playerId, iPlayer.playerName, iPlayer.position, iPlayer.club, _playerDAL);
+            //Act
             player.UpdatePlayerName(player, newPlayerName);
-            string updatedName = player.playerName;
             // Assert
-            Assert.AreEqual(newPlayerName, updatedName);
+            Assert.AreEqual(newPlayerName, club.GetPlayerById(playerId).playerName);
         }
         [TestMethod]
         public void Update_Position_In_MockDB()
@@ -80,12 +82,11 @@ namespace UnitTest_SuperElf
             int playerId = 8;
             IPlayer iPlayer = club.GetPlayerById(playerId);
             int newPosition = 3;
-            Player player = new Player(iPlayer.playerId, iPlayer.playerName, iPlayer.position, iPlayer.club, new TestPlayerDAL());
+            Player player = new Player(iPlayer.playerId, iPlayer.playerName, iPlayer.position, iPlayer.club, _playerDAL);
             // Act
             player.UpdatePlayerPosition(player, newPosition);
-            Position updatedPosition = player.position;
             // Assert
-            Assert.AreEqual(Position.Forward, updatedPosition);
+            Assert.AreEqual(Position.Forward, club.GetPlayerById(player.playerId).position);
         }
         [TestMethod]
         public void Update_Club_In_MockDB()
@@ -94,22 +95,11 @@ namespace UnitTest_SuperElf
             int playerId = 8;
             IPlayer iPlayer = club.GetPlayerById(playerId);
             int newClub = 2;
-            Player player = new Player(iPlayer.playerId, iPlayer.playerName, iPlayer.position, iPlayer.club, new TestPlayerDAL());
+            Player player = new Player(iPlayer.playerId, iPlayer.playerName, iPlayer.position, iPlayer.club, _playerDAL);
             // Act
             player.UpdatePlayerClub(player, newClub);
-            int updatedClub = player.club;
-            // Assert
-            Assert.AreEqual(newClub, updatedClub);
-        }
-        [TestMethod]
-        public void Get_My_Team_From_DB()
-        {
-            // Arrange
-            int teamId = 1;
-            // Act
-            List<IPlayer> myTeam = user.GetPlayersFromTeam(teamId);
-            // Assert
-            Assert.AreEqual(11, myTeam.Count);
+			// Assert
+            Assert.AreEqual(newClub, club.GetPlayerById(player.playerId).club);
         }
     }
 }

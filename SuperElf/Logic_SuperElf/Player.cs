@@ -37,21 +37,18 @@ namespace Logic_SuperElf
         public void UpdatePlayerName(IPlayer player, string newPlayerName)
         {
             playerDAL.UpdatePlayerName(playerId, newPlayerName);
-            playerName = newPlayerName;
         }
 
         // Update players position in db
         public void UpdatePlayerPosition(IPlayer player, int newPosition)
         {
             playerDAL.UpdatePlayerPosition(playerId, newPosition);
-            position = (Position)newPosition;
         }
 
         // Update players club in db
         public void UpdatePlayerClub(IPlayer player, int newClub)
         {
             playerDAL.UpdatePlayerClub(playerId, newClub);
-            club = newClub;
         }
     }
 }
