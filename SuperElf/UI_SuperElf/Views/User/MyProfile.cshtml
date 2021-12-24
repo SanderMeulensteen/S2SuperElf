@@ -1,5 +1,6 @@
 ﻿@using Logic_Interfaces_SuperElf
 @using Microsoft.AspNetCore.Http
+@using SharedFiles
 @model UI_SuperElf.Models.UserProfileViewModel
 
 @{
@@ -52,32 +53,70 @@
                 <dd class="col-sm-10">
                     <a class="btn btn-primary" asp-action="EditPassword" asp-route-id="@Model.userId">Edit password</a>
                 </dd>
-			}
-			@if (Context.Session.GetString("_SessionBlackMode") == "False")
+            }
+            @if (Context.Session.GetString("_SessionBlackMode") == "False")
             {
                 <dt class="col-sm-2">
                     <a class="btn btn-success" asp-action="DarkModeOn" asp-route-id="@Model.userId">Dark mode on</a>
-				</dt>
-				<dd class="col-sm-10">
-                    <a class="btn btn-primary" asp-action="EditPassword" asp-route-id="@Model.userId">Edit password</a>
-				</dd>
-			}
-        }
-        @if (@Model.myTeam.Count == 11)
-        {
-            <dt class="col-sm-2">
-                My Team:
-            </dt>
-            @foreach (IPlayer player in @Model.myTeam)
-            {
-                <dt class="col-sm-2">
-
                 </dt>
                 <dd class="col-sm-10">
-                    @player.playerName
+                    <a class="btn btn-primary" asp-action="EditPassword" asp-route-id="@Model.userId">Edit password</a>
                 </dd>
             }
         }
     </dl>
 </div>
+<hr />
+@if (@Model.myTeam.Count == 11)
+{
+    <div align="center">
+        <strong>
+            <h2>My team</h2>
+            <dl>
+                @foreach (IPlayer player in @Model.myTeam)
+                {
+                    if (player.position == Position.Goalkeeper)
+                    {
+                        @player.playerName
+                    }
+                }
+                <br />
+                <br />
+                @foreach (IPlayer player in @Model.myTeam)
+                {
+                    if (player.position == Position.Defender)
+                    {
+                        @:&nbsp;
+                        @player.playerName
+                        @:&nbsp;
+                    }
+                }
+                <br />
+                <br />
+                @foreach (IPlayer player in @Model.myTeam)
+                {
+                    if (player.position == Position.Midfielder)
+                    {
+                        @:&nbsp;
+                        @player.playerName
+                        @:&nbsp;
+                    }
+                }
+                <br />
+                <br />
+                @foreach (IPlayer player in @Model.myTeam)
+                {
+                    if (player.position == Position.Forward)
+                    {
+                        @:&nbsp;
+                        @player.playerName
+                        @:&nbsp;
+                    }
+                }
+            </dl>
+        </strong>
+    </div>
+    <hr />
+}
+
 

@@ -1,7 +1,62 @@
-﻿@{
+﻿@using Logic_Interfaces_SuperElf
+@using SharedFiles
+@model HomeViewModel
+@{
     ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
     <h1 class="display-4">SuperElf</h1>
 </div>
+@if (@Model.teamOfTheWeek.Count != 0)
+{
+    <hr />
+    <div align="center">
+        <strong>
+            <h2>Team of the week</h2>
+            <dl>
+                @foreach (IPlayer player in @Model.teamOfTheWeek)
+                {
+                    if (player.position == Position.Goalkeeper)
+                    {
+                        @player.playerName
+                    }
+                }
+                <br/>
+                <br/>
+                @foreach (IPlayer player in @Model.teamOfTheWeek)
+                {
+                    if (player.position == Position.Defender)
+                    {
+                        @:&nbsp;
+                        @player.playerName
+                        @:&nbsp;
+                    }
+                }
+                <br/>
+                <br/>
+                @foreach (IPlayer player in @Model.teamOfTheWeek)
+                {
+                    if (player.position == Position.Midfielder)
+                    {
+                        @:&nbsp;
+                        @player.playerName
+                        @:&nbsp;
+                    }
+                }
+                <br/>
+                <br/>
+                @foreach (IPlayer player in @Model.teamOfTheWeek)
+                {
+                    if (player.position == Position.Forward)
+                    {
+                        @:&nbsp;
+                        @player.playerName
+                        @:&nbsp;
+                    }
+                }
+            </dl>
+        </strong>
+    </div>
+    <hr/>
+}
